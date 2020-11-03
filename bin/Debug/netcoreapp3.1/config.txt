@@ -1,0 +1,7 @@
+{
+"license_key":"HBPR-3GKI-61XR-PEI9",
+"captchaKey":"b12e67f5309ed01caebe53da7df1ab79",
+"delayBetweenTasks":4200,
+"success_webhook":"ej aktiv",
+"fail_webhook":"ej aktiv"
+}
