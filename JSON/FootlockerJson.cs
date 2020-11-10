@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UnleashedAIO.JSON
 {
@@ -138,4 +139,42 @@ namespace UnleashedAIO.JSON
         public string sizeChartTipTx { get; set; }
         public List<VariantAttribute> variantAttributes { get; set; }
     }
+    public class User
+        {
+            public string firstName { get; set; }
+            public DateTime serverUTC { get; set; }
+            public bool optIn { get; set; }
+            public bool militaryVerified { get; set; }
+            public bool loyaltyStatus { get; set; }
+            public bool ssoComplete { get; set; }
+            public bool vipUser { get; set; }
+            public bool authenticated { get; set; }
+            public bool loyalty { get; set; }
+            public bool recognized { get; set; }
+            public bool vip { get; set; }
+        }
+
+        //Session
+        public class Cart
+        {
+            public string cartId { get; set; }
+            public string cartCode { get; set; }
+            public bool cartMerged { get; set; }
+            public int quantity { get; set; }
+            public List<object> outOfStockProducts { get; set; }
+    }
+
+        public class Data
+        {
+            public string csrfToken { get; set; }
+            public DiscordRPC.User user { get; set; }
+            public Cart cart { get; set; }
+        }
+
+        public class Session
+        {
+            public Data data { get; set; }
+            public bool success { get; set; }
+            public List<object> errors { get; set; }
+        }
 }

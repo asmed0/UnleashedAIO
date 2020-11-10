@@ -7,7 +7,7 @@ namespace UnleashedAIO.Modules
 {
     class WebhookSend
     {
-        public static readonly DiscordWebhookClient publicWebhook = new DiscordWebhookClient("https://discordapp.com/api/webhooks/752926808307007510/7fTzMV1nkxVFOHjvyPK4AOfykQtNw2zNw77WFidSu7D2FQckrMc_U0LhfzTJqCFA_HVr");
+        public static readonly DiscordWebhookClient publicWebhook = new DiscordWebhookClient("https://discord.com/api/webhooks/765629124084760617/t3-K9xCyjTv6VAU4eb6ZNysBqxZ8VkJotNj_Apgfg-H2UMW4uDWUrC_Eh1QgbmmJ-3oH");
         public async void Send(DiscordWebhookClient webhookClient, string site, string url, string size, string description, TimeSpan checkoutTimeSpan = default)
         {
             var successEmbed = new EmbedBuilder

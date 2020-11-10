@@ -67,7 +67,5 @@ namespace UnleashedAIO.JSON
             public Plan plan { get; set; }
             public string id { get; set; }
         }
-
-
     }
 }

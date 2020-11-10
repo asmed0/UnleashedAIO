@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Discord.Webhook;
 using TinyCsvParser;
 using TinyCsvParser.Mapping;
 using TinyCsvParser.Tokenizer;
@@ -27,6 +30,7 @@ namespace UnleashedAIO
         public static int failedCounter = 0; //failed checkouts
         public static string discordUsername; //value assigned when passed auth
         public static Random random = new Random(); //global random object
+        public static int delayBetweenTasks = 3;
 
         // Task variables
         private static List<TinyCsvParser.Mapping.CsvMappingResult<Tasks>> Tasks = new List<CsvMappingResult<Tasks>>(); //local task object
@@ -83,6 +87,8 @@ namespace UnleashedAIO
         {
             var configFile = File.ReadAllText("config.txt");
             configObject = JsonConvert.DeserializeObject<configJson>(configFile);
+            configObject.delayBetweenTasks = configObject.delayBetweenTasks * 1000; // seconds to milliseconds
+            delayBetweenTasks = Convert.ToInt32(configObject.delayBetweenTasks);
 
         }
 
@@ -145,13 +151,14 @@ namespace UnleashedAIO
 
                         Parallel.ForEach(Tasks, async (currentTask) =>
                         {
-                            await TaskStarterAsync(currentTask.Result, proxies[currentTask.RowIndex], currentTask.RowIndex, configObject.delayBetweenTasks);
+                            Thread.Sleep(random.Next(delayBetweenTasks/2, delayBetweenTasks*3));
+                            await TaskStarterAsync(currentTask.Result, proxies[currentTask.RowIndex-1], currentTask.RowIndex, delayBetweenTasks);
                         });
 
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e);
+                        //Console.WriteLine(e);
                     }
                 }
             }
@@ -167,6 +174,7 @@ namespace UnleashedAIO
 
         private static async Task TaskStarterAsync(Tasks currentTask, string proxies, int taskNumber, int delay)
         {
+            bool taskBool = false;
             switch (currentTask.Store.ToLower())
             {
                 case "footlockereu":
@@ -182,6 +190,33 @@ namespace UnleashedAIO
                     }
 
                     break;
+                case "zalando":
+                    try
+                    {
+                         taskBool = await Zalando.Start(currentTask, proxies, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        Console.WriteLine(taskNumber + " failed");
+                    }
+
+                    if (taskBool)
+                    {
+                        checkoutCounter++;
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
+                        TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                    }
+                    else
+                    {
+                        failedCounter++;
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
+                        TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                    }
+                    break;
+                        
+
                 default:
                     Console.WriteLine($"{timestamp()}[Task {taskNumber}] Invalid store!");
                     break;

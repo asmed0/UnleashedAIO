@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "BouncyCastle/1.8.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        }
+      },
       "Discord.Net/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -76,7 +85,7 @@
           "lib/netstandard2.1/Discord.Net.WebSocket.dll": {}
         }
       },
-      "DiscordRichPresence/1.0.150": {
+      "DiscordRichPresence/1.0.166": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "4.5.0",
@@ -317,6 +326,21 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "Obfuscar/2.2.28": {
+        "type": "package",
+        "build": {
+          "build/obfuscar.props": {}
+        }
+      },
+      "Pluralsight.Crypto/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net35/Pluralsight.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/net35/Pluralsight.Crypto.dll": {}
+        }
+      },
       "Portable.BouncyCastle/1.8.8": {
         "type": "package",
         "compile": {
@@ -324,6 +348,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+        }
+      },
+      "PuppeteerExtraSharp/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "PuppeteerSharp": "2.0.4",
+          "RestSharp": "106.11.5"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/PuppeteerExtraSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/PuppeteerExtraSharp.dll": {}
         }
       },
       "PuppeteerSharp/2.0.4": {
@@ -1549,7 +1586,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "TinyCsvParser/2.5.2": {
+      "TinyCsvParser/2.6.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/TinyCsvParser.dll": {}
@@ -1561,6 +1598,19 @@
     }
   },
   "libraries": {
+    "BouncyCastle/1.8.6.1": {
+      "sha512": "rkqpuKmJkdcfTMBkIj1b5nMdBAWKwAyh+I/BQYeqqSD2jkIlhwc9qBNKmSbnpmmm5c29qHZGLpvBSTNWvDLtQA==",
+      "type": "package",
+      "path": "bouncycastle/1.8.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "bouncycastle.1.8.6.1.nupkg.sha512",
+        "bouncycastle.nuspec",
+        "lib/BouncyCastle.Crypto.dll"
+      ]
+    },
     "Discord.Net/2.2.0": {
       "sha512": "D6X8Ap2yLEymJ0wfG8U1oW4zOaZThdjjg9XWrTD1CbEyCQzEEdauynNLEzZhw6b3RXeDdWVCyLdJIrSGObWNpg==",
       "type": "package",
@@ -1655,14 +1705,14 @@
         "lib/netstandard2.1/Discord.Net.WebSocket.xml"
       ]
     },
-    "DiscordRichPresence/1.0.150": {
-      "sha512": "VXQT/7WAiHF51e/X20fyiCTXlm1dHOLh13nbPVUZikIWHs1LGPweP1GKAMM9PJWgsoejCeAHsRVSU1pWb4AKXQ==",
+    "DiscordRichPresence/1.0.166": {
+      "sha512": "38XnrNA8GJvIdhScskPMa0WIw0+kxd9ylTY3ImsDim9i5E5wzUxcEOr7OygicWALw/c0K+naEgmkRvNz70M6VA==",
       "type": "package",
-      "path": "discordrichpresence/1.0.150",
+      "path": "discordrichpresence/1.0.166",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "discordrichpresence.1.0.150.nupkg.sha512",
+        "discordrichpresence.1.0.166.nupkg.sha512",
         "discordrichpresence.nuspec",
         "lib/net35/DiscordRPC.dll",
         "lib/net35/DiscordRPC.pdb",
@@ -1973,6 +2023,33 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
+    "Obfuscar/2.2.28": {
+      "sha512": "I9GMrUuRZg+tRg0X/mpU0ty3kimmp5vXxYRdDv030/Ci8YKU9Ze9l/OHry+BEFfyxIhc+xf5aHzGyTGs1IyqwQ==",
+      "type": "package",
+      "path": "obfuscar/2.2.28",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Potion-icon.png",
+        "build/obfuscar.props",
+        "obfuscar.2.2.28.nupkg.sha512",
+        "obfuscar.nuspec",
+        "tools/Obfuscar.Console.exe"
+      ]
+    },
+    "Pluralsight.Crypto/1.1.0": {
+      "sha512": "aMHdctEHbfRPHp6BWuOth+b1sVkX8ESbSgrTmVjRIvmX6Vm+CoWNFnkOFVnCRur1GLiv/N5buunYe17rNX9MTA==",
+      "type": "package",
+      "path": "pluralsight.crypto/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Pluralsight.Crypto.dll",
+        "pluralsight.crypto.1.1.0.nupkg.sha512",
+        "pluralsight.crypto.nuspec"
+      ]
+    },
     "Portable.BouncyCastle/1.8.8": {
       "sha512": "1rxdf8NfyAxLlqIEciCl/yNhmz1YiLkmp6rrF8p3/NVmyHHzPWLx8djtDvSAwhPLg64BXvsRcM3+5bP1HAUdYg==",
       "type": "package",
@@ -1986,6 +2063,18 @@
         "lib/netstandard2.0/BouncyCastle.Crypto.xml",
         "portable.bouncycastle.1.8.8.nupkg.sha512",
         "portable.bouncycastle.nuspec"
+      ]
+    },
+    "PuppeteerExtraSharp/1.1.0": {
+      "sha512": "812LbF1uj1AYrXeu6Me4IMsNfm/Uke8H70NYqDMNBaSPDBimE9jvvrp+ECixbGGQmI+jsbIj34SRHR3fUNsI7w==",
+      "type": "package",
+      "path": "puppeteerextrasharp/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/PuppeteerExtraSharp.dll",
+        "puppeteerextrasharp.1.1.0.nupkg.sha512",
+        "puppeteerextrasharp.nuspec"
       ]
     },
     "PuppeteerSharp/2.0.4": {
@@ -5383,10 +5472,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "TinyCsvParser/2.5.2": {
-      "sha512": "mDjkai+t65Fy22atLSKqFEkvqNAhwgNh8hGoQgEPJHI/SeZs2Xf2DNb6w1ZACcfPY+3LnnZT1pHm4ees3k+KqA==",
+    "TinyCsvParser/2.6.0": {
+      "sha512": "QqfrCRuRT6+IP2UCxSuxvPrZlHgXUwQiSYJhTNwF589JjLlZZuXBUwggKCOhcImnYkpL0CMlBhqYkj85+Gptgg==",
       "type": "package",
-      "path": "tinycsvparser/2.5.2",
+      "path": "tinycsvparser/2.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5394,21 +5483,25 @@
         "lib/netstandard1.3/TinyCsvParser.dll",
         "lib/netstandard2.0/TinyCsvParser.dll",
         "lib/netstandard2.1/TinyCsvParser.dll",
-        "tinycsvparser.2.5.2.nupkg.sha512",
+        "tinycsvparser.2.6.0.nupkg.sha512",
         "tinycsvparser.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BouncyCastle >= 1.8.6.1",
       "Discord.Net >= 2.2.0",
-      "DiscordRichPresence >= 1.0.150",
+      "DiscordRichPresence >= 1.0.166",
       "Microsoft.AspNet.WebApi.Client >= 5.2.7",
       "Newtonsoft.Json >= 12.0.3",
+      "Obfuscar >= 2.2.28",
+      "Pluralsight.Crypto >= 1.1.0",
       "Portable.BouncyCastle >= 1.8.8",
+      "PuppeteerExtraSharp >= 1.1.0",
       "PuppeteerSharp >= 2.0.4",
       "RestSharp >= 106.11.7",
-      "TinyCsvParser >= 2.5.2"
+      "TinyCsvParser >= 2.6.0"
     ]
   },
   "packageFolders": {
@@ -5448,13 +5541,17 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "BouncyCastle": {
+            "target": "Package",
+            "version": "[1.8.6.1, )"
+          },
           "Discord.Net": {
             "target": "Package",
             "version": "[2.2.0, )"
           },
           "DiscordRichPresence": {
             "target": "Package",
-            "version": "[1.0.150, )"
+            "version": "[1.0.166, )"
           },
           "Microsoft.AspNet.WebApi.Client": {
             "target": "Package",
@@ -5464,9 +5561,23 @@
             "target": "Package",
             "version": "[12.0.3, )"
           },
+          "Obfuscar": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.2.28, )"
+          },
+          "Pluralsight.Crypto": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "Portable.BouncyCastle": {
             "target": "Package",
             "version": "[1.8.8, )"
+          },
+          "PuppeteerExtraSharp": {
+            "target": "Package",
+            "version": "[1.1.0, )"
           },
           "PuppeteerSharp": {
             "target": "Package",
@@ -5478,7 +5589,7 @@
           },
           "TinyCsvParser": {
             "target": "Package",
-            "version": "[2.5.2, )"
+            "version": "[2.6.0, )"
           }
         },
         "imports": [
@@ -5499,5 +5610,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BouncyCastle 1.8.6.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Pluralsight.Crypto 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Pluralsight.Crypto",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
