@@ -1,0 +1,1471 @@
+Renamed Types:
+
+[UnleashedAIO]AhmedBot.DisableConsoleQuickEdit -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]AhmedBot.DisableConsoleQuickEdit::GetStdHandle[1]( [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]AhmedBot.DisableConsoleQuickEdit::GetConsoleMode[2]( [System.Runtime]System.IntPtr, [System.Runtime]System.UInt32& ) ->  
+	[UnleashedAIO]AhmedBot.DisableConsoleQuickEdit::SetConsoleMode[2]( [System.Runtime]System.IntPtr, [System.Runtime]System.UInt32 ) ->  
+	[UnleashedAIO]AhmedBot.DisableConsoleQuickEdit::Go[0]( ) ->  
+
+	System.UInt32 [UnleashedAIO]System.UInt32 AhmedBot.DisableConsoleQuickEdit::ENABLE_QUICK_EDIT ->  
+	System.Int32 [UnleashedAIO]System.Int32 AhmedBot.DisableConsoleQuickEdit::STD_INPUT_HANDLE ->  
+}
+
+[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::get_license_key[0]( ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::set_license_key[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::get_captchaKey[0]( ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::set_captchaKey[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::get_delayBetweenTasks[0]( ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::set_delayBetweenTasks[1]( [System.Runtime]System.Single ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::get_success_webhook[0]( ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::set_success_webhook[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::get_fail_webhook[0]( ) ->  
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::set_fail_webhook[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::<license_key>k__BackingField ->  
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::<captchaKey>k__BackingField ->  
+	System.Single [UnleashedAIO]System.Single AhmedBot.JunkyardSERaffle.configJson::<delayBetweenTasks>k__BackingField ->  
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::<success_webhook>k__BackingField ->  
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::<fail_webhook>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::license_key -> dropped
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::captchaKey -> dropped
+	System.Single [UnleashedAIO]System.Single AhmedBot.JunkyardSERaffle.configJson::delayBetweenTasks -> dropped
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::success_webhook -> dropped
+	System.String [UnleashedAIO]System.String AhmedBot.JunkyardSERaffle.configJson::fail_webhook -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.Program -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Program::get_Client[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::set_Client[1]( [DiscordRPC]DiscordRPC.DiscordRpcClient ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::timestamp[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::RichPresence[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::ChangeColor[1]( [System.Console]System.ConsoleColor ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::LoadConfig[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::LoadTasks[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::LoadProxies[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::Main[1]( [System.Runtime]System.String[] ) ->  
+	[UnleashedAIO]UnleashedAIO.Program::TaskStarterAsync[4]( [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.Int32, [System.Runtime]System.Int32 ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Program::.ctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Program::.cctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Program::version ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program::checkoutCounter ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program::failedCounter ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Program::discordUsername ->  
+	System.Random [UnleashedAIO]System.Random UnleashedAIO.Program::random ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program::delayBetweenTasks ->  
+	System.Collections.Generic.List`1<TinyCsvParser.Mapping.CsvMappingResult`1<UnleashedAIO.JSON.Tasks>> [UnleashedAIO]System.Collections.Generic.List`1<TinyCsvParser.Mapping.CsvMappingResult`1<UnleashedAIO.JSON.Tasks>> UnleashedAIO.Program::Tasks ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Program::taskPath ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program::taskCap ->  
+	System.String[] [UnleashedAIO]System.String[] UnleashedAIO.Program::proxies ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Program::proxyPath ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Program::discordAppId ->  
+	DiscordRPC.DiscordRpcClient [UnleashedAIO]DiscordRPC.DiscordRpcClient UnleashedAIO.Program::<Client>k__BackingField ->  
+	AhmedBot.JunkyardSERaffle.configJson [UnleashedAIO]AhmedBot.JunkyardSERaffle.configJson UnleashedAIO.Program::configObject ->  
+
+	DiscordRPC.DiscordRpcClient [UnleashedAIO]DiscordRPC.DiscordRpcClient UnleashedAIO.Program::Client -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.captchaJson -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::get_challenge[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::set_challenge[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::get_validate[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::set_validate[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::get_secode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::set_secode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::get_status[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::set_status[1]( [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::get_request[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::set_request[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.captchaJson::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::<challenge>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::<validate>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::<secode>k__BackingField ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.captchaJson::<status>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::<request>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::challenge -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::validate -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::secode -> dropped
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.captchaJson::status -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.captchaJson::request -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU::Start[4]( [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU::GetSKU[4]( [System.Net.Http]System.Net.Http.HttpClient, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU::ATC[5]( [System.Net.Http]System.Net.Http.HttpClient, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.Int32, [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU::SubmitShipping[5]( [System.Net.Http]System.Net.Http.HttpClient, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.Int32, [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU::.ctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU::.cctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU::xcsrftoken ->  
+	System.Net.CookieContainer [UnleashedAIO]System.Net.CookieContainer UnleashedAIO.Modules.FootlockerEU::cookies ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU::productName ->  
+	System.Security.Cryptography.X509Certificates.X509Certificate2 [UnleashedAIO]System.Security.Cryptography.X509Certificates.X509Certificate2 UnleashedAIO.Modules.FootlockerEU::cert ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.WebhookSend -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.WebhookSend::Send[6]( [Discord.Net.Webhook]Discord.Webhook.DiscordWebhookClient, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.TimeSpan ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.WebhookSend::.ctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Modules.WebhookSend::.cctor[0]( ) skipped:  special name
+
+	Discord.Webhook.DiscordWebhookClient [UnleashedAIO]Discord.Webhook.DiscordWebhookClient UnleashedAIO.Modules.WebhookSend::publicWebhook ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::Start[4]( [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::SetShipping[5]( [System.Net.Http]System.Net.Http.HttpClient, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::ATC[5]( [System.Net.Http]System.Net.Http.HttpClient, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::Login[5]( [System.Net.Http]System.Net.Http.HttpClient, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::ABCK[5]( [PuppeteerSharp]PuppeteerSharp.Page, [UnleashedAIO]UnleashedAIO.JSON.Tasks, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Int32 ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::.ctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando::.cctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando::_abck ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando::clientId ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando::frsx ->  
+	System.Net.CookieContainer [UnleashedAIO]System.Net.CookieContainer UnleashedAIO.Modules.Zalando::cookies ->  
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Country -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Country::get_isocode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Country::set_isocode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Country::get_name[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Country::set_name[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Country::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Country::<isocode>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Country::<name>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Country::isocode -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Country::name -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping -> [UnleashedAIO] .​
+{
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_setAsDefaultBilling[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_setAsDefaultBilling[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_setAsDefaultShipping[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_setAsDefaultShipping[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_firstName[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_firstName[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_lastName[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_lastName[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_email[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_email[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_phone[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_phone[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_country[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_country[1]( [UnleashedAIO]UnleashedAIO.JSON.Country ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_id[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_setAsBilling[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_setAsBilling[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_type[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_type[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_line1[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_line1[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_postalCode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_postalCode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_town[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_town[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::get_shippingAddress[0]( ) -> ​
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::set_shippingAddress[1]( [System.Runtime]System.Boolean ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.SubmitShipping::.ctor[0]( ) skipped:  special name
+
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::<setAsDefaultBilling>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::<setAsDefaultShipping>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<firstName>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<lastName>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::<email>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<phone>k__BackingField ->  
+	UnleashedAIO.JSON.Country [UnleashedAIO]UnleashedAIO.JSON.Country UnleashedAIO.JSON.SubmitShipping::<country>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.SubmitShipping::<id>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::<setAsBilling>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<type>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<line1>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<postalCode>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::<town>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::<shippingAddress>k__BackingField ->  
+
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::setAsDefaultBilling -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::setAsDefaultShipping -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::firstName -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::lastName -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::email -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::phone -> dropped
+	UnleashedAIO.JSON.Country [UnleashedAIO]UnleashedAIO.JSON.Country UnleashedAIO.JSON.SubmitShipping::country -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.SubmitShipping::id -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::setAsBilling -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::type -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::line1 -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::postalCode -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SubmitShipping::town -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SubmitShipping::shippingAddress -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ATC -> [UnleashedAIO] .‐
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ATC::get_productQuantity[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ATC::set_productQuantity[1]( [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ATC::get_productId[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ATC::set_productId[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ATC::.ctor[0]( ) skipped:  special name
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.JSON.ATC::<productQuantity>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ATC::<productId>k__BackingField ->  
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.JSON.ATC::productQuantity -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ATC::productId -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Category -> [UnleashedAIO] .‑
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Category::get_code[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Category::set_code[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Category::get_name[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Category::set_name[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Category::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Category::<code>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Category::<name>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Category::code -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Category::name -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Variation -> [UnleashedAIO] .‒
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::get_altText[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::set_altText[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::get_format[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::set_format[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::get_url[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::set_url[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Variation::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Variation::<altText>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Variation::<format>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Variation::<url>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Variation::altText -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Variation::format -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Variation::url -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Image -> [UnleashedAIO] .–
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Image::get_code[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Image::set_code[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Image::get_variations[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Image::set_variations[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.Variation> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Image::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Image::<code>k__BackingField ->  
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Variation> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Variation> UnleashedAIO.JSON.Image::<variations>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Image::code -> dropped
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Variation> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Variation> UnleashedAIO.JSON.Image::variations -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Attribute -> [UnleashedAIO] .—
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::set_id[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::get_type[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::set_type[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::get_value[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::set_value[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Attribute::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Attribute::<id>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Attribute::<type>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Attribute::<value>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Attribute::id -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Attribute::type -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Attribute::value -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Price -> [UnleashedAIO] .―
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Price::get_currencyIso[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::set_currencyIso[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::get_formattedOriginalPrice[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::set_formattedOriginalPrice[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::get_formattedValue[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::set_formattedValue[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::get_originalPrice[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::set_originalPrice[1]( [System.Runtime]System.Double ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::get_value[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price::set_value[1]( [System.Runtime]System.Double ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Price::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price::<currencyIso>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price::<formattedOriginalPrice>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price::<formattedValue>k__BackingField ->  
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price::<originalPrice>k__BackingField ->  
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price::<value>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price::currencyIso -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price::formattedOriginalPrice -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price::formattedValue -> dropped
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price::originalPrice -> dropped
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price::value -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.SellableUnit -> [UnleashedAIO] .•
+{
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_attributes[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_attributes[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.Attribute> ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_barCode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_barCode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_code[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_code[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_isBackOrderable[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_isBackOrderable[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_isPreOrder[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_isPreOrder[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_isRecaptchaOn[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_isRecaptchaOn[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_price[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_price[1]( [UnleashedAIO]UnleashedAIO.JSON.Price ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_singleStoreInventory[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_singleStoreInventory[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_sizeAvailableInStores[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_sizeAvailableInStores[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_sku[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_sku[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::get_stockLevelStatus[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::set_stockLevelStatus[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.SellableUnit::.ctor[0]( ) skipped:  special name
+
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Attribute> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Attribute> UnleashedAIO.JSON.SellableUnit::<attributes>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::<barCode>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::<code>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::<isBackOrderable>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::<isPreOrder>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::<isRecaptchaOn>k__BackingField ->  
+	UnleashedAIO.JSON.Price [UnleashedAIO]UnleashedAIO.JSON.Price UnleashedAIO.JSON.SellableUnit::<price>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::<singleStoreInventory>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::<sizeAvailableInStores>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::<sku>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::<stockLevelStatus>k__BackingField ->  
+
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Attribute> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Attribute> UnleashedAIO.JSON.SellableUnit::attributes -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::barCode -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::code -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::isBackOrderable -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::isPreOrder -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::isRecaptchaOn -> dropped
+	UnleashedAIO.JSON.Price [UnleashedAIO]UnleashedAIO.JSON.Price UnleashedAIO.JSON.SellableUnit::price -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::singleStoreInventory -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.SellableUnit::sizeAvailableInStores -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::sku -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SellableUnit::stockLevelStatus -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap -> [UnleashedAIO] .․
+{
+	[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap::get_label[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap::set_label[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap::get_sizes[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap::set_sizes[1]( [System.Collections]System.Collections.Generic.List`1<[System.Runtime]System.String> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SizeChartGridMap::<label>k__BackingField ->  
+	System.Collections.Generic.List`1<System.String> [UnleashedAIO]System.Collections.Generic.List`1<System.String> UnleashedAIO.JSON.SizeChartGridMap::<sizes>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.SizeChartGridMap::label -> dropped
+	System.Collections.Generic.List`1<System.String> [UnleashedAIO]System.Collections.Generic.List`1<System.String> UnleashedAIO.JSON.SizeChartGridMap::sizes -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Price2 -> [UnleashedAIO] .‥
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::get_currencyIso[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::set_currencyIso[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::get_formattedOriginalPrice[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::set_formattedOriginalPrice[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::get_formattedValue[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::set_formattedValue[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::get_originalPrice[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::set_originalPrice[1]( [System.Runtime]System.Double ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::get_value[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::set_value[1]( [System.Runtime]System.Double ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Price2::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price2::<currencyIso>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price2::<formattedOriginalPrice>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price2::<formattedValue>k__BackingField ->  
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price2::<originalPrice>k__BackingField ->  
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price2::<value>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price2::currencyIso -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price2::formattedOriginalPrice -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Price2::formattedValue -> dropped
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price2::originalPrice -> dropped
+	System.Double [UnleashedAIO]System.Double UnleashedAIO.JSON.Price2::value -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute -> [UnleashedAIO] .‧
+{
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_code[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_code[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_displayCountDownTimer[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_displayCountDownTimer[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_freeShipping[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_freeShipping[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_imageSku[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_imageSku[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_isSelected[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_isSelected[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_launchProduct[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_launchProduct[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_mapEnable[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_mapEnable[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_price[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_price[1]( [UnleashedAIO]UnleashedAIO.JSON.Price2 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_recaptchaOn[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_recaptchaOn[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_riskified[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_riskified[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_shipToAndFromStore[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_shipToAndFromStore[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_shippingRestrictionExists[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_shippingRestrictionExists[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_sku[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_sku[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_skuExclusions[0]( ) -> ​
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_skuExclusions[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_stockLevelStatus[0]( ) -> ‐
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_stockLevelStatus[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::get_webOnlyLaunch[0]( ) -> ‑
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::set_webOnlyLaunch[1]( [System.Runtime]System.Boolean ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::<code>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<displayCountDownTimer>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<freeShipping>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::<imageSku>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<isSelected>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<launchProduct>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<mapEnable>k__BackingField ->  
+	UnleashedAIO.JSON.Price2 [UnleashedAIO]UnleashedAIO.JSON.Price2 UnleashedAIO.JSON.VariantAttribute::<price>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<recaptchaOn>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<riskified>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<shipToAndFromStore>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<shippingRestrictionExists>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::<sku>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<skuExclusions>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::<stockLevelStatus>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::<webOnlyLaunch>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::code -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::displayCountDownTimer -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::freeShipping -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::imageSku -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::isSelected -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::launchProduct -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::mapEnable -> dropped
+	UnleashedAIO.JSON.Price2 [UnleashedAIO]UnleashedAIO.JSON.Price2 UnleashedAIO.JSON.VariantAttribute::price -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::recaptchaOn -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::riskified -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::shipToAndFromStore -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::shippingRestrictionExists -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::sku -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::skuExclusions -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.VariantAttribute::stockLevelStatus -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.VariantAttribute::webOnlyLaunch -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_brand[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_brand[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_categories[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_categories[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.Category> ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_description[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_description[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_dropShip[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_dropShip[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_freeShipping[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_freeShipping[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_images[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_images[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.Image> ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_isNewProduct[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_isNewProduct[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_isSaleProduct[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_isSaleProduct[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_modelNumber[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_modelNumber[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_name[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_name[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_sellableUnits[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_sellableUnits[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.SellableUnit> ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_sizeChartGridMap[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_sizeChartGridMap[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.SizeChartGridMap> ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_sizeChartTipTx[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_sizeChartTipTx[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::get_variantAttributes[0]( ) -> ​
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::set_variantAttributes[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.VariantAttribute> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.FootlockerJson::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::<brand>k__BackingField ->  
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Category> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Category> UnleashedAIO.JSON.FootlockerJson::<categories>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::<description>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::<dropShip>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::<freeShipping>k__BackingField ->  
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Image> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Image> UnleashedAIO.JSON.FootlockerJson::<images>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::<isNewProduct>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::<isSaleProduct>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::<modelNumber>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::<name>k__BackingField ->  
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.SellableUnit> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.SellableUnit> UnleashedAIO.JSON.FootlockerJson::<sellableUnits>k__BackingField ->  
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.SizeChartGridMap> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.SizeChartGridMap> UnleashedAIO.JSON.FootlockerJson::<sizeChartGridMap>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::<sizeChartTipTx>k__BackingField ->  
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.VariantAttribute> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.VariantAttribute> UnleashedAIO.JSON.FootlockerJson::<variantAttributes>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::brand -> dropped
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Category> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Category> UnleashedAIO.JSON.FootlockerJson::categories -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::description -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::dropShip -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::freeShipping -> dropped
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.Image> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.Image> UnleashedAIO.JSON.FootlockerJson::images -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::isNewProduct -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.FootlockerJson::isSaleProduct -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::modelNumber -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::name -> dropped
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.SellableUnit> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.SellableUnit> UnleashedAIO.JSON.FootlockerJson::sellableUnits -> dropped
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.SizeChartGridMap> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.SizeChartGridMap> UnleashedAIO.JSON.FootlockerJson::sizeChartGridMap -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.FootlockerJson::sizeChartTipTx -> dropped
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.VariantAttribute> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.VariantAttribute> UnleashedAIO.JSON.FootlockerJson::variantAttributes -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.User -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_firstName[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_firstName[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_serverUTC[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_serverUTC[1]( [System.Runtime]System.DateTime ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_optIn[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_optIn[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_militaryVerified[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_militaryVerified[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_loyaltyStatus[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_loyaltyStatus[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_ssoComplete[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_ssoComplete[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_vipUser[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_vipUser[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_authenticated[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_authenticated[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_loyalty[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_loyalty[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_recognized[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_recognized[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::get_vip[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.User::set_vip[1]( [System.Runtime]System.Boolean ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.User::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.User::<firstName>k__BackingField ->  
+	System.DateTime [UnleashedAIO]System.DateTime UnleashedAIO.JSON.User::<serverUTC>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<optIn>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<militaryVerified>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<loyaltyStatus>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<ssoComplete>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<vipUser>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<authenticated>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<loyalty>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<recognized>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::<vip>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.User::firstName -> dropped
+	System.DateTime [UnleashedAIO]System.DateTime UnleashedAIO.JSON.User::serverUTC -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::optIn -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::militaryVerified -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::loyaltyStatus -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::ssoComplete -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::vipUser -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::authenticated -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::loyalty -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::recognized -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.User::vip -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Cart -> [UnleashedAIO] .‪
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::get_cartId[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::set_cartId[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::get_cartCode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::set_cartCode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::get_cartMerged[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::set_cartMerged[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::get_quantity[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::set_quantity[1]( [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::get_outOfStockProducts[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::set_outOfStockProducts[1]( [System.Collections]System.Collections.Generic.List`1<[System.Runtime]System.Object> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Cart::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Cart::<cartId>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Cart::<cartCode>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.Cart::<cartMerged>k__BackingField ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.JSON.Cart::<quantity>k__BackingField ->  
+	System.Collections.Generic.List`1<System.Object> [UnleashedAIO]System.Collections.Generic.List`1<System.Object> UnleashedAIO.JSON.Cart::<outOfStockProducts>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Cart::cartId -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Cart::cartCode -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.Cart::cartMerged -> dropped
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.JSON.Cart::quantity -> dropped
+	System.Collections.Generic.List`1<System.Object> [UnleashedAIO]System.Collections.Generic.List`1<System.Object> UnleashedAIO.JSON.Cart::outOfStockProducts -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Data -> [UnleashedAIO] .‫
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Data::get_csrfToken[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Data::set_csrfToken[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Data::get_user[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Data::set_user[1]( [DiscordRPC]DiscordRPC.User ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Data::get_cart[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Data::set_cart[1]( [UnleashedAIO]UnleashedAIO.JSON.Cart ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Data::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Data::<csrfToken>k__BackingField ->  
+	DiscordRPC.User [UnleashedAIO]DiscordRPC.User UnleashedAIO.JSON.Data::<user>k__BackingField ->  
+	UnleashedAIO.JSON.Cart [UnleashedAIO]UnleashedAIO.JSON.Cart UnleashedAIO.JSON.Data::<cart>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Data::csrfToken -> dropped
+	DiscordRPC.User [UnleashedAIO]DiscordRPC.User UnleashedAIO.JSON.Data::user -> dropped
+	UnleashedAIO.JSON.Cart [UnleashedAIO]UnleashedAIO.JSON.Cart UnleashedAIO.JSON.Data::cart -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Session -> [UnleashedAIO] .‬
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Session::get_data[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Session::set_data[1]( [UnleashedAIO]UnleashedAIO.JSON.Data ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Session::get_success[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Session::set_success[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Session::get_errors[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Session::set_errors[1]( [System.Collections]System.Collections.Generic.List`1<[System.Runtime]System.Object> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.Session::.ctor[0]( ) skipped:  special name
+
+	UnleashedAIO.JSON.Data [UnleashedAIO]UnleashedAIO.JSON.Data UnleashedAIO.JSON.Session::<data>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.Session::<success>k__BackingField ->  
+	System.Collections.Generic.List`1<System.Object> [UnleashedAIO]System.Collections.Generic.List`1<System.Object> UnleashedAIO.JSON.Session::<errors>k__BackingField ->  
+
+	UnleashedAIO.JSON.Data [UnleashedAIO]UnleashedAIO.JSON.Data UnleashedAIO.JSON.Session::data -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.Session::success -> dropped
+	System.Collections.Generic.List`1<System.Object> [UnleashedAIO]System.Collections.Generic.List`1<System.Object> UnleashedAIO.JSON.Session::errors -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.Tasks -> [UnleashedAIO] .‭
+{
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_Store[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_Store[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_SKU[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_SKU[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_Size[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_Size[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_Mode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_Mode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_FirstName[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_FirstName[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_LastName[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_LastName[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_email[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_email[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_PhoneNumber[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_PhoneNumber[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_Adress[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_Adress[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_Adress2[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_Adress2[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_City[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_City[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_State[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_State[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_ZipCode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_ZipCode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_Country[0]( ) -> ​
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_Country[1]( [System.Runtime]System.String ) -> ​
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_CardNumber[0]( ) -> ‐
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_CardNumber[1]( [System.Runtime]System.String ) -> ‐
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_ExpiryMonth[0]( ) -> ‑
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_ExpiryMonth[1]( [System.Runtime]System.String ) -> ‑
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_ExpiryYear[0]( ) -> ‒
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_ExpiryYear[1]( [System.Runtime]System.String ) -> ‒
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::get_CVV[0]( ) -> –
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::set_CVV[1]( [System.Runtime]System.String ) -> –
+
+	[UnleashedAIO]UnleashedAIO.JSON.Tasks::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<Store>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<SKU>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<Size>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<Mode>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<FirstName>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<LastName>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<email>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<PhoneNumber>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<Adress>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<Adress2>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<City>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<State>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<ZipCode>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<Country>k__BackingField -> ​
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<CardNumber>k__BackingField -> ‐
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<ExpiryMonth>k__BackingField -> ‑
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<ExpiryYear>k__BackingField -> ‒
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::<CVV>k__BackingField -> –
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::Store -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::SKU -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::Size -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::Mode -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::FirstName -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::LastName -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::email -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::PhoneNumber -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::Adress -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::Adress2 -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::City -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::State -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::ZipCode -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::Country -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::CardNumber -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::ExpiryMonth -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::ExpiryYear -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.Tasks::CVV -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.Auth.LicenseGet -> [UnleashedAIO] .′
+{
+	[UnleashedAIO]UnleashedAIO.Auth.LicenseGet::GetLicense[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Auth.LicenseGet::.ctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Auth.LicenseGet::.cctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Auth.LicenseGet::apiKey ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Assets.art -> [UnleashedAIO] .‵
+{
+
+	[UnleashedAIO]UnleashedAIO.Assets.art::.ctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Assets.art::.cctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.Assets.art::logoart ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Program/<>c -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.Program/<>c::<Main>b__23_0[1]( [TinyCsvParser]TinyCsvParser.Mapping.CsvMappingResult`1<[UnleashedAIO]UnleashedAIO.JSON.Tasks> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Program/<>c::.cctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Program/<>c::.ctor[0]( ) skipped:  special name
+
+	UnleashedAIO.Program/<>c [UnleashedAIO]UnleashedAIO.Program/<>c UnleashedAIO.Program/<>c::<>9 ->  
+	System.Action`1<TinyCsvParser.Mapping.CsvMappingResult`1<UnleashedAIO.JSON.Tasks>> [UnleashedAIO]System.Action`1<TinyCsvParser.Mapping.CsvMappingResult`1<UnleashedAIO.JSON.Tasks>> UnleashedAIO.Program/<>c::<>9__23_0 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Program/<TaskStarterAsync>d__24 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Program/<TaskStarterAsync>d__24::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Program/<TaskStarterAsync>d__24::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program/<TaskStarterAsync>d__24::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder UnleashedAIO.Program/<TaskStarterAsync>d__24::<>t__builder ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Program/<TaskStarterAsync>d__24::currentTask ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Program/<TaskStarterAsync>d__24::proxies ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program/<TaskStarterAsync>d__24::taskNumber ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program/<TaskStarterAsync>d__24::delay ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.Program/<TaskStarterAsync>d__24::<taskBool>5__2 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> UnleashedAIO.Program/<TaskStarterAsync>d__24::<>u__1 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<>c -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<>c::<Start>b__4_0[4]( [System.Runtime]System.Object, [System.Security.Cryptography.X509Certificates]System.Security.Cryptography.X509Certificates.X509Certificate, [System.Security.Cryptography.X509Certificates]System.Security.Cryptography.X509Certificates.X509Chain, [System.Net.Primitives]System.Net.Security.SslPolicyErrors ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<>c::.cctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<>c::.ctor[0]( ) skipped:  special name
+
+	UnleashedAIO.Modules.FootlockerEU/<>c [UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<>c UnleashedAIO.Modules.FootlockerEU/<>c::<>9 ->  
+	System.Net.Security.RemoteCertificateValidationCallback [UnleashedAIO]System.Net.Security.RemoteCertificateValidationCallback UnleashedAIO.Modules.FootlockerEU/<>c::<>9__4_0 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<Start>d__4 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<Start>d__4::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<Start>d__4::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>t__builder ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU/<Start>d__4::proxyString ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.FootlockerEU/<Start>d__4::currentTask ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU/<Start>d__4::taskNumber ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<Start>d__4::delay ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<client>5__2 ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>7__wrap2 ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>7__wrap3 ->  
+	System.Net.Http.HttpResponseMessage [UnleashedAIO]System.Net.Http.HttpResponseMessage UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<response>5__5 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>u__1 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.String> UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>u__2 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> UnleashedAIO.Modules.FootlockerEU/<Start>d__4::<>u__3 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.String> UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<>t__builder ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::currentTask ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::client ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::taskNumber ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::delay ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<SKU>5__2 ->  
+	UnleashedAIO.JSON.FootlockerJson [UnleashedAIO]UnleashedAIO.JSON.FootlockerJson UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<myDeserializedClass>5__3 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<>u__1 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.String> UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<>u__2 ->  
+	System.Collections.Generic.List`1/Enumerator<UnleashedAIO.JSON.SellableUnit> [UnleashedAIO]System.Collections.Generic.List`1/Enumerator<UnleashedAIO.JSON.SellableUnit> UnleashedAIO.Modules.FootlockerEU/<GetSKU>d__5::<>7__wrap3 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<ATC>d__6 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<>t__builder ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::SKU ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::client ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::taskNumber ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::delay ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::currentTask ->  
+	System.Uri [UnleashedAIO]System.Uri UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<rqUri>5__2 ->  
+	System.Net.Http.HttpResponseMessage [UnleashedAIO]System.Net.Http.HttpResponseMessage UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<response>5__3 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<>u__1 ->  
+	System.Collections.Generic.IEnumerator`1<System.Net.Cookie> [UnleashedAIO]System.Collections.Generic.IEnumerator`1<System.Net.Cookie> UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<>7__wrap3 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.String> UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<>u__2 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> UnleashedAIO.Modules.FootlockerEU/<ATC>d__6::<>u__3 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::<>t__builder ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::currentTask ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::client ->  
+	System.Uri [UnleashedAIO]System.Uri UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::<rqUri>5__2 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.FootlockerEU/<SubmitShipping>d__7::<>u__1 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Net.CookieContainer> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Net.CookieContainer> UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::<>t__builder ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::original ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::script ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::site ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::isCaptcha ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.HawkCF/<ChallengeInitialize>d__0::productlink ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.OffSpring/<Start>d__0 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.OffSpring/<Start>d__0::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.OffSpring/<Start>d__0::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.OffSpring/<Start>d__0::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.OffSpring/<Start>d__0::<>t__builder ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.WebhookSend/<Send>d__1 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.WebhookSend/<Send>d__1::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.WebhookSend/<Send>d__1::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.WebhookSend/<Send>d__1::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncVoidMethodBuilder [UnleashedAIO]System.Runtime.CompilerServices.AsyncVoidMethodBuilder UnleashedAIO.Modules.WebhookSend/<Send>d__1::<>t__builder ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.WebhookSend/<Send>d__1::description ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.WebhookSend/<Send>d__1::site ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.WebhookSend/<Send>d__1::url ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.WebhookSend/<Send>d__1::size ->  
+	System.TimeSpan [UnleashedAIO]System.TimeSpan UnleashedAIO.Modules.WebhookSend/<Send>d__1::checkoutTimeSpan ->  
+	Discord.Webhook.DiscordWebhookClient [UnleashedAIO]Discord.Webhook.DiscordWebhookClient UnleashedAIO.Modules.WebhookSend/<Send>d__1::webhookClient ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.UInt64> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.UInt64> UnleashedAIO.Modules.WebhookSend/<Send>d__1::<>u__1 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando/<>c -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<>c::<Start>b__4_0[4]( [System.Runtime]System.Object, [System.Security.Cryptography.X509Certificates]System.Security.Cryptography.X509Certificates.X509Certificate, [System.Security.Cryptography.X509Certificates]System.Security.Cryptography.X509Certificates.X509Chain, [System.Net.Primitives]System.Net.Security.SslPolicyErrors ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<>c::.cctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<>c::.ctor[0]( ) skipped:  special name
+
+	UnleashedAIO.Modules.Zalando/<>c [UnleashedAIO]UnleashedAIO.Modules.Zalando/<>c UnleashedAIO.Modules.Zalando/<>c::<>9 ->  
+	System.Net.Security.RemoteCertificateValidationCallback [UnleashedAIO]System.Net.Security.RemoteCertificateValidationCallback UnleashedAIO.Modules.Zalando/<>c::<>9__4_0 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando/<Start>d__4 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<Start>d__4::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<Start>d__4::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<Start>d__4::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.Zalando/<Start>d__4::<>t__builder ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<Start>d__4::proxyString ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<Start>d__4::taskNumber ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.Zalando/<Start>d__4::currentTask ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<Start>d__4::delay ->  
+	System.String[] [UnleashedAIO]System.String[] UnleashedAIO.Modules.Zalando/<Start>d__4::<proxyObj>5__2 ->  
+	PuppeteerSharp.Browser [UnleashedAIO]PuppeteerSharp.Browser UnleashedAIO.Modules.Zalando/<Start>d__4::<browser>5__3 ->  
+	PuppeteerSharp.Page [UnleashedAIO]PuppeteerSharp.Page UnleashedAIO.Modules.Zalando/<Start>d__4::<page>5__4 ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.Zalando/<Start>d__4::<client>5__5 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.RevisionInfo> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.RevisionInfo> UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__1 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.Browser> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.Browser> UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__2 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.Page> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.Page> UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__3 ->  
+	System.Runtime.CompilerServices.TaskAwaiter [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__4 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.Response> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.Response> UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__5 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.CookieParam[]> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<PuppeteerSharp.CookieParam[]> UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__6 ->  
+	System.Runtime.CompilerServices.ValueTaskAwaiter [UnleashedAIO]System.Runtime.CompilerServices.ValueTaskAwaiter UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__7 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Boolean> UnleashedAIO.Modules.Zalando/<Start>d__4::<>u__8 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando/<SetShipping>d__5 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<SetShipping>d__5::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<SetShipping>d__5::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<SetShipping>d__5::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.Zalando/<SetShipping>d__5::<>t__builder ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.Zalando/<SetShipping>d__5::currentTask ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.Zalando/<SetShipping>d__5::client ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<SetShipping>d__5::taskNumber ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.Zalando/<SetShipping>d__5::<>u__1 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.String> UnleashedAIO.Modules.Zalando/<SetShipping>d__5::<>u__2 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando/<ATC>d__6 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<ATC>d__6::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<ATC>d__6::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<ATC>d__6::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.Zalando/<ATC>d__6::<>t__builder ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.Zalando/<ATC>d__6::currentTask ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.Zalando/<ATC>d__6::client ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<ATC>d__6::taskNumber ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.Zalando/<ATC>d__6::<>u__1 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.String> UnleashedAIO.Modules.Zalando/<ATC>d__6::<>u__2 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando/<Login>d__7 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<Login>d__7::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<Login>d__7::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<Login>d__7::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Boolean> UnleashedAIO.Modules.Zalando/<Login>d__7::<>t__builder ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.Zalando/<Login>d__7::currentTask ->  
+	System.Net.Http.HttpClient [UnleashedAIO]System.Net.Http.HttpClient UnleashedAIO.Modules.Zalando/<Login>d__7::client ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<Login>d__7::taskNumber ->  
+	System.Uri [UnleashedAIO]System.Uri UnleashedAIO.Modules.Zalando/<Login>d__7::<rqUri>5__2 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.Net.Http.HttpResponseMessage> UnleashedAIO.Modules.Zalando/<Login>d__7::<>u__1 ->  
+	System.Runtime.CompilerServices.TaskAwaiter`1<System.String> [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter`1<System.String> UnleashedAIO.Modules.Zalando/<Login>d__7::<>u__2 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Zalando/<ABCK>d__8 -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<ABCK>d__8::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Modules.Zalando/<ABCK>d__8::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<ABCK>d__8::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncTaskMethodBuilder [UnleashedAIO]System.Runtime.CompilerServices.AsyncTaskMethodBuilder UnleashedAIO.Modules.Zalando/<ABCK>d__8::<>t__builder ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<ABCK>d__8::taskNumber ->  
+	PuppeteerSharp.Page [UnleashedAIO]PuppeteerSharp.Page UnleashedAIO.Modules.Zalando/<ABCK>d__8::page ->  
+	UnleashedAIO.JSON.Tasks [UnleashedAIO]UnleashedAIO.JSON.Tasks UnleashedAIO.Modules.Zalando/<ABCK>d__8::currentTask ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.Modules.Zalando/<ABCK>d__8::proxyString ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<ABCK>d__8::delay ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<ABCK>d__8::<finalX>5__2 ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<ABCK>d__8::<finalY>5__3 ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.Modules.Zalando/<ABCK>d__8::<>7__wrap3 ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Modules.Zalando/<ABCK>d__8::<>7__wrap4 ->  
+	System.Runtime.CompilerServices.TaskAwaiter [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter UnleashedAIO.Modules.Zalando/<ABCK>d__8::<>u__1 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_id[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_username[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_username[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_discriminator[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_discriminator[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_avatar[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_avatar[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_access_token[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_access_token[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_refresh_token[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_refresh_token[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::get_tag[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::set_tag[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Discord::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<id>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<username>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<discriminator>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<avatar>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<access_token>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<refresh_token>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::<tag>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::id -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::username -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::discriminator -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::avatar -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::access_token -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::refresh_token -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Discord::tag -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.authJson/License -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_email[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_email[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_key[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_key[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_created[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_created[1]( [System.Runtime]System.Int64 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_member[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_member[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_customer[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_customer[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_subscription[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_subscription[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_payment_method[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_payment_method[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_plan[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_plan[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::set_id[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/License::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::<email>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::<key>k__BackingField ->  
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/License::<created>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::<member>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/License::<customer>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/License::<subscription>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/License::<payment_method>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::<plan>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::<id>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::email -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::key -> dropped
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/License::created -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::member -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/License::customer -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/License::subscription -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/License::payment_method -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::plan -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/License::id -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.authJson/Member -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::get_email[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::set_email[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::get_discord[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::set_discord[1]( [UnleashedAIO]UnleashedAIO.JSON.authJson/Discord ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::get_created[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::set_created[1]( [System.Runtime]System.Int64 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::get_license[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::set_license[1]( [UnleashedAIO]UnleashedAIO.JSON.authJson/License ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::set_id[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Member::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Member::<email>k__BackingField ->  
+	UnleashedAIO.JSON.authJson/Discord [UnleashedAIO]UnleashedAIO.JSON.authJson/Discord UnleashedAIO.JSON.authJson/Member::<discord>k__BackingField ->  
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/Member::<created>k__BackingField ->  
+	UnleashedAIO.JSON.authJson/License [UnleashedAIO]UnleashedAIO.JSON.authJson/License UnleashedAIO.JSON.authJson/Member::<license>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Member::<id>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Member::email -> dropped
+	UnleashedAIO.JSON.authJson/Discord [UnleashedAIO]UnleashedAIO.JSON.authJson/Discord UnleashedAIO.JSON.authJson/Member::discord -> dropped
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/Member::created -> dropped
+	UnleashedAIO.JSON.authJson/License [UnleashedAIO]UnleashedAIO.JSON.authJson/License UnleashedAIO.JSON.authJson/Member::license -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Member::id -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_active[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_active[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_product[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_product[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_price[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_price[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_name[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_name[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_allow_unbinding[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_allow_unbinding[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_kick_on_unbind[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_kick_on_unbind[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_amount[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_amount[1]( [System.Runtime]System.Int32 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_created[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_created[1]( [System.Runtime]System.Int64 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_currency[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_currency[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_roles[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_roles[1]( [System.Collections]System.Collections.Generic.List`1<[System.Runtime]System.String> ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_recurring[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_recurring[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_type[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_type[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::set_id[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/Plan::.ctor[0]( ) skipped:  special name
+
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.authJson/Plan::<active>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::<product>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::<price>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::<name>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.authJson/Plan::<allow_unbinding>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.authJson/Plan::<kick_on_unbind>k__BackingField ->  
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.JSON.authJson/Plan::<amount>k__BackingField ->  
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/Plan::<created>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::<currency>k__BackingField ->  
+	System.Collections.Generic.List`1<System.String> [UnleashedAIO]System.Collections.Generic.List`1<System.String> UnleashedAIO.JSON.authJson/Plan::<roles>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/Plan::<recurring>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::<type>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::<id>k__BackingField ->  
+
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.authJson/Plan::active -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::product -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::price -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::name -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.authJson/Plan::allow_unbinding -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.authJson/Plan::kick_on_unbind -> dropped
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.JSON.authJson/Plan::amount -> dropped
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/Plan::created -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::currency -> dropped
+	System.Collections.Generic.List`1<System.String> [UnleashedAIO]System.Collections.Generic.List`1<System.String> UnleashedAIO.JSON.authJson/Plan::roles -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/Plan::recurring -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::type -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/Plan::id -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.authJson/User -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_email[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_email[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_key[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_key[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_created[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_created[1]( [System.Runtime]System.Int64 ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_member[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_member[1]( [UnleashedAIO]UnleashedAIO.JSON.authJson/Member ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_customer[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_customer[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_subscription[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_subscription[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_payment_method[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_payment_method[1]( [System.Runtime]System.Object ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_plan[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_plan[1]( [UnleashedAIO]UnleashedAIO.JSON.authJson/Plan ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::set_id[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.authJson/User::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/User::<email>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/User::<key>k__BackingField ->  
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/User::<created>k__BackingField ->  
+	UnleashedAIO.JSON.authJson/Member [UnleashedAIO]UnleashedAIO.JSON.authJson/Member UnleashedAIO.JSON.authJson/User::<member>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/User::<customer>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/User::<subscription>k__BackingField ->  
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/User::<payment_method>k__BackingField ->  
+	UnleashedAIO.JSON.authJson/Plan [UnleashedAIO]UnleashedAIO.JSON.authJson/Plan UnleashedAIO.JSON.authJson/User::<plan>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/User::<id>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/User::email -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/User::key -> dropped
+	System.Int64 [UnleashedAIO]System.Int64 UnleashedAIO.JSON.authJson/User::created -> dropped
+	UnleashedAIO.JSON.authJson/Member [UnleashedAIO]UnleashedAIO.JSON.authJson/Member UnleashedAIO.JSON.authJson/User::member -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/User::customer -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/User::subscription -> dropped
+	System.Object [UnleashedAIO]System.Object UnleashedAIO.JSON.authJson/User::payment_method -> dropped
+	UnleashedAIO.JSON.authJson/Plan [UnleashedAIO]UnleashedAIO.JSON.authJson/Plan UnleashedAIO.JSON.authJson/User::plan -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.authJson/User::id -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.CsvTasksMapping/<>c -> [UnleashedAIO] .‮/ 
+{
+
+	[UnleashedAIO]UnleashedAIO.JSON.CsvTasksMapping/<>c::.cctor[0]( ) skipped:  special name
+	[UnleashedAIO]UnleashedAIO.JSON.CsvTasksMapping/<>c::.ctor[0]( ) skipped:  special name
+
+	UnleashedAIO.JSON.CsvTasksMapping/<>c [UnleashedAIO]UnleashedAIO.JSON.CsvTasksMapping/<>c UnleashedAIO.JSON.CsvTasksMapping/<>c::<>9 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::get_username[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::set_username[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::get_password[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::set_password[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::get_wnaMode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::set_wnaMode[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Login::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Login::<username>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Login::<password>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Login::<wnaMode>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Login::username -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Login::password -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Login::wnaMode -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping -> [UnleashedAIO] . / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_type[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_type[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_city[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_city[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_countryCode[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_countryCode[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_firstname[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_firstname[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_lastname[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_lastname[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_street[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_street[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_additional[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_additional[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_gender[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_gender[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_defaultBilling[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_defaultBilling[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_defaultShipping[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_defaultShipping[1]( [System.Runtime]System.Boolean ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::get_zip[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::set_zip[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/Shipping::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<type>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<city>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<countryCode>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<firstname>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<lastname>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<street>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<additional>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<gender>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.ZalandoJson/Shipping::<defaultBilling>k__BackingField ->  
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.ZalandoJson/Shipping::<defaultShipping>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::<zip>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::type -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::city -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::countryCode -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::firstname -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::lastname -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::street -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::additional -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::gender -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.ZalandoJson/Shipping::defaultBilling -> dropped
+	System.Boolean [UnleashedAIO]System.Boolean UnleashedAIO.JSON.ZalandoJson/Shipping::defaultShipping -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/Shipping::zip -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.Program/<>c/<<Main>b__23_0>d -> [UnleashedAIO] . / / 
+{
+
+	[UnleashedAIO]UnleashedAIO.Program/<>c/<<Main>b__23_0>d::MoveNext[0]( ) skipped:  external base class or interface
+	[UnleashedAIO]UnleashedAIO.Program/<>c/<<Main>b__23_0>d::SetStateMachine[1]( [System.Runtime]System.Runtime.CompilerServices.IAsyncStateMachine ) skipped:  external base class or interface
+
+	System.Int32 [UnleashedAIO]System.Int32 UnleashedAIO.Program/<>c/<<Main>b__23_0>d::<>1__state ->  
+	System.Runtime.CompilerServices.AsyncVoidMethodBuilder [UnleashedAIO]System.Runtime.CompilerServices.AsyncVoidMethodBuilder UnleashedAIO.Program/<>c/<<Main>b__23_0>d::<>t__builder ->  
+	TinyCsvParser.Mapping.CsvMappingResult`1<UnleashedAIO.JSON.Tasks> [UnleashedAIO]TinyCsvParser.Mapping.CsvMappingResult`1<UnleashedAIO.JSON.Tasks> UnleashedAIO.Program/<>c/<<Main>b__23_0>d::currentTask ->  
+	System.Runtime.CompilerServices.TaskAwaiter [UnleashedAIO]System.Runtime.CompilerServices.TaskAwaiter UnleashedAIO.Program/<>c/<<Main>b__23_0>d::<>u__1 ->  
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput -> [UnleashedAIO] . / / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::get_productId[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::set_productId[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::get_clientMutationId[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::set_clientMutationId[1]( [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::<productId>k__BackingField ->  
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::<clientMutationId>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::productId -> dropped
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput::clientMutationId -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables -> [UnleashedAIO] . / / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables::get_addToCartInput[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables::set_addToCartInput[1]( [UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables::.ctor[0]( ) skipped:  special name
+
+	UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput [UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput UnleashedAIO.JSON.ZalandoJson/ATC/Variables::<addToCartInput>k__BackingField ->  
+
+	UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput [UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/AddToCartInput UnleashedAIO.JSON.ZalandoJson/ATC/Variables::addToCartInput -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array -> [UnleashedAIO] . / / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array::get_id[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array::set_id[1]( [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array::get_variables[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array::set_variables[1]( [UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array::.ctor[0]( ) skipped:  special name
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/ATC/Array::<id>k__BackingField ->  
+	UnleashedAIO.JSON.ZalandoJson/ATC/Variables [UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables UnleashedAIO.JSON.ZalandoJson/ATC/Array::<variables>k__BackingField ->  
+
+	System.String [UnleashedAIO]System.String UnleashedAIO.JSON.ZalandoJson/ATC/Array::id -> dropped
+	UnleashedAIO.JSON.ZalandoJson/ATC/Variables [UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Variables UnleashedAIO.JSON.ZalandoJson/ATC/Array::variables -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Head -> [UnleashedAIO] . / / 
+{
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Head::get_Array[0]( ) ->  
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Head::set_Array[1]( [System.Collections]System.Collections.Generic.List`1<[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Array> ) ->  
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC/Head::.ctor[0]( ) skipped:  special name
+
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.ZalandoJson/ATC/Array> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.ZalandoJson/ATC/Array> UnleashedAIO.JSON.ZalandoJson/ATC/Head::<Array>k__BackingField ->  
+
+	System.Collections.Generic.List`1<UnleashedAIO.JSON.ZalandoJson/ATC/Array> [UnleashedAIO]System.Collections.Generic.List`1<UnleashedAIO.JSON.ZalandoJson/ATC/Array> UnleashedAIO.JSON.ZalandoJson/ATC/Head::Array -> dropped
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Captcha -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.Captcha::GeetestInitialize[5]( [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String ) ->  
+	[UnleashedAIO]UnleashedAIO.Modules.Captcha::GeetestGet[3]( [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.Captcha::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.Footsites -> [UnleashedAIO] . 
+{
+
+	[UnleashedAIO]UnleashedAIO.Modules.Footsites::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.HawkCF -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.HawkCF::ChallengeInitialize[5]( [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.String, [System.Runtime]System.Boolean ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.HawkCF::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.Modules.OffSpring -> [UnleashedAIO] . 
+{
+	[UnleashedAIO]UnleashedAIO.Modules.OffSpring::Start[0]( ) ->  
+
+	[UnleashedAIO]UnleashedAIO.Modules.OffSpring::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.authJson -> [UnleashedAIO] . 
+{
+
+	[UnleashedAIO]UnleashedAIO.JSON.authJson::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.CsvTasksMapping -> [UnleashedAIO] .‮
+{
+
+	[UnleashedAIO]UnleashedAIO.JSON.CsvTasksMapping::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson -> [UnleashedAIO] . 
+{
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson::.ctor[0]( ) skipped:  special name
+}
+
+[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC -> [UnleashedAIO] . / 
+{
+
+	[UnleashedAIO]UnleashedAIO.JSON.ZalandoJson/ATC::.ctor[0]( ) skipped:  special name
+}
+
+Skipped Types:
+
+Renamed Resources:
+
+
+Skipped Resources:
+

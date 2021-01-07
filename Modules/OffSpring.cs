@@ -12,7 +12,7 @@ namespace UnleashedAIO.Modules
         {
             HttpClient client = new HttpClient();
 
-            client.GetAsync("https://www.offspring.co.uk/");
+            await client.GetAsync("https://www.offspring.co.uk/");
             return true;
         }
     }

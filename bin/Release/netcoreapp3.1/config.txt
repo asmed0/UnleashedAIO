@@ -1,0 +1,7 @@
+{
+"license_key":"MDUQ-D7PG-SHSJ-L2RV",
+"captchaKey":"",
+"delayBetweenTasks":2.2,
+"success_webhook":"",
+"fail_webhook":""
+}

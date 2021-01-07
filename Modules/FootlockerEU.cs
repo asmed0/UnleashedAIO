@@ -1,289 +1,151 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Security.Authentication;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using Org.BouncyCastle.Crypto;
-using Pluralsight.Crypto;
+using golang;
 using UnleashedAIO.JSON;
+using Newtonsoft.Json;
+using System.Threading;
 
 namespace UnleashedAIO.Modules
 {
     class FootlockerEU
     {
+        //will be used later on
+        static string _productName;
+        static string _sizeCode;
+        static string _releaseTimer;
+        static string _productImage;
+        static double _price;
 
-        private static string xcsrftoken;
-        public static CookieContainer cookies = new CookieContainer();
-        private static string productName = "product name here";
-        private static X509Certificate2 cert;
+        //profile vars
+        static string _mode;
+        static string _product;
+        static string _size;
+        static string _firstname;
+        static string _lastname;
+        static string _email;
+        static string _phone;
+        static string _addy;
+        static string _addy2;
+        static string _city;
+        static string _state;
+        static string _zip;
+        static string _region;
+        static string _cardNum;
+        static string _expMon;
+        static string _expYr;
+        static string _cvv;
 
+        //session vars
+        static string _proxy;
+        static string _csrf;
+        static string _sessionId;
+        static string _cartId;
         public static async Task<bool> Start(Tasks currentTask, string proxyString, string taskNumber, int delay)
         {
+            _mode = currentTask.Mode;
+            _product = currentTask.SKU;
+            _size = currentTask.Size;
+            _firstname = currentTask.FirstName;
+            _lastname = currentTask.LastName;
+            _email = currentTask.email;
+            _phone = currentTask.PhoneNumber;
+            _addy = currentTask.Adress;
+            _addy2 = currentTask.Adress2;
+            _city = currentTask.City;
+            _state = currentTask.State;
+            _zip = currentTask.ZipCode;
+            _region = currentTask.Country;
+            _cardNum = currentTask.CardNumber;
+            _expMon = currentTask.ExpiryMonth;
+            _expYr = currentTask.ExpiryYear;
+            _cvv = currentTask.CVV;
+            _proxy = proxyString;
 
-            //Proxy parsing
-            string[] spearator = {":"};
-            int count = 4;
-            string[] proxyObj = proxyString.Split(spearator, count,
-                StringSplitOptions.RemoveEmptyEntries);
 
-            //Proxy login
-            IWebProxy proxy = new WebProxy(proxyObj[0], Int32.Parse(proxyObj[1]))
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
+            chain.AddHeader("authority", $"www.footlocker.{_region}")
+            .AddHeader("pragma", "no-cache")
+            .AddHeader("cache-control", "no-cache")
+            .AddHeader("accept", "application/json")
+            .AddHeader("x-api-lang", "en-GB")
+            .AddHeader("accept-language", "en-GB,en;q=0.9")
+            .AddHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+            //.AddHeader("x-fl-request-id", "f2842a10-510b-11eb-af96-39eaf89e80b4")
+            .AddHeader("sec-fetch-site", "same-origin")
+            .AddHeader("sec-fetch-mode", "cors")
+            .AddHeader("sec-fetch-dest", "empty")
+            .AddHeader("referer", $"https://www.footlocker.{_region}/en/product/-/{_product}.html");
+
+            //string postCart = tlsSolution.postRequest("https://www.footlocker.se/api/users/carts/current/entries", chain.headers, "{\"productQuantity\":1,\"productId\":\"SIZE_992410\"}", "resi.proxies.aycd.io:7777:customer-aycd107549plan1t1607150756635-cc-gb-sessid-00gwemtdx1zolaayadn5a:WCYDzRXMGcJ5qip");
+
+
+            string getProductInfos = tlsSolution.getRequest($"https://www.footlocker.{_region}/api/products/pdp/{_product}", chain.headers, _proxy);
+            //chain.collectCookies(getProductInfos).headers.Clear();
+
+            FootlockerJSON.Root productInfoObj = JsonConvert.DeserializeObject<FootlockerJSON.Root>(JsonConvert.DeserializeObject<goTLSResponse>(getProductInfos).Body);
+
+            if (productInfoObj != null)
             {
-                Credentials = new NetworkCredential(proxyObj[2], proxyObj[3])
-            };
+                _productName = productInfoObj.Name;
 
-            var handler = new HttpClientHandler()
-            {
-                Proxy = proxy,
-                UseCookies = true,
-                ClientCertificateOptions = ClientCertificateOption.Automatic,
-
-            };
-            handler.CookieContainer = cookies;
-
-            var client = new HttpClient(handler);
-
-            //specify to use TLS 1.2 as default connection
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
-
-            client.BaseAddress = new Uri($"https://footlocker.{currentTask.Country}");
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/session");
-            request.Headers.Add("authority", $"www.footlocker.{currentTask.Country}");
-            request.Headers.Add("pragma", "no-cache");
-            request.Headers.Add("cache-control", "no-cache");
-            request.Headers.Add("upgrade-insecure-requests", "1");
-            //request.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36");
-            request.Headers.Add("accept",
-                "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
-            request.Headers.Add("sec-fetch-site", "same-origin");
-            request.Headers.Add("sec-fetch-mode", "navigate");
-            request.Headers.Add("sec-fetch-user", "?1");
-            request.Headers.Add("sec-fetch-dest", "document");
-            request.Headers.Add("accept-language", "en-US,en;q=0.9,sv;q=0.8");
-            request.Headers.Add("Accept-Encoding", "gzip, deflate, br");
-            request.Headers.Add("Connection", "keep-alive");
-
-            Program.ChangeColor(ConsoleColor.Yellow);
-            Console.WriteLine($"{Program.timestamp()}{taskNumber}Generating session");
-            try
-            {
-                var response = await client.SendAsync(request);
-                if (!response.IsSuccessStatusCode)
+                //fetching sizecode
+                foreach (var sku in productInfoObj.SellableUnits)
                 {
-                    Session session =
-                        JsonConvert.DeserializeObject<Session>(await response.Content.ReadAsStringAsync());
-                    client.DefaultRequestHeaders.Add("x-csrf-token", session.data.csrfToken);
-                    Program.ChangeColor(ConsoleColor.Red);
-                    Console.WriteLine(
-                        $"{Program.timestamp()}{taskNumber}Failed generating session [{response.StatusCode}], retrying..");
-                    Thread.Sleep(Program.random.Next(delay / 2, delay * 2));
+                    if (sku.Attributes[0].Value == _size)
+                    {
+                        _sizeCode = sku.Attributes[0].Value;
+                        taskNumber = taskNumber + $"[{productInfoObj.Name}] [{sku.Attributes[0].Value}] ";
+                        //fetching timer
+                        if (productInfoObj.VariantAttributes[0].DisplayCountDownTimer)
+                        {
+                            _releaseTimer = productInfoObj.VariantAttributes[0].CstSkuLaunchDate;
+                        };
+
+                        _price = productInfoObj.VariantAttributes[0].Price.OriginalPrice;
+
+                        Console.WriteLine($"{Program.timestamp()}{taskNumber}Fetched product info, generating session..");
+                    }
+                }
+                //checks if size hasn't been found
+                if(_sizeCode == null)
+                {
+                    Console.WriteLine($"{Program.timestamp()}{taskNumber}Product/size not loaded! Retrying after delay..");
+                    Thread.Sleep(delay);
                     await Start(currentTask, proxyString, taskNumber, delay);
                 }
-            }
-            catch (Exception e) //sometimes the requests ends prematurely, retry
-            {
-                // Exception ignored - will send to webhook in a later process
-                //Console.WriteLine(e);
-                await Start(currentTask, proxyString, taskNumber, delay);
-            }
 
-            Program.ChangeColor(ConsoleColor.Green);
-            Console.WriteLine($"{Program.timestamp()}{taskNumber}Successfully generated session, checking stock..");
-            string SKU = await GetSKU(client, currentTask, taskNumber, delay);
-            if (SKU != "")
-            {
-                if (!await ATC(client, currentTask, taskNumber, delay, SKU))
-                {
-                    return false;
-                }
-                else
-                {
-                    Program.ChangeColor(ConsoleColor.Green);
-                    Console.WriteLine(
-                        $"{Program.timestamp()}{taskNumber}{productName}Successfully added to cart, submitting shipping");
-                    Thread.Sleep(delay);
-                }
             }
+            NewSession();
+            Console.ReadLine();
 
             return true;
         }
 
-        private static async Task<string> GetSKU(HttpClient client, Tasks currentTask,
-            string taskNumber, int delay)
+        private static string[] NewSession()
         {
-            string SKU = "";
-            var request = new HttpRequestMessage(HttpMethod.Get, $"api/products/pdp/{currentTask.SKU}");
+            string[] sessionVars = new string[10];
 
-            var response = await client.SendAsync(request);
-            FootlockerJson myDeserializedClass = null;
-            try
-            {
-                myDeserializedClass = JsonConvert.DeserializeObject<FootlockerJson>(await response.Content.ReadAsStringAsync());
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
+            chain.AddHeader("authority", "www.footlocker.se")
+            .AddHeader("pragma", "no-cache")
+            .AddHeader("cache-control", "no-cache")
+            .AddHeader("accept", "application/json")
+            .AddHeader("x-api-lang", "en-GB")
+            .AddHeader("accept-language", "en-GB,en;q=0.9")
+            .AddHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+            .AddHeader("x-fl-request-id", "b0989990-5126-11eb-ade8-e3831dcc04a3")
+            .AddHeader("sec-fetch-site", "same-origin")
+            .AddHeader("sec-fetch-mode", "cors")
+            .AddHeader("sec-fetch-dest", "empty")
+            .AddHeader("referer", $"https://www.footlocker.{_region}/en/product/-/{_product}.html");
 
-            }
-            catch (Exception )
-            {
-                //ignore
-            }
+            string getSession = tlsSolution.getRequest($"https://api.ipify.org?format=json",chain.headers, _proxy);
+            goTLSResponse sessionResponse = JsonConvert.DeserializeObject<goTLSResponse>(getSession);
+            Console.WriteLine(sessionResponse.Body);
 
-            if (myDeserializedClass != null)
-            {
-                foreach (var sku in myDeserializedClass.sellableUnits)
-                {
-                    if (sku.attributes[0].value == currentTask.Size)
-                    {
-                        if (sku.stockLevelStatus.ToLower() != "instock")
-                        {
-                            Program.ChangeColor(ConsoleColor.Yellow);
-                            Console.WriteLine($"{Program.timestamp()}{taskNumber}Size oos! Retrying in {delay}");
-                            Thread.Sleep(delay);
-                            await GetSKU(client, currentTask, taskNumber, delay);
-                        }
-                        else
-                        {
-                            SKU = sku.attributes[0].id;
-                            productName = $"[{myDeserializedClass.name}] [{sku.attributes[0].value}] ";
-                            Program.ChangeColor(ConsoleColor.Yellow);
-                            Console.WriteLine($"{Program.timestamp()}{taskNumber}{productName}Size in stock, adding to cart..");
-                            return SKU;
-                        }
-                    }
-                    /*else //this doesn't let you add higher than size[0]
-                    {
-                        Program.ChangeColor(ConsoleColor.Yellow);
-                        Console.WriteLine(sku.stockLevelStatus);
-                        Console.WriteLine(sku.attributes[0].value);
-                        Console.WriteLine($"{Program.timestamp()}{taskNumber}Product loaded without desired size! Retrying in {delay}");
-                        Thread.Sleep(delay);
-                        await GetSKU(client, currentTask, taskNumber, delay);
-                    }*/
-                }
-
-            }
-            else
-            {
-                Program.ChangeColor(ConsoleColor.Yellow);
-                Console.WriteLine($"{Program.timestamp()}{taskNumber}Product is not loaded or all sizes oos! Retrying in {delay}");
-                Thread.Sleep(delay);
-                await GetSKU(client, currentTask, taskNumber, delay);
-            }
-
-            return SKU;
-        }
-
-        private static async Task<bool> ATC(HttpClient client,
-            Tasks currentTask, string taskNumber, int delay, string SKU)
-        {
-            ;
-            Uri rqUri = new Uri("https://www.footlocker.se/api/users/carts/current/entries");
-            // body
-            ATC content = new ATC();
-            content.productId = SKU;
-            content.productQuantity = 1;
-            var json = JsonConvert.SerializeObject(content);
-            var jsonContent = new StringContent(json, Encoding.UTF8, "application/json");
-
-            //request init
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Post,
-                RequestUri = rqUri,
-                Content = jsonContent
-            };
-
-            //request headers
-            request.Headers.Add("accept", "application/json");
-            request.Headers.Add("accept-language", "en-US,en;q=0.9,");
-            request.Headers.Add("x-fl-productid", SKU);
-
-            //request execution
-            var response = await client.SendAsync(request);
-            IEnumerable<Cookie> responseCookies = cookies.GetCookies(rqUri);
-            foreach (var cookie in responseCookies)
-            {
-                if (cookie.Name == "datadome")
-                {
-                    Program.ChangeColor(ConsoleColor.Red);
-                    Console.WriteLine($"{Program.timestamp()}{taskNumber}{productName}Failed adding to cart, proxy banned..");
-                    Console.WriteLine(cookie.Name);
-                    return false; ; //if we get hit with DD captcha - we return false
-                }
-
-                if ((await response.Content.ReadAsStringAsync()).ToString().Contains("The product you are trying to view is no longer available."))
-                {
-                    Program.ChangeColor(ConsoleColor.Red);
-                    Console.WriteLine($"{Program.timestamp()}{taskNumber}{productName}Failed adding to cart, product is not live yet! Retrying in {delay}..");
-                    Thread.Sleep(delay);
-                    await ATC(client, currentTask, taskNumber, delay, SKU);
-                }
-
-            }
-            return true;
-        }
-
-        private static async Task<bool> SubmitShipping(HttpClient client,
-            Tasks currentTask, string taskNumber, int delay, string SKU)
-        {
-            Uri rqUri = new Uri("https://www.footlocker.se/api/users/carts/current/set-billing");
-
-            //countryname used in body
-            string countryName = "Sweden";
-            switch (currentTask.Country.ToLower())
-            {
-                case "se":
-                    countryName = "Sweden";
-                    break;
-                case "no":
-                    countryName = "Norway";
-                    break;
-                case "at":
-                    countryName = "Austria";
-                    break;
-            }
-
-            //body
-            SubmitShipping content = new SubmitShipping();
-            content.setAsDefaultBilling = true;
-            content.setAsDefaultShipping = true;
-            content.firstName = currentTask.FirstName;
-            content.lastName = currentTask.LastName;
-            content.email = false;
-            content.phone = currentTask.PhoneNumber;
-            content.country.isocode = currentTask.Country;
-            content.country.name = countryName;
-            content.id = null;
-            content.setAsBilling = true;
-            content.type = default;
-            content.line1 = currentTask.Adress;
-            content.postalCode = currentTask.ZipCode;
-            content.town = currentTask.City;
-            content.shippingAddress = true;
-
-            //content serialization
-            var json = JsonConvert.SerializeObject(content);
-            var jsonContent = new StringContent(json, Encoding.UTF8, "application/json");
-
-            //request init
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Post,
-                RequestUri = rqUri,
-                Content = jsonContent
-            };
-
-            //request execution
-            var response = await client.SendAsync(request);
-            IEnumerable<Cookie> responseCookies = cookies.GetCookies(rqUri);
-
-            return true;
+            return sessionVars;
         }
     }
 }

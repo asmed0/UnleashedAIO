@@ -1,180 +1,225 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace UnleashedAIO.JSON
 {
-    //SubmitShipping Classes
-    public class Country
+    public class FootlockerJSON
     {
-        public string isocode { get; set; }
-        public string name { get; set; }
-    }
-
-    public class SubmitShipping
-    {
-        public bool setAsDefaultBilling { get; set; }
-        public bool setAsDefaultShipping { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public bool email { get; set; }
-        public string phone { get; set; }
-        public Country country { get; set; }
-        public object id { get; set; }
-        public bool setAsBilling { get; set; }
-        public string type { get; set; }
-        public string line1 { get; set; }
-        public string postalCode { get; set; }
-        public string town { get; set; }
-        public bool shippingAddress { get; set; }
-    }
-
-
-    //ATC Classes
-    public class ATC
-    {
-        public int productQuantity { get; set; }
-        public string productId { get; set; }
-    }
-
-    //StockCheck Classes
-    public class Category
-    {
-        public string code { get; set; }
-        public string name { get; set; }
-    }
-
-    public class Variation
-    {
-        public string altText { get; set; }
-        public string format { get; set; }
-        public string url { get; set; }
-    }
-
-    public class Image
-    {
-        public string code { get; set; }
-        public List<Variation> variations { get; set; }
-    }
-
-    public class Attribute
-    {
-        public string id { get; set; }
-        public string type { get; set; }
-        public string value { get; set; }
-    }
-
-    public class Price
-    {
-        public string currencyIso { get; set; }
-        public string formattedOriginalPrice { get; set; }
-        public string formattedValue { get; set; }
-        public double originalPrice { get; set; }
-        public double value { get; set; }
-    }
-
-    public class SellableUnit
-    {
-        public List<Attribute> attributes { get; set; }
-        public string barCode { get; set; }
-        public string code { get; set; }
-        public bool isBackOrderable { get; set; }
-        public bool isPreOrder { get; set; }
-        public bool isRecaptchaOn { get; set; }
-        public Price price { get; set; }
-        public bool singleStoreInventory { get; set; }
-        public bool sizeAvailableInStores { get; set; }
-        public string sku { get; set; }
-        public string stockLevelStatus { get; set; }
-    }
-
-    public class SizeChartGridMap
-    {
-        public string label { get; set; }
-        public List<string> sizes { get; set; }
-    }
-
-    public class Price2
-    {
-        public string currencyIso { get; set; }
-        public string formattedOriginalPrice { get; set; }
-        public string formattedValue { get; set; }
-        public double originalPrice { get; set; }
-        public double value { get; set; }
-    }
-
-    public class VariantAttribute
-    {
-        public string code { get; set; }
-        public bool displayCountDownTimer { get; set; }
-        public bool freeShipping { get; set; }
-        public string imageSku { get; set; }
-        public bool isSelected { get; set; }
-        public bool launchProduct { get; set; }
-        public bool mapEnable { get; set; }
-        public Price2 price { get; set; }
-        public bool recaptchaOn { get; set; }
-        public bool riskified { get; set; }
-        public bool shipToAndFromStore { get; set; }
-        public bool shippingRestrictionExists { get; set; }
-        public string sku { get; set; }
-        public bool skuExclusions { get; set; }
-        public string stockLevelStatus { get; set; }
-        public bool webOnlyLaunch { get; set; }
-    }
-
-    public class FootlockerJson
-    {
-        public string brand { get; set; }
-        public List<Category> categories { get; set; }
-        public string description { get; set; }
-        public bool dropShip { get; set; }
-        public bool freeShipping { get; set; }
-        public List<Image> images { get; set; }
-        public bool isNewProduct { get; set; }
-        public bool isSaleProduct { get; set; }
-        public string modelNumber { get; set; }
-        public string name { get; set; }
-        public List<SellableUnit> sellableUnits { get; set; }
-        public List<SizeChartGridMap> sizeChartGridMap { get; set; }
-        public string sizeChartTipTx { get; set; }
-        public List<VariantAttribute> variantAttributes { get; set; }
-    }
-    public class User
+        // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
+        public class Category
         {
-            public string firstName { get; set; }
-            public DateTime serverUTC { get; set; }
-            public bool optIn { get; set; }
-            public bool militaryVerified { get; set; }
-            public bool loyaltyStatus { get; set; }
-            public bool ssoComplete { get; set; }
-            public bool vipUser { get; set; }
-            public bool authenticated { get; set; }
-            public bool loyalty { get; set; }
-            public bool recognized { get; set; }
-            public bool vip { get; set; }
+            [JsonPropertyName("code")]
+            public string Code { get; set; }
+
+            [JsonPropertyName("name")]
+            public string Name { get; set; }
         }
 
-        //Session
-        public class Cart
+        public class Variation
         {
-            public string cartId { get; set; }
-            public string cartCode { get; set; }
-            public bool cartMerged { get; set; }
-            public int quantity { get; set; }
-            public List<object> outOfStockProducts { get; set; }
+            [JsonPropertyName("altText")]
+            public string AltText { get; set; }
+
+            [JsonPropertyName("format")]
+            public string Format { get; set; }
+
+            [JsonPropertyName("url")]
+            public string Url { get; set; }
+        }
+
+        public class Image
+        {
+            [JsonPropertyName("code")]
+            public string Code { get; set; }
+
+            [JsonPropertyName("variations")]
+            public List<Variation> Variations { get; set; }
+        }
+
+        public class Attribute
+        {
+            [JsonPropertyName("id")]
+            public string Id { get; set; }
+
+            [JsonPropertyName("type")]
+            public string Type { get; set; }
+
+            [JsonPropertyName("value")]
+            public string Value { get; set; }
+        }
+
+        public class Price
+        {
+            [JsonPropertyName("currencyIso")]
+            public string CurrencyIso { get; set; }
+
+            [JsonPropertyName("formattedOriginalPrice")]
+            public string FormattedOriginalPrice { get; set; }
+
+            [JsonPropertyName("formattedValue")]
+            public string FormattedValue { get; set; }
+
+            [JsonPropertyName("originalPrice")]
+            public double OriginalPrice { get; set; }
+
+            [JsonPropertyName("value")]
+            public double Value { get; set; }
+        }
+
+        public class SellableUnit
+        {
+            [JsonPropertyName("attributes")]
+            public List<Attribute> Attributes { get; set; }
+
+            [JsonPropertyName("barCode")]
+            public string BarCode { get; set; }
+
+            [JsonPropertyName("code")]
+            public string Code { get; set; }
+
+            [JsonPropertyName("isBackOrderable")]
+            public bool IsBackOrderable { get; set; }
+
+            [JsonPropertyName("isPreOrder")]
+            public bool IsPreOrder { get; set; }
+
+            [JsonPropertyName("isRecaptchaOn")]
+            public bool IsRecaptchaOn { get; set; }
+
+            [JsonPropertyName("price")]
+            public Price Price { get; set; }
+
+            [JsonPropertyName("singleStoreInventory")]
+            public bool SingleStoreInventory { get; set; }
+
+            [JsonPropertyName("sizeAvailableInStores")]
+            public bool SizeAvailableInStores { get; set; }
+
+            [JsonPropertyName("sku")]
+            public string Sku { get; set; }
+
+            [JsonPropertyName("stockLevelStatus")]
+            public string StockLevelStatus { get; set; }
+        }
+
+        public class SizeChartGridMap
+        {
+            [JsonPropertyName("label")]
+            public string Label { get; set; }
+
+            [JsonPropertyName("sizes")]
+            public List<string> Sizes { get; set; }
+        }
+
+        public class VariantAttribute
+        {
+            [JsonPropertyName("code")]
+            public string Code { get; set; }
+
+            [JsonPropertyName("cstSkuLaunchDate")]
+            public string CstSkuLaunchDate { get; set; }
+
+            [JsonPropertyName("definedTimeForCountDown")]
+            public string DefinedTimeForCountDown { get; set; }
+
+            [JsonPropertyName("displayCountDownTimer")]
+            public bool DisplayCountDownTimer { get; set; }
+
+            [JsonPropertyName("freeShipping")]
+            public bool FreeShipping { get; set; }
+
+            [JsonPropertyName("imageSku")]
+            public string ImageSku { get; set; }
+
+            [JsonPropertyName("isSelected")]
+            public bool IsSelected { get; set; }
+
+            [JsonPropertyName("launchProduct")]
+            public bool LaunchProduct { get; set; }
+
+            [JsonPropertyName("mapEnable")]
+            public bool MapEnable { get; set; }
+
+            [JsonPropertyName("pdpActivationDate")]
+            public string PdpActivationDate { get; set; }
+
+            [JsonPropertyName("price")]
+            public Price Price { get; set; }
+
+            [JsonPropertyName("recaptchaOn")]
+            public bool RecaptchaOn { get; set; }
+
+            [JsonPropertyName("riskified")]
+            public bool Riskified { get; set; }
+
+            [JsonPropertyName("shipToAndFromStore")]
+            public bool ShipToAndFromStore { get; set; }
+
+            [JsonPropertyName("shippingRestrictionExists")]
+            public bool ShippingRestrictionExists { get; set; }
+
+            [JsonPropertyName("sku")]
+            public string Sku { get; set; }
+
+            [JsonPropertyName("skuExclusions")]
+            public bool SkuExclusions { get; set; }
+
+            [JsonPropertyName("skuLaunchDate")]
+            public string SkuLaunchDate { get; set; }
+
+            [JsonPropertyName("stockLevelStatus")]
+            public string StockLevelStatus { get; set; }
+
+            [JsonPropertyName("webOnlyLaunch")]
+            public bool WebOnlyLaunch { get; set; }
+        }
+
+        public class Root
+        {
+            [JsonPropertyName("brand")]
+            public string Brand { get; set; }
+
+            [JsonPropertyName("categories")]
+            public List<Category> Categories { get; set; }
+
+            [JsonPropertyName("description")]
+            public string Description { get; set; }
+
+            [JsonPropertyName("dropShip")]
+            public bool DropShip { get; set; }
+
+            [JsonPropertyName("freeShipping")]
+            public bool FreeShipping { get; set; }
+
+            [JsonPropertyName("images")]
+            public List<Image> Images { get; set; }
+
+            [JsonPropertyName("isNewProduct")]
+            public bool IsNewProduct { get; set; }
+
+            [JsonPropertyName("isSaleProduct")]
+            public bool IsSaleProduct { get; set; }
+
+            [JsonPropertyName("modelNumber")]
+            public string ModelNumber { get; set; }
+
+            [JsonPropertyName("name")]
+            public string Name { get; set; }
+
+            [JsonPropertyName("sellableUnits")]
+            public List<SellableUnit> SellableUnits { get; set; }
+
+            [JsonPropertyName("sizeChartGridMap")]
+            public List<SizeChartGridMap> SizeChartGridMap { get; set; }
+
+            [JsonPropertyName("sizeChartTipTx")]
+            public string SizeChartTipTx { get; set; }
+
+            [JsonPropertyName("variantAttributes")]
+            public List<VariantAttribute> VariantAttributes { get; set; }
+        }
+
+
     }
-
-        public class Data
-        {
-            public string csrfToken { get; set; }
-            public DiscordRPC.User user { get; set; }
-            public Cart cart { get; set; }
-        }
-
-        public class Session
-        {
-            public Data data { get; set; }
-            public bool success { get; set; }
-            public List<object> errors { get; set; }
-        }
 }

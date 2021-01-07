@@ -5,11 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Discord.Webhook;
 using TinyCsvParser;
 using TinyCsvParser.Mapping;
 using TinyCsvParser.Tokenizer;
@@ -18,6 +16,15 @@ using UnleashedAIO.Auth;
 using UnleashedAIO.JSON;
 using UnleashedAIO.Modules;
 
+//  ██╗   ██╗███╗   ██╗██╗     ███████╗ █████╗ ███████╗██╗  ██╗███████╗██████╗ 
+//  ██║   ██║████╗  ██║██║     ██╔════╝██╔══██╗██╔════╝██║  ██║██╔════╝██╔══██╗
+//  ██║   ██║██╔██╗ ██║██║     █████╗  ███████║███████╗███████║█████╗  ██║  ██║
+//  ██║   ██║██║╚██╗██║██║     ██╔══╝  ██╔══██║╚════██║██╔══██║██╔══╝  ██║  ██║
+//  ╚██████╔╝██║ ╚████║███████╗███████╗██║  ██║███████║██║  ██║███████╗██████╔╝
+//   ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═════╝ 
+//                                                                             
+//Developer: Ahmed Soliman
+//If you've deobuscated this - please contact me and we can settle a deal! Discord:Ahmed#6969
 
 namespace UnleashedAIO
 {
@@ -112,7 +119,7 @@ namespace UnleashedAIO
             proxies = File.ReadAllLines("proxies.txt");
         }
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //DisableConsoleQuickEdit.Go();
             Console.Title = $"UnleashedAIO - for more info visit UnleashedAIO.com";
@@ -121,11 +128,11 @@ namespace UnleashedAIO
 
             ChangeColor(ConsoleColor.Cyan);
             Console.WriteLine(art.logoart);
-            Console.WriteLine($@"{timestamp()}UnleashedAIO, here to serve you!");
+            Console.WriteLine($@"{timestamp()}Checking license...");
 
             if (configObject.license_key != "")
             {
-                if (LicenseGet.GetLicense(configObject.license_key))
+                if (await LicenseGet.GetLicense(configObject.license_key))
                 {
                     try
                     {
@@ -145,18 +152,15 @@ namespace UnleashedAIO
                         }
                         ChangeColor(ConsoleColor.Cyan);
                         Console.WriteLine($"\n{timestamp()}Starting tasks..");
-                        ;
-
 
 
                         Parallel.ForEach(Tasks, async (currentTask) =>
                         {
-                            Thread.Sleep(random.Next(delayBetweenTasks/2, delayBetweenTasks*3));
-                            await TaskStarterAsync(currentTask.Result, proxies[currentTask.RowIndex-1], currentTask.RowIndex, delayBetweenTasks);
+                            await TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
                         });
 
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         //Console.WriteLine(e);
                     }
@@ -169,16 +173,17 @@ namespace UnleashedAIO
             }
 
             Console.Read();
+        
         }
 
 
-        private static async Task TaskStarterAsync(Tasks currentTask, string proxies, int taskNumber, int delay)
+        private static async Task TaskStarterAsync(Tasks currentTask, string[] proxies, int taskNumber, int delay)
         {
             bool taskBool = false;
             switch (currentTask.Store.ToLower())
             {
-                case "footlockereu":
-                    if (await FootlockerEU.Start(currentTask, proxies, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
+                case "footlocker eu":
+                    if (await FootlockerEU.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
                     {
                         checkoutCounter++;
                         Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
@@ -193,26 +198,26 @@ namespace UnleashedAIO
                 case "zalando":
                     try
                     {
-                         taskBool = await Zalando.Start(currentTask, proxies, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
+                         taskBool = await Zalando.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
 
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        Console.WriteLine(taskNumber + " failed");
                     }
 
                     if (taskBool)
                     {
                         checkoutCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
-                        TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
                     }
                     else
                     {
-                        failedCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
-                        TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                        checkoutCounter++;
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                        Thread.Sleep(random.Next(50000,100000));
+                        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
                     }
                     break;
                         

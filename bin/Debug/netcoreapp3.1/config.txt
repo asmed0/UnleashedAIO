@@ -1,7 +1,7 @@
 {
-"license_key":"UPF2-X3FD-D6ST-SXUZ",
+"license_key":"UU0O-PSU3-OI0I-0Y4M",
 "captchaKey":"",
-"delayBetweenTasks":4.2,
+"delayBetweenTasks":2.2,
 "success_webhook":"",
 "fail_webhook":""
 }

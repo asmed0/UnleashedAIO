@@ -255,3 +255,10 @@ C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Release\netcoreapp3.1\win-x64\Un
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Release\netcoreapp3.1\win-x64\UnleashedAIO.dll
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Release\netcoreapp3.1\win-x64\UnleashedAIO.pdb
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Release\netcoreapp3.1\win-x64\UnleashedAIO.genruntimeconfig.cache
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\Pluralsight.Crypto.dll
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\PuppeteerExtraSharp.dll
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\proxies.txt
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\tasks.csv
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\config.txt
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\System.CodeDom.dll
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Release\netcoreapp3.1\win-x64\System.Management.dll
