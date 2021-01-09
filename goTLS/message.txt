@@ -1,0 +1,207 @@
+{
+    "_id": "5ff85c72b2913e0003daf07c",
+    "navigator": {
+        "appCodeName": "Mozilla",
+        "appName": "Netscape",
+        "appVersion": "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "language": "sv-SE",
+        "languages": [
+            "sv-SE",
+            "sv",
+            "en-US",
+            "en",
+            "da"
+        ],
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "vendor": "Google Inc.",
+        "product": "Gecko",
+        "productSub": "20030107",
+        "platform": "Win32",
+        "vibrate": true,
+        "getBattery": true,
+        "credentials": true,
+        "appMinorVersion": false,
+        "bluetooth": true,
+        "storage": true,
+        "getGamepads": true,
+        "getStorageUpdates": false,
+        "hardwareConcurrency": true,
+        "mediaDevices": true,
+        "mozAlarms": false,
+        "mozConnection": false,
+        "mozIsLocallyAvailable": false,
+        "mozPhoneNumberService": false,
+        "msManipulationViewsEnabled": false,
+        "permissions": true,
+        "registerProtocolHandler": true,
+        "requestMediaKeySystemAccess": true,
+        "requestWakeLock": false,
+        "sendBeacon": true,
+        "serviceWorker": true,
+        "storeWebWideTrackingException": false,
+        "webkitGetGamepads": false,
+        "webkitTemporaryStorage": true,
+        "cookieEnabled": true,
+        "javaEnabled": false,
+        "doNotTrack": -1,
+        "plugins": [
+            "Chrome PDF Plugin",
+            "Chrome PDF Viewer",
+            "Native Client"
+        ]
+    },
+    "window": {
+        "innerHeight": 969,
+        "innerWidth": 1920,
+        "outerWidth": 1920,
+        "outerHeight": 1040,
+        "devicePixelRatio": 1,
+        "addEventListener": true,
+        "XMLHttpRequest": true,
+        "XDomainRequest": false,
+        "DeviceOrientationEvent": true,
+        "DeviceMotionEvent": true,
+        "TouchEvent": true,
+        "chrome": {
+            "app": {
+                "isInstalled": false,
+                "InstallState": {
+                    "DISABLED": "disabled",
+                    "INSTALLED": "installed",
+                    "NOT_INSTALLED": "not_installed"
+                },
+                "RunningState": {
+                    "CANNOT_RUN": "cannot_run",
+                    "READY_TO_RUN": "ready_to_run",
+                    "RUNNING": "running"
+                }
+            },
+            "runtime": {
+                "OnInstalledReason": {
+                    "CHROME_UPDATE": "chrome_update",
+                    "INSTALL": "install",
+                    "SHARED_MODULE_UPDATE": "shared_module_update",
+                    "UPDATE": "update"
+                },
+                "OnRestartRequiredReason": {
+                    "APP_UPDATE": "app_update",
+                    "OS_UPDATE": "os_update",
+                    "PERIODIC": "periodic"
+                },
+                "PlatformArch": {
+                    "ARM": "arm",
+                    "ARM64": "arm64",
+                    "MIPS": "mips",
+                    "MIPS64": "mips64",
+                    "X86_32": "x86-32",
+                    "X86_64": "x86-64"
+                },
+                "PlatformNaclArch": {
+                    "ARM": "arm",
+                    "MIPS": "mips",
+                    "MIPS64": "mips64",
+                    "X86_32": "x86-32",
+                    "X86_64": "x86-64"
+                },
+                "PlatformOs": {
+                    "ANDROID": "android",
+                    "CROS": "cros",
+                    "LINUX": "linux",
+                    "MAC": "mac",
+                    "OPENBSD": "openbsd",
+                    "WIN": "win"
+                },
+                "RequestUpdateCheckStatus": {
+                    "NO_UPDATE": "no_update",
+                    "THROTTLED": "throttled",
+                    "UPDATE_AVAILABLE": "update_available"
+                }
+            }
+        },
+        "prototype_bind": true,
+        "PointerEvent": true,
+        "sessionStorage": true,
+        "localStorage": true,
+        "indexedDB": true,
+        "FileReader": true,
+        "HTMLElement": false,
+        "webRTC": true,
+        "mozInnerScreenY": 0
+    },
+    "document": {
+        "documentMode": "undefined",
+        "webdriver": false,
+        "driver": false,
+        "selenium": false,
+        "hidden": false,
+        "webkitHidden": false
+    },
+    "other": {
+        "CC_ON": false,
+        "InstallTrigger": false,
+        "prototype_forEach": true,
+        "imul": true,
+        "parseInt": true,
+        "hypot": true,
+        "value1": false,
+        "XPathResult": true
+    },
+    "performance": {
+        "timeOrigin": 1610112106828.4731,
+        "timing": {
+            "connectStart": 1610112106831,
+            "navigationStart": 1610112106828,
+            "loadEventEnd": 1610112107111,
+            "domLoading": 1610112106893,
+            "secureConnectionStart": 0,
+            "fetchStart": 1610112106831,
+            "domContentLoadedEventStart": 1610112106962,
+            "responseStart": 1610112106888,
+            "responseEnd": 1610112106889,
+            "domInteractive": 1610112106962,
+            "domainLookupEnd": 1610112106831,
+            "redirectStart": 0,
+            "requestStart": 1610112106836,
+            "unloadEventEnd": 1610112106892,
+            "unloadEventStart": 1610112106892,
+            "domComplete": 1610112107111,
+            "domainLookupStart": 1610112106831,
+            "loadEventStart": 1610112107111,
+            "domContentLoadedEventEnd": 1610112106962,
+            "redirectEnd": 0,
+            "connectEnd": 1610112106831
+        },
+        "navigation": {
+            "type": 1,
+            "redirectCount": 0
+        }
+    },
+    "canvas": {
+        "value1": "-739578230",
+        "value2": "-1395479418"
+    },
+    "fonts_optm": "12,14,15,16,17,3,38,40,44,7",
+    "fonts": "12,14,15,16,17,3,38,40,44,7",
+    "rCFP": "-423581049",
+    "ssh": "779f8879edbd93c80462a96065dc20b11ec8b9c67779421dd07f07c2cf2837d9",
+    "mr": "29,31,32,32,15,15,11,6,6,4,4,4,7,237,",
+    "brave": "0",
+    "wv": "Google Inc.",
+    "wr": "ANGLE (NVIDIA GeForce GTX 1660 SUPER Direct3D11 vs_5_0 ps_5_0)",
+    "weh": "95f5b71fe531f867faa814bdd4050dd8057206d53ecec1163523560525884870",
+    "wl": 33,
+    "fmh": "6aca12aacdb812e909a43ea45c1fd70a085820c9049d0826910769b442bd50d6",
+    "fpValstr": "-739578230;-1395479418;dis;,7,8;true;true;true;-60;true;24;24;true;false;-1",
+    "np": "11321144241322243122",
+    "screen": {
+        "availHeight": 1040,
+        "availLeft": 0,
+        "availTop": 0,
+        "availWidth": 1920,
+        "colorDepth": 24,
+        "height": 1080,
+        "pixelDepth": 24,
+        "width": 1920
+    },
+    "__v": 0
+}

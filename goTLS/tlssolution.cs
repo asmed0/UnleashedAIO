@@ -28,10 +28,7 @@ namespace golang
 
             public methodChain AddHeader(string headerKey, string headerValue)
             {
-                headerOrder += $"{headerKey},";
-
                 headers.Add(headerKey + ",," + headerValue);
-                headers.Add("Header-Order" + ",," + headerOrder);
                 return this;
             }
         }
@@ -49,10 +46,16 @@ namespace golang
 
             [DllImport("tlsSolution.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
             public static extern IntPtr postRequest(byte[] urlRaw, byte[] headersRaw, byte[] body, byte[] ipAddress);
+
+            [DllImport("tlsSolution.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+            public static extern IntPtr putRequest(byte[] urlRaw, byte[] headersRaw, byte[] ipAddress);
         }
 
         public static string getRequest(string urlRaw, List<string> headers, string ipAddress = null)
             => Marshal.PtrToStringAnsi(goTLS.getRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));
+
+        public static string putRequest(string urlRaw, List<string> headers, string ipAddress = null)
+    => Marshal.PtrToStringAnsi(goTLS.putRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));
 
         public static string headRequest(string urlRaw, List<string> headers, string ipAddress = null)
             => Marshal.PtrToStringAnsi(goTLS.headRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));

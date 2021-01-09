@@ -16,6 +16,7 @@ func main() {}
 type returnStruct struct {
 	Cookies []string `json:"cookies"`
 	Body    string   `json:"body"`
+	Status  int      `json:"status"`
 }
 
 //export getRequest
@@ -60,6 +61,7 @@ func getRequest(urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
 	bytes, err := json.Marshal(returnStruct{
 		Cookies: cookieCollect,
 		Body:    string(dataBody),
+		Status:  resp.StatusCode,
 	})
 	if err != nil {
 		return C.CString("error")
@@ -117,6 +119,7 @@ func postRequest(urlRaw *C.char, headersRaw *C.char, bodyRaw *C.char, proxyRaw *
 	bytes, err := json.Marshal(returnStruct{
 		Cookies: cookieCollect,
 		Body:    string(dataBody),
+		Status:  resp.StatusCode,
 	})
 	if err != nil {
 		return C.CString("error3")
@@ -125,4 +128,54 @@ func postRequest(urlRaw *C.char, headersRaw *C.char, bodyRaw *C.char, proxyRaw *
 	resp.Body.Close()
 	return C.CString(string(bytes))
 
+}
+
+func putRequest(urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
+	url := string(C.GoString(urlRaw))
+	headers := string(C.GoString(headersRaw))
+	proxy := string(C.GoString(proxyRaw))
+
+	req, err := http.NewRequest("PUT", url, nil)
+	if err != nil {
+		return C.CString("put error")
+	}
+
+	headerList := strings.Split(headers, "=|=|=")
+	for i := 0; i < len(headerList); i++ {
+		headerAA := strings.Split(headerList[i], ",,")
+		req.Header.Set(headerAA[0], headerAA[1])
+		//req.Header[headerAA[0]] = []string{headerAA[1]}
+	}
+
+	client, err := cclient.NewClient(tls.HelloChrome_Auto, proxy)
+	if err != nil {
+		return C.CString("newClient error")
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return C.CString("do error")
+	}
+
+	dataBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return C.CString("nil error")
+	}
+
+	var cookieCollect []string
+	for _, cookie := range resp.Cookies() {
+		cookieCollect = append(cookieCollect, cookie.Name+"="+cookie.Value)
+	}
+
+	bytes, err := json.Marshal(returnStruct{
+		Cookies: cookieCollect,
+		Body:    string(dataBody),
+		Status:  resp.StatusCode,
+	})
+	if err != nil {
+		return C.CString("error")
+	}
+
+	resp.Body.Close()
+	return C.CString(string(bytes))
 }
