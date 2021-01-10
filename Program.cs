@@ -1,5 +1,6 @@
 ﻿using AhmedBot.JunkyardSERaffle;
 using DiscordRPC;
+using golang;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -94,7 +95,7 @@ namespace UnleashedAIO
         {
             var configFile = File.ReadAllText("config.txt");
             configObject = JsonConvert.DeserializeObject<configJson>(configFile);
-            configObject.delayBetweenTasks = configObject.delayBetweenTasks * 1000; // seconds to milliseconds
+            configObject.delayBetweenTasks *= 1000; // seconds to milliseconds
             delayBetweenTasks = Convert.ToInt32(configObject.delayBetweenTasks);
 
         }
@@ -156,8 +157,15 @@ namespace UnleashedAIO
 
                         Parallel.ForEach(Tasks, async (currentTask) =>
                         {
-                            await TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                            FootlockerEU FootlockerEUObj = new FootlockerEU();
+                            await TaskStarterAsync(FootlockerEUObj, currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
                         });
+
+                        //slow 1 by 1
+                        //foreach(var currentTask in Tasks)
+                        //{
+                        //    await TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                        //}
 
                     }
                     catch (Exception)
@@ -177,13 +185,13 @@ namespace UnleashedAIO
         }
 
 
-        private static async Task TaskStarterAsync(Tasks currentTask, string[] proxies, int taskNumber, int delay)
+        private static async Task TaskStarterAsync(FootlockerEU FootlockerEUObj, Tasks currentTask, string[] proxies, int taskNumber, int delay)
         {
             bool taskBool = false;
             switch (currentTask.Store.ToLower())
             {
                 case "footlocker eu":
-                    if (await FootlockerEU.StartTaskAsync(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
+                    if (FootlockerEUObj.StartTaskAsync(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
                     {
                         checkoutCounter++;
                         Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
@@ -195,31 +203,31 @@ namespace UnleashedAIO
                     }
 
                     break;
-                case "zalando":
-                    try
-                    {
-                         taskBool = await Zalando.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
+                //case "zalando":
+                //    try
+                //    {
+                //         taskBool = await Zalando.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
 
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e);
+                //    }
 
-                    if (taskBool)
-                    {
-                        checkoutCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
-                        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
-                    }
-                    else
-                    {
-                        checkoutCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
-                        Thread.Sleep(random.Next(50000,100000));
-                        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
-                    }
-                    break;
+                //    if (taskBool)
+                //    {
+                //        checkoutCounter++;
+                //        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                //        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                //    }
+                //    else
+                //    {
+                //        checkoutCounter++;
+                //        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                //        Thread.Sleep(random.Next(50000,100000));
+                //        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                //    }
+                //    break;
                         
 
                 default:

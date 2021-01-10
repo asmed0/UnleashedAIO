@@ -130,6 +130,7 @@ func postRequest(urlRaw *C.char, headersRaw *C.char, bodyRaw *C.char, proxyRaw *
 
 }
 
+//export putRequest
 func putRequest(urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
 	url := string(C.GoString(urlRaw))
 	headers := string(C.GoString(headersRaw))

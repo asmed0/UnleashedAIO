@@ -9,6 +9,120 @@ namespace UnleashedAIO.JSON
     {
         // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
 
+        public class ShippingResponse
+        {
+            public class Country
+            {
+                [JsonProperty("isocode")]
+                public string Isocode { get; set; }
+            }
+
+            public class Root
+            {
+                [JsonProperty("billingAddress")]
+                public bool BillingAddress { get; set; }
+
+                [JsonProperty("country")]
+                public Country Country { get; set; }
+
+                [JsonProperty("defaultAddress")]
+                public bool DefaultAddress { get; set; }
+
+                [JsonProperty("firstName")]
+                public string FirstName { get; set; }
+
+                [JsonProperty("id")]
+                public string Id { get; set; }
+
+                [JsonProperty("lastName")]
+                public string LastName { get; set; }
+
+                [JsonProperty("line1")]
+                public string Line1 { get; set; }
+
+                [JsonProperty("phone")]
+                public string Phone { get; set; }
+
+                [JsonProperty("postalCode")]
+                public string PostalCode { get; set; }
+
+                [JsonProperty("setAsBilling")]
+                public bool SetAsBilling { get; set; }
+
+                [JsonProperty("shippingAddress")]
+                public bool ShippingAddress { get; set; }
+
+                [JsonProperty("town")]
+                public string Town { get; set; }
+
+                [JsonProperty("visibleInAddressBook")]
+                public bool VisibleInAddressBook { get; set; }
+            }
+
+
+        }
+        public class Shipping
+        {
+            public class Country
+            {
+                [JsonProperty("isocode")]
+                public string Isocode { get; set; }
+
+                [JsonProperty("name")]
+                public string Name { get; set; }
+            }
+
+            public class ShippingAddress
+            {
+                [JsonProperty("setAsDefaultBilling")]
+                public bool SetAsDefaultBilling { get; set; }
+
+                [JsonProperty("setAsDefaultShipping")]
+                public bool SetAsDefaultShipping { get; set; }
+
+                [JsonProperty("firstName")]
+                public string FirstName { get; set; }
+
+                [JsonProperty("lastName")]
+                public string LastName { get; set; }
+
+                [JsonProperty("email")]
+                public bool Email { get; set; }
+
+                [JsonProperty("phone")]
+                public string Phone { get; set; }
+
+                [JsonProperty("country")]
+                public Country Country { get; set; }
+
+                [JsonProperty("id")]
+                public string Id { get; set; }
+
+                [JsonProperty("setAsBilling")]
+                public bool SetAsBilling { get; set; }
+
+                [JsonProperty("type")]
+                public string Type { get; set; }
+
+                [JsonProperty("line1")]
+                public string Line1 { get; set; }
+
+                [JsonProperty("postalCode")]
+                public string PostalCode { get; set; }
+
+                [JsonProperty("town")]
+                public string Town { get; set; }
+
+                [JsonProperty("shippingAddress")]
+                public bool ShippingAddressInside { get; set; }
+            }
+
+            public class Root
+            {
+                [JsonProperty("shippingAddress")]
+                public ShippingAddress ShippingAddress { get; set; }
+            }
+        }
         public class Cart
         {
             public class Image

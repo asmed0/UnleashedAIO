@@ -11,70 +11,94 @@ namespace UnleashedAIO.Modules
 {
     class FootlockerEU
     {
-        static int retryOnFailAttempts = 100;
-
-        //program vars
-        static string _taskNumber;
-        static int _delay;
-        static string _proxy;
-
-        //will be used later on
-        static string _productName;
-        static string _sizeCode;
-        static string _releaseTimer;
-        static string _productImage;
-        static double _price;
-
-        //profile vars
-        static string _mode;
-        static string _product;
-        static string _size;
-        static string _firstname;
-        static string _lastname;
-        static string _email;
-        static string _phone;
-        static string _addy;
-        static string _addy2;
-        static string _city;
-        static string _state;
-        static string _zip;
-        static string _region;
-        static string _cardNum;
-        static string _expMon;
-        static string _expYr;
-        static string _cvv;
-
-        //session vars
-        static string _csrf;
-        static string _sessionId;
-        static string _cartId;
-        static string _cartCode;
-        public static async Task<bool> StartTaskAsync(Tasks currentTask, string proxyString, string taskNumber, int delay)
+        public class Vars
         {
+            public int retryOnFailAttempts = 100;
+
+            //program vars
+            public string _taskNumber;
+            public int _delay;
+            public string _proxy;
+
+            //will be used later on
+            public string _productName;
+            public string _sizeCode;
+            public string _releaseTimer;
+            public string _productImage;
+            public double _price;
+
+            //profile vars
+            public string _mode;
+            public string _product;
+            public string _size;
+            public string _firstname;
+            public string _lastname;
+            public string _email;
+            public string _phone;
+            public string _addy;
+            public string _addy2;
+            public string _city;
+            public string _state;
+            public string _zip;
+            public string _region;
+            public string _country;
+            public string _cardNum;
+            public string _expMon;
+            public string _expYr;
+            public string _cvv;
+
+            //session vars
+            public string _csrf;
+            public string _sessionId;
+            public string _cartId;
+            public string _cartCode;
+            public string _shippingId;
+        }
+
+        private Vars vars = new Vars();
+        private tlsSolution tlsClient = new tlsSolution();
+        private tlsSolution.methodChain chain = new tlsSolution.methodChain();
+        public bool StartTaskAsync(Tasks currentTask, string proxyString, string taskNumber, int delay)
+        {
+
             //binding program vars
-            _taskNumber = taskNumber;
-            _delay = delay;
-            _proxy = proxyString;
+            vars._taskNumber = taskNumber;
+            vars._delay = delay;
+            vars._proxy = proxyString;
 
             //binding profile vars
-            _mode = currentTask.Mode;
-            _product = currentTask.SKU;
-            _size = currentTask.Size;
-            _firstname = currentTask.FirstName;
-            _lastname = currentTask.LastName;
-            _email = currentTask.email;
-            _phone = currentTask.PhoneNumber;
-            _addy = currentTask.Adress;
-            _addy2 = currentTask.Adress2;
-            _city = currentTask.City;
-            _state = currentTask.State;
-            _zip = currentTask.ZipCode;
-            _region = currentTask.Country;
-            _cardNum = currentTask.CardNumber;
-            _expMon = currentTask.ExpiryMonth;
-            _expYr = currentTask.ExpiryYear;
-            _cvv = currentTask.CVV;
-            _proxy = proxyString;
+            vars._mode = currentTask.Mode;
+            vars._product = currentTask.SKU;
+            vars._size = currentTask.Size;
+            vars._firstname = currentTask.FirstName;
+            vars._lastname = currentTask.LastName;
+            vars._email = currentTask.email;
+            vars._phone = currentTask.PhoneNumber;
+            vars._addy = currentTask.Adress;
+            vars._addy2 = currentTask.Adress2;
+            vars._city = currentTask.City;
+            vars._state = currentTask.State;
+            vars._zip = currentTask.ZipCode;
+            vars._region = currentTask.Country;
+            vars._cardNum = currentTask.CardNumber;
+            vars._expMon = currentTask.ExpiryMonth;
+            vars._expYr = currentTask.ExpiryYear;
+            vars._cvv = currentTask.CVV;
+            vars._proxy = proxyString;
+
+            switch (vars._region)
+            {
+                case "SE":
+                    vars._country = "Sweden";
+                    break;
+                case "DE":
+                    vars._country = "Germany";
+                    break;
+                default:
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}REGION NOT RECOGNIZED - UPDATE TASK(S)");
+                    Thread.Sleep(Timeout.Infinite);
+                    return false;
+            }
 
             //example retry logic below
             //for (int attempts = 0; attempts < 5; attempts++)
@@ -91,102 +115,250 @@ namespace UnleashedAIO.Modules
 
 
             //fetching product details
-            for (int attempts = 0; attempts < retryOnFailAttempts; attempts++, _delay+=100) //incrementing delay by 100ms to simulate staggering human behaviour
+            for (int attempts = 0; attempts < 2; attempts++, vars._delay += 100) 
             {
-                if (GetProductInfos())
+                if (GetProductInfos(vars))
                 {
                     Program.ChangeColor(ConsoleColor.Yellow);
-                    Console.WriteLine($"{Program.timestamp()}{_taskNumber}Fetched product info, now generating session..");
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Fetched product info, now generating session..");
 
-                    Thread.Sleep(_delay);
+                    Thread.Sleep(vars._delay);
                     break;
                 }
-                Thread.Sleep(_delay);
+                Thread.Sleep(vars._delay);
             }
 
             //generating our session
-            for (int attempts = 0; attempts < retryOnFailAttempts; attempts++, _delay += 100)
+            for (int attempts = 0; attempts < vars.retryOnFailAttempts; attempts++, vars._delay += 100)
             {
-                if (NewSession())
+                if (NewSession(vars))
                 {
                     Program.ChangeColor(ConsoleColor.Yellow);
-                    Console.WriteLine($"{Program.timestamp()}{_taskNumber}Generated session, now carting..");
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Generated session, now carting..");
                     //Console.WriteLine($"csrf: {_csrf} and sessionid: {_sessionId}");
 
-                    Thread.Sleep(_delay);
+                    Thread.Sleep(vars._delay);
                     break;
                 }
-                Thread.Sleep(_delay);
+                Thread.Sleep(vars._delay);
             }
 
             //carting our product
-            for (int attempts = 0; attempts < retryOnFailAttempts; attempts++, _delay += 100)
+            for (int attempts = 0; attempts < vars.retryOnFailAttempts; attempts++, vars._delay += 100)
             {
-                if (AddToCart())
+                if (AddToCart(vars))
                 {
                     Program.ChangeColor(ConsoleColor.Green);
-                    Console.WriteLine($"{Program.timestamp()}{_taskNumber}Carted, now adding shipping..");
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Carted, now going to checkout..");
                     //Console.WriteLine($"cartId: {_cartId} and sessionid: {_sessionId}");
 
-                    Thread.Sleep(_delay);
+                    Thread.Sleep(vars._delay);
                     break;
                 }
-                Thread.Sleep(_delay);
+                Thread.Sleep(vars._delay);
             }
 
             //initating checkout
-            for (int attempts = 0; attempts < retryOnFailAttempts; attempts++, _delay += 100)
+            for (int attempts = 0; attempts < vars.retryOnFailAttempts; attempts++, vars._delay += 100)
             {
-                if (InitiateCheckout())
+                if (InitiateCheckout(vars))
                 {
                     Program.ChangeColor(ConsoleColor.Green);
-                    Console.WriteLine($"{Program.timestamp()}{_taskNumber}Carted, now adding shipping..");
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Initiated checkout session, now adding shipping..");
                     //Console.WriteLine($"cartId: {_cartId} and sessionid: {_sessionId}");
 
-                    Thread.Sleep(_delay);
+                    Thread.Sleep(vars._delay);
                     break;
                 }
-                Thread.Sleep(_delay);
+                Thread.Sleep(vars._delay);
             }
+
+            //adding shipping
+            for (int attempts = 0; attempts < vars.retryOnFailAttempts; attempts++, vars._delay += 100)
+            {
+                if (AddShipping( vars))
+                {
+                    Program.ChangeColor(ConsoleColor.Cyan);
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Added shipping, now adding billing..");
+
+                    Thread.Sleep(vars._delay);
+                    break;
+                }
+                Thread.Sleep(vars._delay);
+            }
+            ////adding billing -- will be implemented soon.. 
+            //for (int attempts = 0; attempts < vars.retryOnFailAttempts; attempts++, vars._delay += 100)
+            //{
+            //    if (AddShipping(vars))
+            //    {
+            //        Program.ChangeColor(ConsoleColor.Cyan);
+            //        Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Added shipping, now adding billing..");
+
+            //        Thread.Sleep(vars._delay);
+            //        break;
+            //    }
+            //    Thread.Sleep(vars._delay);
+            //}
 
             //Console.ReadLine();
 
             return true;
         }
-        private static bool AddShipping()
-        {
-            tlsSolution.methodChain chain = new tlsSolution.methodChain();
-            return false;
-        }
-        private static bool InitiateCheckout()
-        {
-            return false;
 
-        }
-        private static bool AddToCart()
+        private bool AddShipping(Vars vars)
         {
-            tlsSolution.methodChain chain = new tlsSolution.methodChain();
-            chain.AddHeader("authority", "www.footlocker.se")
+            chain.AddHeader("authority", $"www.footlocker.{vars._region}")
             .AddHeader("pragma", "no-cache")
             .AddHeader("cache-control", "no-cache")
-            .AddHeader("x-csrf-token", _csrf)
+            .AddHeader("accept", "application/json")
+            .AddHeader("x-csrf-token", vars._csrf)
             .AddHeader("x-api-lang", "en-GB")
             .AddHeader("accept-language", "en-GB,en;q=0.9")
-            .AddHeader("x-fl-productid", _sizeCode)
+            .AddHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
             .AddHeader("content-type", "application/json")
-            .AddHeader("accept", "application/json")
-            .AddHeader("user-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
-            .AddHeader("origin", $"https://www.footlocker.{_region}")
+            .AddHeader("origin", $"https://www.footlocker.{vars._region}")
             .AddHeader("sec-fetch-site", "same-origin")
             .AddHeader("sec-fetch-mode", "cors")
             .AddHeader("sec-fetch-dest", "empty")
-            .AddHeader("referer", $"https://www.footlocker.{_region}/en/product/-/{_product}.html")
-            .AddHeader("Cookie", _sessionId);
+            .AddHeader("referer", $"https://www.footlocker.{vars._region}/en/checkout")
+            .AddHeader("Cookie", $"{vars._sessionId}; {vars._cartId}");
 
-            string body = $"{{\"productQuantity\":1,\"productId\":\"{_sizeCode}\"}}";
+            FootlockerJSON.Shipping.Root shippingObj = new FootlockerJSON.Shipping.Root();
+            shippingObj.ShippingAddress = new FootlockerJSON.Shipping.ShippingAddress();
+            shippingObj.ShippingAddress.Country = new FootlockerJSON.Shipping.Country();
+            shippingObj.ShippingAddress.SetAsDefaultBilling = true;
+            shippingObj.ShippingAddress.SetAsDefaultShipping = true;
+            shippingObj.ShippingAddress.FirstName = vars._firstname;
+            shippingObj.ShippingAddress.LastName = vars._lastname;
+            shippingObj.ShippingAddress.Email = true;
+            shippingObj.ShippingAddress.Phone = vars._phone;
+            shippingObj.ShippingAddress.Country.Isocode = vars._region;
+            shippingObj.ShippingAddress.Country.Name = "Sweden";
+            shippingObj.ShippingAddress.Id = null;
+            shippingObj.ShippingAddress.SetAsBilling = true;
+            shippingObj.ShippingAddress.Type = "default";
+            shippingObj.ShippingAddress.Line1 = vars._addy;
+            shippingObj.ShippingAddress.PostalCode = vars._zip;
+            shippingObj.ShippingAddress.Town = vars._city;
+            shippingObj.ShippingAddress.ShippingAddressInside = true;
 
-            string postCart = tlsSolution.postRequest($"https://www.footlocker.{_region}/api/users/carts/current/entries", chain.headers, body, _proxy);
-            chain.collectCookies(postCart).headers.Clear();
+            string body = JsonConvert.SerializeObject(shippingObj);
+
+            string submitShipping = tlsClient.postRequest($"https://www.footlocker.{vars._region}/api/users/carts/current/addresses/shipping",chain.headers, body, vars._proxy);
+            try
+            {
+                chain.collectCookies(submitShipping).headers.Clear();
+
+            }
+            catch (Exception)
+            {
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Failed setting headers, retrying..");
+                return false;
+            }
+
+            goTLSResponse submitShippingResponse = null;
+            FootlockerJSON.ShippingResponse.Root submitShippingObj = null;
+            try
+            {
+                submitShippingResponse = JsonConvert.DeserializeObject<goTLSResponse>(submitShipping);
+                submitShippingObj = JsonConvert.DeserializeObject<FootlockerJSON.ShippingResponse.Root>(submitShippingResponse.Body);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Failed setting shipping address, retrying..");
+                return false;
+            }
+            if (submitShippingResponse.Status == 201 && submitShippingObj.Country.Isocode == vars._region)
+            {
+                vars._shippingId = submitShippingObj.Id;
+                return true;
+            }
+            return false;
+        }
+        private bool InitiateCheckout(Vars vars)
+        {
+            chain.AddHeader("authority", $"www.footlocker.{vars._region}")
+            .AddHeader("content-length", "0")
+            .AddHeader("pragma", "no-cache")
+            .AddHeader("cache-control", "no-cache")
+            .AddHeader("accept", "application/json")
+            .AddHeader("x-csrf-token", vars._csrf)
+            .AddHeader("x-api-lang", "en-GB")
+            .AddHeader("accept-language", "en-GB,en;q=0.9")
+            .AddHeader("user-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+            .AddHeader("origin", $"https://www.footlocker.{vars._region}")
+            .AddHeader("sec-fetch-site", "same-origin")
+            .AddHeader("sec-fetch-mode", "cors")
+            .AddHeader("sec-fetch-dest", "empty")
+            .AddHeader("referer", $"https://www.footlocker.{vars._region}/en/checkout")
+            .AddHeader("Cookie", $"{vars._sessionId}; {vars._cartId}");
+
+            string initCheckout = tlsClient.putRequest($"https://www.footlocker.{vars._region}/api/users/carts/current/email/{vars._email}", chain.headers, vars._proxy);
+            try
+            {
+                chain.collectCookies(initCheckout).headers.Clear();
+
+            }
+            catch (Exception)
+            {
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Failed setting headers, retrying..");
+                return false;
+            }
+
+            goTLSResponse initCheckoutObj = null;
+            try
+            {
+                initCheckoutObj = JsonConvert.DeserializeObject<goTLSResponse>(initCheckout);
+            }
+            catch (Exception)
+            {
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Could not read response upon checkout initialization, retrying..");
+                return false;
+            }
+            if (initCheckoutObj != null && initCheckoutObj.Status == 200)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool AddToCart(Vars vars)
+        {
+            chain.AddHeader("authority", $"www.footlocker.{vars._region}")
+            .AddHeader("pragma", "no-cache")
+            .AddHeader("cache-control", "no-cache")
+            .AddHeader("x-csrf-token", vars._csrf)
+            .AddHeader("x-api-lang", "en-GB")
+            .AddHeader("accept-language", "en-GB,en;q=0.9")
+            .AddHeader("x-fl-productid", vars._sizeCode)
+            .AddHeader("content-type", "application/json")
+            .AddHeader("accept", "application/json")
+            .AddHeader("user-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+            .AddHeader("origin", $"https://www.footlocker.{vars._region}")
+            .AddHeader("sec-fetch-site", "same-origin")
+            .AddHeader("sec-fetch-mode", "cors")
+            .AddHeader("sec-fetch-dest", "empty")
+            .AddHeader("referer", $"https://www.footlocker.{vars._region}/en/product/-/{vars._product}.html")
+            .AddHeader("Cookie", vars._sessionId);
+
+            string body = $"{{\"productQuantity\":1,\"productId\":\"{vars._sizeCode}\"}}";
+
+            string postCart = tlsClient.postRequest($"https://www.footlocker.{vars._region}/api/users/carts/current/entries", chain.headers, body, vars._proxy);
+            try
+            {
+                chain.collectCookies(postCart).headers.Clear();
+
+            }
+            catch (Exception)
+            {
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Failed setting headers, retrying..");
+                return false;
+            }
 
             FootlockerJSON.Cart.Root postCartObj = null;
             try
@@ -196,21 +368,20 @@ namespace UnleashedAIO.Modules
             catch (Exception)
             {
                 Program.ChangeColor(ConsoleColor.Red);
-                Console.WriteLine($"{Program.timestamp()}{_taskNumber}Carting failed, retrying..");
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Carting failed, retrying..");
                 return false;
             }
             if (postCartObj != null && postCartObj.TotalItems > 0)
             {
-                _cartId = postCartObj.Guid;
-                _cartCode = postCartObj.Code;
+                vars._cartId = $"cart-guid={postCartObj.Guid};";
+                vars._cartCode = postCartObj.Code;
                 return true;
             }
             return false;
         }
-        private static bool NewSession()
+        private bool NewSession(Vars vars)
         {
-            tlsSolution.methodChain chain = new tlsSolution.methodChain();
-            chain.AddHeader("authority", "www.footlocker.se")
+            chain.AddHeader("authority", $"www.footlocker.{vars._region}")
             .AddHeader("pragma", "no-cache")
             .AddHeader("cache-control", "no-cache")
             .AddHeader("accept", "application/json")
@@ -220,10 +391,21 @@ namespace UnleashedAIO.Modules
             .AddHeader("sec-fetch-site", "same-origin")
             .AddHeader("sec-fetch-mode", "cors")
             .AddHeader("sec-fetch-dest", "empty")
-            .AddHeader("referer", $"https://www.footlocker.{_region}/en/product/-/{_product}.html");
+            .AddHeader("referer", $"https://www.footlocker.{vars._region}/en/product/-/{vars._product}.html");
 
-            string getSession = tlsSolution.getRequest($"https://www.footlocker.{_region}/api/session",chain.headers, _proxy);
-            chain.collectCookies(getSession).headers.Clear();
+            string getSession = tlsClient.getRequest($"https://www.footlocker.{vars._region}/api/session",chain.headers, vars._proxy);
+            try
+            {
+                chain.collectCookies(getSession).headers.Clear();
+
+            }
+            catch (Exception)
+            {
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Failed setting headers, retrying..");
+                return false;
+            }
+
             goTLSResponse sessionResponse = null;
             FootlockerJSON.Session.Root sessionResponseObj = null;
 
@@ -235,23 +417,22 @@ namespace UnleashedAIO.Modules
             catch (Exception)
             {
                 Program.ChangeColor(ConsoleColor.Red);
-                Console.WriteLine($"{Program.timestamp()}{_taskNumber}Could not generate session, retrying..");
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Could not generate session, retrying..");
                 return false;
             }
             if(sessionResponse != null && sessionResponseObj != null && sessionResponseObj.Success)
             {
-                _csrf = sessionResponseObj.Data.CsrfToken;
-                _sessionId = sessionResponse.Cookies[0];
+                vars._csrf = sessionResponseObj.Data.CsrfToken;
+                vars._sessionId = sessionResponse.Cookies[0];
                 return true;
             }
             return false;
         }
 
-        private static bool GetProductInfos()
+        private bool GetProductInfos(Vars vars)
         {
 
-            tlsSolution.methodChain chain = new tlsSolution.methodChain();
-            chain.AddHeader("authority", $"www.footlocker.{_region}")
+            chain.AddHeader("authority", $"www.footlocker.{vars._region}")
             .AddHeader("pragma", "no-cache")
             .AddHeader("cache-control", "no-cache")
             .AddHeader("accept", "application/json")
@@ -261,10 +442,20 @@ namespace UnleashedAIO.Modules
             .AddHeader("sec-fetch-site", "same-origin")
             .AddHeader("sec-fetch-mode", "cors")
             .AddHeader("sec-fetch-dest", "empty")
-            .AddHeader("referer", $"https://www.footlocker.{_region}/en/product/-/{_product}.html");
+            .AddHeader("referer", $"https://www.footlocker.{vars._region}/en/product/-/{vars._product}.html");
 
-            string getProductInfos = tlsSolution.getRequest($"https://www.footlocker.{_region}/api/products/pdp/{_product}", chain.headers, _proxy);
-            chain.collectCookies(getProductInfos).headers.Clear();
+            string getProductInfos = tlsClient.getRequest($"https://www.footlocker.{vars._region}/api/products/pdp/{vars._product}", chain.headers, vars._proxy);
+            try
+            {
+                chain.collectCookies(getProductInfos).headers.Clear();
+
+            }
+            catch (Exception)
+            {
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Failed setting headers, retrying..");
+                return false;
+            }
 
             FootlockerJSON.Product.Root productInfoObj = null;
             try
@@ -274,38 +465,38 @@ namespace UnleashedAIO.Modules
             catch (Exception e) //forwarding error e to our db soon - will setup later!
             {
                 Program.ChangeColor(ConsoleColor.Red);
-                Console.WriteLine($"{Program.timestamp()}{_taskNumber}Could not fetch product info, retrying..");
+                Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Could not fetch product info, retrying..");
                 return false;
             }
 
             if (productInfoObj != null)
             {
-                _productName = productInfoObj.Name;
-                _taskNumber += $"[{productInfoObj.Name}] [{_size}] ";
+                vars._productName = productInfoObj.Name;
+                vars._taskNumber += $"[{productInfoObj.Name}] [{vars._size}] ";
 
                 //fetching sizecode
                 foreach (var sku in productInfoObj.SellableUnits)
                 {
-                    if (sku.Attributes[0].Value == _size)
+                    if (sku.Attributes[0].Value == vars._size)
                     {
-                       _sizeCode = sku.Attributes[0].Id;
+                        vars._sizeCode = sku.Attributes[0].Id;
 
                         //fetching timer
                         if (productInfoObj.VariantAttributes[0].DisplayCountDownTimer)
                         {
-                            _releaseTimer = productInfoObj.VariantAttributes[0].CstSkuLaunchDate;
+                            vars._releaseTimer = productInfoObj.VariantAttributes[0].CstSkuLaunchDate;
                         };
 
-                        _price = productInfoObj.VariantAttributes[0].Price.OriginalPrice;
+                        vars._price = productInfoObj.VariantAttributes[0].Price.OriginalPrice;
                         return true;
                     }
                 }
                 //checks if size hasn't been found
-                if (_sizeCode == null)
+                if (vars._sizeCode == null)
                 {
                     Program.ChangeColor(ConsoleColor.Red);
-                    Console.WriteLine($"{Program.timestamp()}{_taskNumber}Product/size not loaded! Retrying after delay..");
-                    Thread.Sleep(_delay);
+                    Console.WriteLine($"{Program.timestamp()}{vars._taskNumber}Product/size not loaded! Retrying after delay..");
+                    Thread.Sleep(vars._delay);
                     return false;
                 }
             }

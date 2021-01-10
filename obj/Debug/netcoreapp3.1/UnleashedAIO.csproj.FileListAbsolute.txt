@@ -1,6 +1,8 @@
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\UnleashedAIO.exe
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\config.txt
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\goTLS\tlssolution.dll
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\proxies.txt
+C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\tasks.csv
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\UnleashedAIO.deps.json
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\UnleashedAIO.runtimeconfig.json
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\UnleashedAIO.runtimeconfig.dev.json
@@ -49,5 +51,3 @@ C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Debug\netcoreapp3.1\UnleashedAIO
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Debug\netcoreapp3.1\UnleashedAIO.pdb
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Debug\netcoreapp3.1\UnleashedAIO.genruntimeconfig.cache
 C:\Users\gouda\UnleashedAIO\UnleashedBackup\obj\Debug\netcoreapp3.1\UnleashedAIO.csprojAssemblyReference.cache
-C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\goTLS\tlssolution.dll
-C:\Users\gouda\UnleashedAIO\UnleashedBackup\bin\Debug\netcoreapp3.1\tasks.csv

@@ -51,13 +51,13 @@ namespace golang
             public static extern IntPtr putRequest(byte[] urlRaw, byte[] headersRaw, byte[] ipAddress);
         }
 
-        public static string getRequest(string urlRaw, List<string> headers, string ipAddress = null)
+        public string getRequest(string urlRaw, List<string> headers, string ipAddress = null)
             => Marshal.PtrToStringAnsi(goTLS.getRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));
 
-        public static string putRequest(string urlRaw, List<string> headers, string ipAddress = null)
-    => Marshal.PtrToStringAnsi(goTLS.putRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));
+        public string putRequest(string urlRaw, List<string> headers, string ipAddress = null)
+            => Marshal.PtrToStringAnsi(goTLS.putRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));
 
-        public static string headRequest(string urlRaw, List<string> headers, string ipAddress = null)
+        public string headRequest(string urlRaw, List<string> headers, string ipAddress = null)
             => Marshal.PtrToStringAnsi(goTLS.headRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(proxyHandler(ipAddress))));
 
 
@@ -74,7 +74,7 @@ namespace golang
             return ip;
         }
 
-        public static string postRequest(string urlRaw, List<string> headers, string body, string ipAddress = null)
+        public string postRequest(string urlRaw, List<string> headers, string body, string ipAddress = null)
             => Marshal.PtrToStringAnsi(goTLS.postRequest(getBytes(urlRaw), getBytes(string.Join("=|=|=", headers)), getBytes(body), getBytes(proxyHandler(ipAddress))));
     }
 }
