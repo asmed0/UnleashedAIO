@@ -13,5 +13,7 @@ namespace UnleashedAIO.JSON
 
         [JsonPropertyName("body")]
         public string Body { get; set; }
+        [JsonPropertyName("status")]
+        public int Status { get; set; }
     }
 }

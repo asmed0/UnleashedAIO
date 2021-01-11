@@ -70,6 +70,7 @@ extern "C" {
 
 extern char* getRequest(char* urlRaw, char* headersRaw, char* proxyRaw);
 extern char* postRequest(char* urlRaw, char* headersRaw, char* bodyRaw, char* proxyRaw);
+extern char* putRequest(char* urlRaw, char* headersRaw, char* proxyRaw);
 
 #ifdef __cplusplus
 }

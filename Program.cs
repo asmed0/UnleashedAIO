@@ -1,5 +1,6 @@
 ﻿using AhmedBot.JunkyardSERaffle;
 using DiscordRPC;
+using golang;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -94,7 +95,7 @@ namespace UnleashedAIO
         {
             var configFile = File.ReadAllText("config.txt");
             configObject = JsonConvert.DeserializeObject<configJson>(configFile);
-            configObject.delayBetweenTasks = configObject.delayBetweenTasks * 1000; // seconds to milliseconds
+            configObject.delayBetweenTasks *= 1000; // seconds to milliseconds
             delayBetweenTasks = Convert.ToInt32(configObject.delayBetweenTasks);
 
         }
@@ -154,10 +155,23 @@ namespace UnleashedAIO
                         Console.WriteLine($"\n{timestamp()}Starting tasks..");
 
 
-                        Parallel.ForEach(Tasks, async (currentTask) =>
+                        Parallel.ForEach(Tasks, (currentTask) =>
                         {
-                            await TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                            new Thread(() =>
+                            {
+                                TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                            }).Start();
                         });
+
+
+                        //slow 1 by 1
+                       // foreach(var currentTask in Tasks)
+                       // {
+                       //     new Thread(() =>
+                        //    {
+                       //         TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                       //     }).Start();
+                      //  }
 
                     }
                     catch (Exception)
@@ -177,49 +191,50 @@ namespace UnleashedAIO
         }
 
 
-        private static async Task TaskStarterAsync(Tasks currentTask, string[] proxies, int taskNumber, int delay)
+        private static void TaskStarterAsync(Tasks currentTask, string[] proxies, int taskNumber, int delay)
         {
             bool taskBool = false;
             switch (currentTask.Store.ToLower())
             {
                 case "footlocker eu":
-                    if (await FootlockerEU.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
+                    FootlockerEU FootlockerEUObj = new FootlockerEU();
+                    if (FootlockerEUObj.StartTaskAsync(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
                     {
                         checkoutCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
                     }
                     else
                     {
                         failedCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
                     }
 
                     break;
-                case "zalando":
-                    try
-                    {
-                         taskBool = await Zalando.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
+                //case "zalando":
+                //    try
+                //    {
+                //         taskBool = await Zalando.Start(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay);
 
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                //    }
+                //    catch (Exception e)
+                //    {
+                //        Console.WriteLine(e);
+                //    }
 
-                    if (taskBool)
-                    {
-                        checkoutCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
-                        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
-                    }
-                    else
-                    {
-                        checkoutCounter++;
-                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
-                        Thread.Sleep(random.Next(50000,100000));
-                        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
-                    }
-                    break;
+                //    if (taskBool)
+                //    {
+                //        checkoutCounter++;
+                //        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                //        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                //    }
+                //    else
+                //    {
+                //        checkoutCounter++;
+                //        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                //        Thread.Sleep(random.Next(50000,100000));
+                //        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
+                //    }
+                //    break;
                         
 
                 default:
@@ -227,5 +242,22 @@ namespace UnleashedAIO
                     break;
             }
         }
+
+        public static async void WriteLog(string strFileName, string strMessage)
+        {
+            try
+            {
+                FileStream objFilestream = new FileStream(string.Format("{0}\\{1}", Path.GetTempPath(), strFileName), FileMode.Append, FileAccess.Write);
+                StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
+                objStreamWriter.WriteLine(strMessage);
+                objStreamWriter.Close();
+                objFilestream.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
+
+
 }
