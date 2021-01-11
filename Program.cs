@@ -130,6 +130,7 @@ namespace UnleashedAIO
             ChangeColor(ConsoleColor.Cyan);
             Console.WriteLine(art.logoart);
             Console.WriteLine($@"{timestamp()}Checking license...");
+            ProxyMaster.setupProxyListsFromFolder(configObject.proxyPath);
 
             if (configObject.license_key != "")
             {
