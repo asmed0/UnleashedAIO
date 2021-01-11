@@ -19,57 +19,14 @@ type returnStruct struct {
 	Status  int      `json:"status"`
 }
 
-//export getRequest
-func getRequest(urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
-
-	url := string(C.GoString(urlRaw))
-	headers := string(C.GoString(headersRaw))
-	proxy := string(C.GoString(proxyRaw))
-
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return C.CString("get error")
-	}
-
-	headerList := strings.Split(headers, "=|=|=")
-	for i := 0; i < len(headerList); i++ {
-		headerAA := strings.Split(headerList[i], ",,")
-		req.Header.Set(headerAA[0], headerAA[1])
-		//req.Header[headerAA[0]] = []string{headerAA[1]}
-	}
-
-	client, err := cclient.NewClient(tls.HelloChrome_Auto, proxy)
-	if err != nil {
-		return C.CString("newClient error")
-	}
-
-	resp, err := client.Do(req)
-	if err != nil {
-		return C.CString("do error")
-	}
-
-	dataBody, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return C.CString("nil error")
-	}
-
-	var cookieCollect []string
-	for _, cookie := range resp.Cookies() {
-		cookieCollect = append(cookieCollect, cookie.Name+"="+cookie.Value)
-	}
-
-	bytes, err := json.Marshal(returnStruct{
-		Cookies: cookieCollect,
-		Body:    string(dataBody),
-		Status:  resp.StatusCode,
-	})
-	if err != nil {
-		return C.CString("error")
-	}
-
-	resp.Body.Close()
-	return C.CString(string(bytes))
+func headSet(req *http.Request,headerList string[]){
+	headerAA := strings.Split(headerList[i], ",,")
+	req.Header.Set(headerAA[0], headerAA[1])
+	wg.Done()
 }
+
+
+//export getRequest
 
 //export postRequest
 func postRequest(urlRaw *C.char, headersRaw *C.char, bodyRaw *C.char, proxyRaw *C.char) *C.char {
@@ -132,22 +89,35 @@ func postRequest(urlRaw *C.char, headersRaw *C.char, bodyRaw *C.char, proxyRaw *
 
 //export putRequest
 func putRequest(urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
-	url := string(C.GoString(urlRaw))
-	headers := string(C.GoString(headersRaw))
-	proxy := string(C.GoString(proxyRaw))
 
-	req, err := http.NewRequest("PUT", url, nil)
+	return rr("PUT",urlRaw,headersRaw,proxyRaw);
+}
+
+func getRequest(urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
+
+	return rr("GET",urlRaw,headersRaw,proxyRaw);
+}
+
+func rr(string ty,urlRaw *C.char, headersRaw *C.char, proxyRaw *C.char) *C.char {
+	var wg sync.WaitGroup
+	go url := string(C.GoString(urlRaw))
+	go headers := string(C.GoString(headersRaw))
+	go proxy := string(C.GoString(proxyRaw))
+
+	go req, err := http.NewRequest(ty, url, nil)
 	if err != nil {
-		return C.CString("put error")
+		return C.CString("get error")
 	}
-
+	
 	headerList := strings.Split(headers, "=|=|=")
+	wg.Add(len(headerList))
 	for i := 0; i < len(headerList); i++ {
-		headerAA := strings.Split(headerList[i], ",,")
-		req.Header.Set(headerAA[0], headerAA[1])
+		//headerAA := strings.Split(headerList[i], ",,")
+		//req.Header.Set(headerAA[0], headerAA[1])
 		//req.Header[headerAA[0]] = []string{headerAA[1]}
+		go headSet(req,headerList)
 	}
-
+	wg.Wait()
 	client, err := cclient.NewClient(tls.HelloChrome_Auto, proxy)
 	if err != nil {
 		return C.CString("newClient error")
