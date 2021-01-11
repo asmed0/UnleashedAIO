@@ -3,5 +3,6 @@
 "captchaKey":"",
 "delayBetweenTasks":0,
 "success_webhook":"",
-"fail_webhook":""
+"fail_webhook":"",
+"proxyPath":"C:\\Users\\Drizzs\\Desktop\\Proxies"
 }
