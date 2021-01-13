@@ -130,6 +130,7 @@ namespace UnleashedAIO
             ChangeColor(ConsoleColor.Cyan);
             Console.WriteLine(art.logoart);
             Console.WriteLine($@"{timestamp()}Checking license...");
+            ProxyMaster.setupProxyListsFromFolder(configObject.proxyPath);
 
             if (configObject.license_key != "")
             {
@@ -155,17 +156,23 @@ namespace UnleashedAIO
                         Console.WriteLine($"\n{timestamp()}Starting tasks..");
 
 
-                        Parallel.ForEach(Tasks, async (currentTask) =>
+                        Parallel.ForEach(Tasks, (currentTask) =>
                         {
-                            FootlockerEU FootlockerEUObj = new FootlockerEU();
-                            await TaskStarterAsync(FootlockerEUObj, currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                            new Thread(() =>
+                            {
+                                TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                            }).Start();
                         });
 
+
                         //slow 1 by 1
-                        //foreach(var currentTask in Tasks)
-                        //{
-                        //    await TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
-                        //}
+                       // foreach(var currentTask in Tasks)
+                       // {
+                       //     new Thread(() =>
+                        //    {
+                       //         TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                       //     }).Start();
+                      //  }
 
                     }
                     catch (Exception)
@@ -185,12 +192,13 @@ namespace UnleashedAIO
         }
 
 
-        private static async Task TaskStarterAsync(FootlockerEU FootlockerEUObj, Tasks currentTask, string[] proxies, int taskNumber, int delay)
+        private static void TaskStarterAsync(Tasks currentTask, string[] proxies, int taskNumber, int delay)
         {
             bool taskBool = false;
             switch (currentTask.Store.ToLower())
             {
                 case "footlocker eu":
+                    FootlockerEU FootlockerEUObj = new FootlockerEU();
                     if (FootlockerEUObj.StartTaskAsync(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
                     {
                         checkoutCounter++;
@@ -235,5 +243,22 @@ namespace UnleashedAIO
                     break;
             }
         }
+
+        public static async void WriteLog(string strFileName, string strMessage)
+        {
+            try
+            {
+                FileStream objFilestream = new FileStream(string.Format("{0}\\{1}", Path.GetTempPath(), strFileName), FileMode.Append, FileAccess.Write);
+                StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
+                objStreamWriter.WriteLine(strMessage);
+                objStreamWriter.Close();
+                objFilestream.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
+
+
 }

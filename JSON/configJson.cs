@@ -7,5 +7,6 @@
         public float delayBetweenTasks { get; set; }
         public string success_webhook { get; set; }
         public string fail_webhook { get; set; }
+        public string proxyPath { get; set; }
     }
 }

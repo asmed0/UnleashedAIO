@@ -19,7 +19,7 @@ namespace UnleashedAIO
 
         public static int split = 1;
         public static double taskDivider = 1;
-
+       
         public static string getProxy(int taskNumber)
         {
             return getProxy(null, taskNumber, false);
@@ -28,7 +28,7 @@ namespace UnleashedAIO
         public static void setProxyList(List<string> proxyList)
         {
             int totalTasks = proxyList.Count;
-
+                    
             if (totalTasks > 4)
             {
                 if (totalTasks > 40)
@@ -47,14 +47,14 @@ namespace UnleashedAIO
                     split = 2;
                 }
                 double div = totalTasks / split;
-                taskDivider = Math.Floor(div);
+                taskDivider = Math.Floor(div) ;
             }
             else
             {
                 split = 1;
             }
 
-            if (split == 1)
+            if(split == 1)
             {
                 proxyLists.Add("1", proxyList);
                 usedLists.Add("1", new List<string>());
@@ -67,7 +67,7 @@ namespace UnleashedAIO
                 {
 
                     List<string> newList;
-                    if (x == split)
+                    if(x == split)
                     {
                         newList = new List<string>();
                     }
@@ -83,10 +83,10 @@ namespace UnleashedAIO
 
         }
 
-        public static string getProxy(string currentProxy, int taskNumber, bool isBad)
+        public static string getProxy(string currentProxy, int taskNumber,bool isBad)
         {
             string listName = "1";
-            if (split > 1)
+            if(split > 1)
             {
                 double floatAnswer = taskNumber / taskDivider;
                 double listNameInt = Math.Ceiling(floatAnswer);
