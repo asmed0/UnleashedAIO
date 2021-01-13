@@ -13,7 +13,7 @@ const adyenKey = "10001|A237060180D24CDEF3E4E27D828BDB6A13E12C6959820770D7F2C167
 const cseInstance = adyenEncrypt.createEncryption(adyenKey, {});
 
 function getResponseJsonFromRequestJson(req){
-    let num = formatCardNumber(req.params.num);
+    let num = req.params.num;
     let cvv = req.params.cvv;
     let monthv = req.params.month;
     let yearv = "20" +req.params.year;
