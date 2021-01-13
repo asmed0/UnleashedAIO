@@ -83,10 +83,10 @@ namespace UnleashedAIO.Modules
             if(_proxy == "NAP")
             {
 
-                Console.WriteLine($"{Program.timestamp()}{_taskNumber} NAPPING " + _proxy);
+                Console.WriteLine($"{Program.timestamp()}{_taskNumber} No proxies available, ending task.. ");
                 Thread.Sleep(Timeout.Infinite);
             }
-            Console.WriteLine($"{Program.timestamp()}{_taskNumber}NOT NAPPING " + _proxy);
+            Console.WriteLine($"{Program.timestamp()}{_taskNumber}Task starting..");
             //Program.ChangeColor(ConsoleColor.DarkGray);
             //Console.WriteLine($"{Program.timestamp()}{_taskNumber} Task Started! Marking Time");
             //Program.WriteLog("log",$"{Program.timestamp()}{_taskNumber} Task Started! Marking Time");
