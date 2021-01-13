@@ -96,6 +96,10 @@ namespace UnleashedAIO
             {
                 double floatAnswer = taskNumber / taskDivider;
                 double listNameInt = Math.Ceiling(floatAnswer);
+                if(listNameInt > split)
+                {
+                    listNameInt = split;
+                }
                 listName = listNameInt.ToString();
 
             }
