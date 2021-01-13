@@ -79,6 +79,14 @@ namespace UnleashedAIO.Modules
             _expYr = currentTask.ExpiryYear;
             _cvv = currentTask.CVV;
             _proxy = ProxyMaster.getProxy(taskIndex);
+
+            if(_proxy == "NAP")
+            {
+
+                Console.WriteLine($"{Program.timestamp()}{_taskNumber} NAPPING " + _proxy);
+                Thread.Sleep(Timeout.Infinite);
+            }
+            Console.WriteLine($"{Program.timestamp()}{_taskNumber}NOT NAPPING " + _proxy);
             //Program.ChangeColor(ConsoleColor.DarkGray);
             //Console.WriteLine($"{Program.timestamp()}{_taskNumber} Task Started! Marking Time");
             //Program.WriteLog("log",$"{Program.timestamp()}{_taskNumber} Task Started! Marking Time");
