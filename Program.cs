@@ -122,7 +122,7 @@ namespace UnleashedAIO
                 var selection = Convert.ToInt32(Console.ReadLine());
                 if (selection < fileNames.Length)
                 {
-                    ProxyMaster.setProxyList(new List<string>(File.ReadAllLines(fileNames[selection])));
+                    ProxyMaster.setProxyList(Tasks.Count, new List<string>(File.ReadAllLines(fileNames[selection])));
                 }
                 else
                 {

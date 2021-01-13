@@ -25,9 +25,8 @@ namespace UnleashedAIO
             return getProxy(null, taskNumber, false);
         }
 
-        public static void setProxyList(List<string> proxyList)
+        public static void setProxyList(int totalTasks,List<string> proxyList)
         {
-            int totalTasks = proxyList.Count;
                     
             if (totalTasks > 4)
             {
@@ -63,6 +62,7 @@ namespace UnleashedAIO
             else
             {
 
+                int count = proxyList.Count / split;
                 for (int x = 1; x <= split; ++x)
                 {
 
@@ -74,7 +74,7 @@ namespace UnleashedAIO
                     else
                     {
                         newList = new List<string>();
-                        int count = proxyList.Count;
+                      
                         for (int r = 0; r < count; ++r)
                         {
                             newList.Add(proxyList[0]);
@@ -84,6 +84,8 @@ namespace UnleashedAIO
                     proxyLists.Add(x.ToString(), newList);
                     usedLists.Add(x.ToString(), new List<string>());
                     badLists.Add(x.ToString(), new List<string>());
+
+                    Console.WriteLine($"{Program.timestamp()} " + newList.Count);
                 }
             }
 
@@ -97,6 +99,7 @@ namespace UnleashedAIO
                 double floatAnswer = taskNumber / taskDivider;
                 double listNameInt = Math.Ceiling(floatAnswer);
                 listName = listNameInt.ToString();
+
             }
             List<string> proxyList = proxyLists[listName];
             List<string> usedProxies = usedLists[listName];
