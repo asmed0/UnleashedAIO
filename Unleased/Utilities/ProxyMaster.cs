@@ -84,8 +84,6 @@ namespace UnleashedAIO
                     proxyLists.Add(x.ToString(), newList);
                     usedLists.Add(x.ToString(), new List<string>());
                     badLists.Add(x.ToString(), new List<string>());
-
-                    Console.WriteLine($"{Program.timestamp()} " + newList.Count);
                 }
             }
 
