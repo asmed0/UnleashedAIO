@@ -69,11 +69,17 @@ namespace UnleashedAIO
                     List<string> newList;
                     if(x == split)
                     {
-                        newList = new List<string>();
+                        newList = new List<string>(proxyList);
                     }
                     else
                     {
                         newList = new List<string>();
+                        int count = proxyList.Count;
+                        for (int r = 0; r < count; ++r)
+                        {
+                            newList.Add(proxyList[0]);
+                            proxyList.RemoveAt(0);
+                        }
                     }
                     proxyLists.Add(x.ToString(), newList);
                     usedLists.Add(x.ToString(), new List<string>());
