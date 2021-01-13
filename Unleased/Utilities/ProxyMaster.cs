@@ -17,39 +17,81 @@ namespace UnleashedAIO
 
         public static Random rand = new Random();
 
-
-        public static void setupProxyListsFromFolder(string filePath)
+        public static int split = 1;
+        public static double taskDivider = 1;
+       
+        public static string getProxy(int taskNumber)
         {
-           
-            string[] fileNames = Directory.GetFiles(filePath);
-            if (fileNames.Length > 0) {
-                Parallel.ForEach(fileNames, (path) =>
+            return getProxy(null, taskNumber, false);
+        }
+
+        public static void setProxyList(List<string> proxyList)
+        {
+            int totalTasks = proxyList.Count;
+                    
+            if (totalTasks > 4)
+            {
+                if (totalTasks > 40)
                 {
-                    if (path.Contains(".txt"))
+                    if (totalTasks > 100)
                     {
-                        string[] stringarray = File.ReadAllLines(path);
-                        List<string> proxylist = new List<string>(stringarray);
-                        string name = Path.GetFileName(path).Replace(".txt", "");
-                        setProxyList(name, proxylist);
+                        split = 10;
                     }
-                });
+                    else
+                    {
+                        split = 4;
+                    }
+                }
+                else
+                {
+                    split = 2;
+                }
+                double div = totalTasks / split;
+                taskDivider = Math.Floor(div) ;
             }
             else
             {
-                Program.ChangeColor(ConsoleColor.Red);
-                Console.WriteLine($"{Program.timestamp()} YIKES! Looks like you Have no Proxies! You should Add Proxies to make your tasks start! Folder is set in Config! Idk, Watch the Video Please? If we made one...");
+                split = 1;
             }
+
+            if(split == 1)
+            {
+                proxyLists.Add("1", proxyList);
+                usedLists.Add("1", new List<string>());
+                badLists.Add("1", new List<string>());
+            }
+            else
+            {
+
+                for (int x = 1; x <= split; ++x)
+                {
+
+                    List<string> newList;
+                    if(x == split)
+                    {
+                        newList = new List<string>();
+                    }
+                    else
+                    {
+                        newList = new List<string>();
+                    }
+                    proxyLists.Add(x.ToString(), newList);
+                    usedLists.Add(x.ToString(), new List<string>());
+                    badLists.Add(x.ToString(), new List<string>());
+                }
+            }
+
         }
 
-        public static void setProxyList(string name,List<string> proxyList)
+        public static string getProxy(string currentProxy, int taskNumber,bool isBad)
         {
-            proxyLists.Add(name, proxyList);
-            usedLists.Add(name, new List<string>());
-            badLists.Add(name, new List<string>());
-        }
-
-        public static string getProxy(string currentProxy, string listName,bool isBad)
-        {
+            string listName = "1";
+            if(split > 1)
+            {
+                double floatAnswer = taskNumber / taskDivider;
+                double listNameInt = Math.Ceiling(floatAnswer);
+                listName = listNameInt.ToString();
+            }
             List<string> proxyList = proxyLists[listName];
             List<string> usedProxies = usedLists[listName];
             List<string> badList = badLists[listName];
@@ -60,6 +102,7 @@ namespace UnleashedAIO
                 {
                     badLists[listName].Add(currentProxy);
                 }
+                usedLists[listName].Remove(currentProxy);
             }
             if ((proxyList.Count - badList.Count) > usedProxies.Count)
             {
@@ -85,9 +128,6 @@ namespace UnleashedAIO
                 return "NAP";
             }
         }
-
-
-
     }
 
 }
