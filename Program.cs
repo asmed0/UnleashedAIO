@@ -36,23 +36,24 @@ namespace UnleashedAIO
         public static readonly string version = "0.1.0"; //version
         public static int checkoutCounter = 0; //successful checkouts
         public static int failedCounter = 0; //failed checkouts
-        public static string discordUsername; //value assigned when passed auth
-        public static Random random = new Random(); //global random object
         public static int delayBetweenTasks = 3;
+        public static Random random = new Random(); //global random object
 
         // Task variables
         private static List<TinyCsvParser.Mapping.CsvMappingResult<Tasks>> Tasks = new List<CsvMappingResult<Tasks>>(); //local task object
-        private static readonly string taskPath = "tasks.csv"; //path of our taskfile
+        private static readonly string taskFolderPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\UnleashedAIO\\Tasks";
         private static readonly int taskCap = 1000;
 
         //Proxy list variable
-        private static string[] proxies; //local proxy object  
-        private static readonly string proxyPath = "proxies.txt"; //path of our proxyfile
+        private static readonly string proxyFolderPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\UnleashedAIO\\Proxies";
+
 
 
         //RPC variables
         private static readonly string discordAppId = "741032897368162344"; // discord app id, from dev settings
         public static DiscordRpcClient Client { get; private set; } //rpc client
+
+        public static string discordUsername; //value assigned when passed auth
 
         //Config variables
         private static configJson configObject = new configJson(); //our config object
@@ -61,6 +62,11 @@ namespace UnleashedAIO
         public static string timestamp()
         {
             return $"[{DateTime.Now}] ";
+        }
+        //CLI logger color
+        public static void ChangeColor(ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
         }
 
 
@@ -84,11 +90,6 @@ namespace UnleashedAIO
             });
         }
 
-        //CLI logger color
-        public static void ChangeColor(ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-        }
 
         //Config loading function
         public static void LoadConfig()
@@ -100,37 +101,86 @@ namespace UnleashedAIO
 
         }
 
-        //Tasks loading function
-        public static void LoadTasks()
-        {
-            // Task parsing settings
-            CsvParserOptions csvParserOptions = new CsvParserOptions(true, new QuotedStringTokenizer(','));
-            CsvReaderOptions csvReaderOptions = new CsvReaderOptions(new[] { Environment.NewLine });
-            CsvTasksMapping csvMapper = new CsvTasksMapping();
-            CsvParser<Tasks> csvParser = new CsvParser<Tasks>(csvParserOptions, csvMapper);
-
-            ChangeColor(ConsoleColor.Cyan);
-            Console.WriteLine($"{timestamp()}Loading files: [{taskPath}] [{proxyPath}]");
-            Tasks = csvParser
-                .ReadFromFile(taskPath, Encoding.ASCII)
-                .ToList();
-        }
         public static void LoadProxies()
         {
-            proxies = File.ReadAllLines("proxies.txt");
+            string[] fileNames = Directory.GetFiles(proxyFolderPath);
+            if (fileNames.Length > 0)
+            {
+                Program.ChangeColor(ConsoleColor.Cyan);
+                Console.WriteLine($"\n{timestamp()}Found {fileNames.Length} proxy files");
+                Program.ChangeColor(ConsoleColor.White);
+                Console.WriteLine("------------------------------------------------");
+                for (int i = 0; i < fileNames.Length; i++)
+                {
+                    Program.ChangeColor(ConsoleColor.Cyan);
+                    Console.WriteLine($"{i}. [{fileNames[i].Split('\\')[6]}]");
+                }
+                Program.ChangeColor(ConsoleColor.White);
+                Console.WriteLine("------------------------------------------------");
+                Program.ChangeColor(ConsoleColor.Cyan);
+                Console.Write($"Input selection: ");
+                var selection = Convert.ToInt32(Console.ReadLine());
+                if (selection < fileNames.Length)
+                {
+                    ProxyMaster.setProxyList(new List<string>(File.ReadAllLines(fileNames[selection])));
+                }
+                else
+                {
+                    Program.ChangeColor(ConsoleColor.Red);
+                    Console.WriteLine($"{timestamp()}Oops, your selection was invalid! Please try again..");
+                    LoadProxies();
+                }
+            }
+        }
+
+        public static void LoadTasks()
+        {
+            string[] fileNames = Directory.GetFiles(taskFolderPath);
+            if (fileNames.Length > 0)
+            {
+                Program.ChangeColor(ConsoleColor.Cyan);
+                Console.WriteLine($"\n{timestamp()}Found {fileNames.Length} task files");
+                Program.ChangeColor(ConsoleColor.White);
+                Console.WriteLine("------------------------------------------------");
+                for (int i = 0; i < fileNames.Length; i++)
+                {
+                    Program.ChangeColor(ConsoleColor.Cyan);
+                    Console.WriteLine($"{i}. [{fileNames[i].Split('\\')[6]}]");
+                }
+                Program.ChangeColor(ConsoleColor.White);
+                Console.WriteLine("------------------------------------------------");
+                Program.ChangeColor(ConsoleColor.Cyan);
+                Console.Write($"Input selection: ");
+                var selection = Convert.ToInt32(Console.ReadLine());
+                if (selection < fileNames.Length)
+                {
+                    CsvParserOptions csvParserOptions = new CsvParserOptions(true, new QuotedStringTokenizer(','));
+                    CsvTasksMapping csvMapper = new CsvTasksMapping();
+                    CsvParser<Tasks> csvParser = new CsvParser<Tasks>(csvParserOptions, csvMapper);
+
+                    ChangeColor(ConsoleColor.Cyan);
+                    Tasks = csvParser
+                        .ReadFromFile(fileNames[selection], Encoding.ASCII)
+                        .ToList();
+                }
+                else
+                {
+                    Program.ChangeColor(ConsoleColor.Red);
+                    Console.WriteLine($"{timestamp()}Oops, your selection was invalid! Please try again..");
+                    LoadTasks();
+                }
+            }
         }
 
         static async Task Main(string[] args)
         {
             //DisableConsoleQuickEdit.Go();
             Console.Title = $"UnleashedAIO - for more info visit UnleashedAIO.com";
-            RichPresence();
             LoadConfig();
 
             ChangeColor(ConsoleColor.Cyan);
             Console.WriteLine(art.logoart);
             Console.WriteLine($@"{timestamp()}Checking license...");
-            ProxyMaster.setupProxyListsFromFolder(configObject.proxyPath);
 
             if (configObject.license_key != "")
             {
@@ -139,11 +189,12 @@ namespace UnleashedAIO
                     try
                     {
                         Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter} Success / {Program.failedCounter} failed]";
+
+                        RichPresence();
                         LoadTasks();
                         LoadProxies();
 
                         ChangeColor(ConsoleColor.Yellow);
-                        Console.WriteLine($"{timestamp()}Loaded [{Tasks.Count}] tasks & [{proxies.Length}] proxies");
                         if (Tasks.Count > taskCap)
                         {
                             ChangeColor(ConsoleColor.Red);
@@ -160,19 +211,19 @@ namespace UnleashedAIO
                         {
                             new Thread(() =>
                             {
-                                TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                                TaskStarterAsync(currentTask.Result, currentTask.RowIndex, delayBetweenTasks);
                             }).Start();
                         });
 
 
                         //slow 1 by 1
-                       // foreach(var currentTask in Tasks)
-                       // {
-                       //     new Thread(() =>
+                        // foreach(var currentTask in Tasks)
+                        // {
+                        //     new Thread(() =>
                         //    {
-                       //         TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
-                       //     }).Start();
-                      //  }
+                        //         TaskStarterAsync(currentTask.Result, proxies, currentTask.RowIndex, delayBetweenTasks);
+                        //     }).Start();
+                        //  }
 
                     }
                     catch (Exception)
@@ -188,18 +239,18 @@ namespace UnleashedAIO
             }
 
             Console.Read();
-        
+
         }
 
 
-        private static void TaskStarterAsync(Tasks currentTask, string[] proxies, int taskNumber, int delay)
+        private static void TaskStarterAsync(Tasks currentTask, int taskNumber, int delay)
         {
             bool taskBool = false;
             switch (currentTask.Store.ToLower())
             {
                 case "footlocker eu":
                     FootlockerEU FootlockerEUObj = new FootlockerEU();
-                    if (FootlockerEUObj.StartTaskAsync(currentTask, proxies[taskNumber-1], $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay))
+                    if (FootlockerEUObj.StartTaskAsync(currentTask, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay, taskNumber))
                     {
                         checkoutCounter++;
                         Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
@@ -236,7 +287,7 @@ namespace UnleashedAIO
                 //        await TaskStarterAsync(currentTask, proxies, taskNumber, delay);
                 //    }
                 //    break;
-                        
+
 
                 default:
                     Console.WriteLine($"{timestamp()}[Task {taskNumber}] Invalid store!");

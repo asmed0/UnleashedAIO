@@ -11,20 +11,19 @@ namespace UnleashedAIO.Modules
 {
     class FootlockerEU
     {
+        public int retryOnFailAttempts = 10000;
 
-            public int retryOnFailAttempts = 100;
+        //program vars
+        public string _taskNumber;
+        public int _delay;
+        public string _proxy;
 
-            //program vars
-            public string _taskNumber;
-            public int _delay;
-            public string _proxy;
-
-            //will be used later on
-            public string _productName;
-            public string _sizeCode;
-            public string _releaseTimer;
-         public string _productImage;
-         public double _price;
+        //will be used later on
+        public string _productName;
+        public string _sizeCode;
+        public string _releaseTimer;
+        public string _productImage;
+        public double _price;
 
         //profile vars
         public string _mode;
@@ -54,14 +53,12 @@ namespace UnleashedAIO.Modules
         public string _shippingId;
 
         private tlsSolution tlsClient = new tlsSolution();
-        private tlsSolution.methodChain chain = new tlsSolution.methodChain();
-        public bool StartTaskAsync(Tasks currentTask, string proxyString, string taskNumber, int delay)
+        public bool StartTaskAsync(Tasks currentTask, string taskNumber, int delay, int taskIndex)
         {
 
             //binding program vars
             _taskNumber = taskNumber;
             _delay = delay;
-            _proxy = proxyString;
 
             //binding profile vars
             _mode = currentTask.Mode;
@@ -81,7 +78,7 @@ namespace UnleashedAIO.Modules
             _expMon = currentTask.ExpiryMonth;
             _expYr = currentTask.ExpiryYear;
             _cvv = currentTask.CVV;
-            _proxy = proxyString;
+            _proxy = ProxyMaster.getProxy(taskIndex);
             //Program.ChangeColor(ConsoleColor.DarkGray);
             //Console.WriteLine($"{Program.timestamp()}{_taskNumber} Task Started! Marking Time");
             //Program.WriteLog("log",$"{Program.timestamp()}{_taskNumber} Task Started! Marking Time");
@@ -114,7 +111,7 @@ namespace UnleashedAIO.Modules
 
 
             //fetching product details
-            for (int attempts = 0; attempts < 2; attempts++, _delay += 100) 
+            for (int attempts = 0; attempts < 2; attempts++, _delay += 100)
             {
                 if (GetProductInfos())
                 {
@@ -124,7 +121,7 @@ namespace UnleashedAIO.Modules
                     Thread.Sleep(_delay);
                     break;
                 }
-                
+
                 Thread.Sleep(_delay);
             }
 
@@ -170,7 +167,7 @@ namespace UnleashedAIO.Modules
                     Thread.Sleep(_delay);
                     break;
                 }
-                Thread.Sleep(_delay);
+                //Thread.Sleep(_delay);
             }
 
             //adding shipping
@@ -186,6 +183,7 @@ namespace UnleashedAIO.Modules
                 }
                 Thread.Sleep(_delay);
             }
+
             ////adding billing -- will be implemented soon.. 
             //for (int attempts = 0; attempts < vars.retryOnFailAttempts; attempts++, vars._delay += 100)
             //{
@@ -207,6 +205,7 @@ namespace UnleashedAIO.Modules
 
         private bool AddShipping()
         {
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
             chain.AddHeader("authority", $"www.footlocker.{_region}")
             .AddHeader("pragma", "no-cache")
             .AddHeader("cache-control", "no-cache")
@@ -244,7 +243,7 @@ namespace UnleashedAIO.Modules
 
             string body = JsonConvert.SerializeObject(shippingObj);
 
-            string submitShipping = tlsClient.postRequest($"https://www.footlocker.{_region}/api/users/carts/current/addresses/shipping",chain.headers, body, _proxy);
+            string submitShipping = tlsClient.postRequest($"https://www.footlocker.{_region}/api/users/carts/current/addresses/shipping", chain.headers, body, _proxy);
             try
             {
                 chain.collectCookies(submitShipping).headers.Clear();
@@ -276,10 +275,13 @@ namespace UnleashedAIO.Modules
                 _shippingId = submitShippingObj.Id;
                 return true;
             }
+
             return false;
         }
         private bool InitiateCheckout()
         {
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
+
             chain.AddHeader("authority", $"www.footlocker.{_region}")
             .AddHeader("content-length", "0")
             .AddHeader("pragma", "no-cache")
@@ -288,7 +290,7 @@ namespace UnleashedAIO.Modules
             .AddHeader("x-csrf-token", _csrf)
             .AddHeader("x-api-lang", "en-GB")
             .AddHeader("accept-language", "en-GB,en;q=0.9")
-            .AddHeader("user-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+            .AddHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
             .AddHeader("origin", $"https://www.footlocker.{_region}")
             .AddHeader("sec-fetch-site", "same-origin")
             .AddHeader("sec-fetch-mode", "cors")
@@ -297,37 +299,33 @@ namespace UnleashedAIO.Modules
             .AddHeader("Cookie", $"{_sessionId}; {_cartId}");
 
             string initCheckout = tlsClient.putRequest($"https://www.footlocker.{_region}/api/users/carts/current/email/{_email}", chain.headers, _proxy);
-            try
-            {
-                chain.collectCookies(initCheckout).headers.Clear();
 
-            }
-            catch (Exception)
-            {
-                Program.ChangeColor(ConsoleColor.Red);
-                Console.WriteLine($"{Program.timestamp()}{_taskNumber}Failed setting headers, retrying..");
-                return false;
-            }
+            //try
+            //{
+            //    chain.collectCookies(initCheckout).headers.Clear();
 
-            goTLSResponse initCheckoutObj = null;
-            try
-            {
-                initCheckoutObj = JsonConvert.DeserializeObject<goTLSResponse>(initCheckout);
-            }
-            catch (Exception)
-            {
-                Program.ChangeColor(ConsoleColor.Red);
-                Console.WriteLine($"{Program.timestamp()}{_taskNumber}Could not read response upon checkout initialization, retrying..");
-                return false;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    Program.ChangeColor(ConsoleColor.Red);
+            //    Console.WriteLine($"{Program.timestamp()}{_taskNumber}Failed setting headers, retrying..");
+            //    return false;
+            //}
+
+            goTLSResponse initCheckoutObj = JsonConvert.DeserializeObject<goTLSResponse>(initCheckout);
+
             if (initCheckoutObj != null && initCheckoutObj.Status == 200)
             {
                 return true;
             }
+            Program.ChangeColor(ConsoleColor.Red);
+            Console.WriteLine($"{Program.timestamp()}{_taskNumber}Failed initiating checkout, retrying..");
             return false;
         }
         private bool AddToCart()
         {
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
+
             chain.AddHeader("authority", $"www.footlocker.{_region}")
             .AddHeader("pragma", "no-cache")
             .AddHeader("cache-control", "no-cache")
@@ -337,7 +335,7 @@ namespace UnleashedAIO.Modules
             .AddHeader("x-fl-productid", _sizeCode)
             .AddHeader("content-type", "application/json")
             .AddHeader("accept", "application/json")
-            .AddHeader("user-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
+            .AddHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
             .AddHeader("origin", $"https://www.footlocker.{_region}")
             .AddHeader("sec-fetch-site", "same-origin")
             .AddHeader("sec-fetch-mode", "cors")
@@ -381,6 +379,8 @@ namespace UnleashedAIO.Modules
         }
         private bool NewSession()
         {
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
+
             chain.AddHeader("authority", $"www.footlocker.{_region}")
             .AddHeader("pragma", "no-cache")
             .AddHeader("cache-control", "no-cache")
@@ -393,7 +393,7 @@ namespace UnleashedAIO.Modules
             .AddHeader("sec-fetch-dest", "empty")
             .AddHeader("referer", $"https://www.footlocker.{_region}/en/product/-/{_product}.html");
 
-            string getSession = tlsClient.getRequest($"https://www.footlocker.{_region}/api/session",chain.headers, _proxy);
+            string getSession = tlsClient.getRequest($"https://www.footlocker.{_region}/api/session", chain.headers, _proxy);
             try
             {
                 chain.collectCookies(getSession).headers.Clear();
@@ -420,7 +420,7 @@ namespace UnleashedAIO.Modules
                 Console.WriteLine($"{Program.timestamp()}{_taskNumber}Could not generate session, retrying..");
                 return false;
             }
-            if(sessionResponse != null && sessionResponseObj != null && sessionResponseObj.Success)
+            if (sessionResponse != null && sessionResponseObj != null && sessionResponseObj.Success)
             {
                 _csrf = sessionResponseObj.Data.CsrfToken;
                 _sessionId = sessionResponse.Cookies[0];
@@ -431,6 +431,7 @@ namespace UnleashedAIO.Modules
 
         private bool GetProductInfos()
         {
+            tlsSolution.methodChain chain = new tlsSolution.methodChain();
 
             chain.AddHeader("authority", $"www.footlocker.{_region}")
             .AddHeader("pragma", "no-cache")
