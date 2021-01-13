@@ -5559,11 +5559,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedBackup\\UnleashedAIO.csproj",
+      "projectUniqueName": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj",
       "projectName": "UnleashedAIO",
-      "projectPath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedBackup\\UnleashedAIO.csproj",
+      "projectPath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj",
       "packagesPath": "C:\\Users\\gouda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedBackup\\obj\\",
+      "outputPath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gouda\\AppData\\Roaming\\NuGet\\NuGet.Config",
