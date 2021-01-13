@@ -1,0 +1,8 @@
+{
+"license_key":"JKZ5-78C1-VMCD-39IJ",
+"captchaKey":"",
+"delayBetweenTasks":0,
+"success_webhook":"",
+"fail_webhook":"",
+"proxyPath":"C:\\Users\\Drizzs\\Desktop\\Proxies"
+}
