@@ -1,0 +1,14 @@
+{
+  "name": "encryptionapi",
+  "version": "1.0.0",
+  "description": "encrypts credit data for users",
+  "main": "api.js",
+  "scripts": {
+    "test": "main"
+  },
+  "author": "drizzs",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

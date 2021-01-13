@@ -1,8 +1,0 @@
-{
-"license_key":"3TPQ-QG4E-QTDE-D2M8",
-"captchaKey":"",
-"delayBetweenTasks":0,
-"success_webhook":"",
-"fail_webhook":"",
-"proxyPath":"C:\\Users\\Drizzs\\Desktop\\Proxies"
-}
