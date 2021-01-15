@@ -56,7 +56,7 @@ namespace UnleashedAIO
         public static string discordUsername; //value assigned when passed auth
 
         //Config variables
-        private static configJson configObject = new configJson(); //our config object
+        public static configJson configObject = new configJson(); //our config object
 
         //timestamp function
         public static string timestamp()
