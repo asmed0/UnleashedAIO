@@ -9,8 +9,8 @@ namespace UnleashedAIO.Modules
 {
     class WebhookSend
     {
-        public static readonly DiscordWebhookClient publicWebhook = new DiscordWebhookClient("https://discord.com/api/webhooks/765629124084760617/t3-K9xCyjTv6VAU4eb6ZNysBqxZ8VkJotNj_Apgfg-H2UMW4uDWUrC_Eh1QgbmmJ-3oH");
-        public async void Send(DiscordWebhookClient webhookClient, string site, string url, string size, string description, TimeSpan checkoutTimeSpan = default)
+        public static readonly DiscordWebhookClient publicWebhook = new DiscordWebhookClient("https://discord.com/api/webhooks/799089710218870826/X5jJpLxnvdhljDaHTDB6xEQsZhCjkZ4lfQqEpDJV0N3gzjaBtreKsQz-DZeXHgmDukQb");
+        public async void Send(DiscordWebhookClient webhookClient, string site, string url, string size, string description, TimeSpan checkoutTimeSpan = default, string orderNumber = default)
         {
             var successEmbed = new EmbedBuilder
             {
@@ -23,9 +23,13 @@ namespace UnleashedAIO.Modules
                 },
                 Color = Discord.Color.Green
             };
-            successEmbed.AddField("Site", site, true);
-            successEmbed.AddField("Url", url, true);
+            successEmbed.AddField("Store", site, true);
+            successEmbed.AddField("Product", url, true);
             successEmbed.AddField("Size", size, true);
+            if (orderNumber != default)
+            {
+                successEmbed.AddField("Order number", $"||{orderNumber}||", true);
+            }
             if (checkoutTimeSpan != default)
             {
                 successEmbed.AddField("Checkout Time", $"{checkoutTimeSpan.Minutes}minute(s) {checkoutTimeSpan.Seconds}second(s)", true);

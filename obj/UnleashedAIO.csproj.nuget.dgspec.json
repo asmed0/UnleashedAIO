@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Drizzs\\Documents\\UnleashedAIO\\UnleashedAIO.csproj": {}
+    "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Drizzs\\Documents\\UnleashedAIO\\UnleashedAIO.csproj": {
+    "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Drizzs\\Documents\\UnleashedAIO\\UnleashedAIO.csproj",
+        "projectUniqueName": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj",
         "projectName": "UnleashedAIO",
-        "projectPath": "C:\\Users\\Drizzs\\Documents\\UnleashedAIO\\UnleashedAIO.csproj",
-        "packagesPath": "C:\\Users\\Drizzs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Drizzs\\Documents\\UnleashedAIO\\obj\\",
+        "projectPath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj",
+        "packagesPath": "C:\\Users\\gouda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Drizzs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gouda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Discord.Net": {
               "target": "Package",
@@ -100,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
