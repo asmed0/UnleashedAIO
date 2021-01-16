@@ -74,7 +74,7 @@ function getResponseJsonFromRequestJson(req){
         generationtime: timestamp.toISOString()
     }
 
-    console.log(number)
+    console.log(`Encrypted for ${holderName}`)
 
     let encNum = cseInstance.encrypt(number)
     let encCVV = cseInstance.encrypt(cvc)
