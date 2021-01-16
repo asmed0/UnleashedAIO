@@ -1,8 +1,8 @@
 const http= require('http');
 const app = require("../api")
 
-const port =4050;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 
-server.listen(port);
+server.listen(PORT);
