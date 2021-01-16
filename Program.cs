@@ -94,11 +94,10 @@ namespace UnleashedAIO
         //Config loading function
         public static void LoadConfig()
         {
-            var configFile = File.ReadAllText("config.txt");
+            var configFile = File.ReadAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\UnleashedAIO\\config.txt");
             configObject = JsonConvert.DeserializeObject<configJson>(configFile);
             configObject.delayBetweenTasks *= 1000; // seconds to milliseconds
             delayBetweenTasks = Convert.ToInt32(configObject.delayBetweenTasks);
-
         }
 
         public static void LoadProxies()
@@ -178,6 +177,7 @@ namespace UnleashedAIO
             Console.Title = $"UnleashedAIO - for more info visit UnleashedAIO.com";
             LoadConfig();
 
+
             ChangeColor(ConsoleColor.Cyan);
             Console.WriteLine(art.logoart);
             Console.WriteLine($@"{timestamp()}Checking license...");
@@ -193,6 +193,7 @@ namespace UnleashedAIO
                         RichPresence();
                         LoadTasks();
                         LoadProxies();
+
 
                         ChangeColor(ConsoleColor.Yellow);
                         if (Tasks.Count > taskCap)

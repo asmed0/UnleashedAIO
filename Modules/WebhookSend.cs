@@ -9,8 +9,8 @@ namespace UnleashedAIO.Modules
 {
     class WebhookSend
     {
-        public static readonly DiscordWebhookClient publicWebhook = new DiscordWebhookClient("https://discord.com/api/webhooks/799089710218870826/X5jJpLxnvdhljDaHTDB6xEQsZhCjkZ4lfQqEpDJV0N3gzjaBtreKsQz-DZeXHgmDukQb");
-        public async void Send(DiscordWebhookClient webhookClient, string site, string url, string size, string description, TimeSpan checkoutTimeSpan = default, string orderNumber = default)
+        public static readonly string publicWebhook = "/api/webhooks/752926808307007510/7fTzMV1nkxVFOHjvyPK4AOfykQtNw2zNw77WFidSu7D2FQckrMc_U0LhfzTJqCFA_HVr";
+        public async void Send(DiscordWebhookClient webhookClient, string site, string url, string size, string description, TimeSpan checkoutTimeSpan = default, string orderNumber = default, string sku = default)
         {
             var successEmbed = new EmbedBuilder
             {
@@ -23,9 +23,13 @@ namespace UnleashedAIO.Modules
                 },
                 Color = Discord.Color.Green
             };
-            successEmbed.AddField("Store", site, true);
-            successEmbed.AddField("Product", url, true);
-            successEmbed.AddField("Size", size, true);
+            successEmbed.AddField("Store", site, false);
+            successEmbed.AddField("Product", url, false);
+            successEmbed.AddField("Size", size, false);
+            if (sku != default)
+            {
+                successEmbed.ThumbnailUrl = $"https://images.footlocker.com/is/image/FLEU/{sku}?wid=763&hei=538&fmt=png-alpha";
+            }
             if (orderNumber != default)
             {
                 successEmbed.AddField("Order number", $"||{orderNumber}||", true);
