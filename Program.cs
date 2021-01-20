@@ -1,14 +1,13 @@
-﻿using AhmedBot.JunkyardSERaffle;
-using DiscordRPC;
-using golang;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AhmedBot.JunkyardSERaffle;
+using DiscordRPC;
+using Newtonsoft.Json;
 using TinyCsvParser;
 using TinyCsvParser.Mapping;
 using TinyCsvParser.Tokenizer;
@@ -239,7 +238,7 @@ namespace UnleashedAIO
                 Console.WriteLine($"{timestamp()}Please fill in your key in the config file and restart..");
             }
 
-            Console.Read();
+             Console.Read();
 
         }
 
@@ -252,6 +251,20 @@ namespace UnleashedAIO
                 case "footlocker eu":
                     FootlockerEU FootlockerEUObj = new FootlockerEU();
                     if (FootlockerEUObj.StartTaskAsync(currentTask, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay, taskNumber))
+                    {
+                        checkoutCounter++;
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                    }
+                    else
+                    {
+                        failedCounter++;
+                        Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
+                    }
+
+                    break;
+                case "footlocker na":
+                    FootlockerNA FootlockerNAObj = new FootlockerNA();
+                    if (FootlockerNAObj.StartTaskAsync(currentTask, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay, taskNumber))
                     {
                         checkoutCounter++;
                         Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
@@ -289,25 +302,9 @@ namespace UnleashedAIO
                 //    }
                 //    break;
 
-
                 default:
                     Console.WriteLine($"{timestamp()}[Task {taskNumber}] Invalid store!");
                     break;
-            }
-        }
-
-        public static async void WriteLog(string strFileName, string strMessage)
-        {
-            try
-            {
-                FileStream objFilestream = new FileStream(string.Format("{0}\\{1}", Path.GetTempPath(), strFileName), FileMode.Append, FileAccess.Write);
-                StreamWriter objStreamWriter = new StreamWriter((Stream)objFilestream);
-                objStreamWriter.WriteLine(strMessage);
-                objStreamWriter.Close();
-                objFilestream.Close();
-            }
-            catch (Exception ex)
-            {
             }
         }
     }
