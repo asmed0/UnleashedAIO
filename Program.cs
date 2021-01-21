@@ -33,7 +33,7 @@ namespace UnleashedAIO
     class Program
     {
         //Diverse
-        public static readonly string version = "0.1.0"; //version
+        public static readonly string version = "0.1.1"; //version
         public static int checkoutCounter = 0; //successful checkouts
         public static int failedCounter = 0; //failed checkouts
         public static int delayBetweenTasks = 3;
@@ -98,6 +98,7 @@ namespace UnleashedAIO
             configObject = JsonConvert.DeserializeObject<configJson>(configFile);
             configObject.delayBetweenTasks *= 1000; // seconds to milliseconds
             delayBetweenTasks = Convert.ToInt32(configObject.delayBetweenTasks);
+            configObject.webhook = new Uri(configObject.webhook).AbsolutePath;
         }
 
         public static void LoadProxies()
@@ -193,7 +194,6 @@ namespace UnleashedAIO
                         RichPresence();
                         LoadTasks();
                         LoadProxies();
-
 
                         ChangeColor(ConsoleColor.Yellow);
                         if (Tasks.Count > taskCap)

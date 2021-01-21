@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using RestSharp;
 using System.Web;
+using System.Net;
 
 namespace UnleashedAIO.Modules
 {
@@ -25,7 +26,7 @@ namespace UnleashedAIO.Modules
         //will be used later on
         private string _productName;
         private string _sizeCode;
-        private string _releaseTimer;
+        private DateTime _releaseTimer;
         private string _productImage;
         private double _price;
 
@@ -71,6 +72,9 @@ namespace UnleashedAIO.Modules
         private bool is3DS = false;
         private string _authToken;
         private string _transToken;
+        private bool firstTry = true;
+        private HttpClientHandler handler;
+
         public bool StartTaskAsync(Tasks currentTask, string taskNumber, int delay, int taskIndex)
         {
 
@@ -105,7 +109,25 @@ namespace UnleashedAIO.Modules
                 Console.WriteLine($"{timestamp()}{_taskNumber} No proxies available, ending task.. ");
                 Thread.Sleep(Timeout.Infinite);
             }
+
+            //Proxy parsing
+            string[] spearator = { ":" };
+            int count = 4;
+            string[] proxyObj = _proxy.Split(spearator, count,
+                StringSplitOptions.RemoveEmptyEntries);
+
+            IWebProxy proxy = new WebProxy(proxyObj[0], Int32.Parse(proxyObj[1]))
+            {
+                Credentials = new NetworkCredential(proxyObj[2], proxyObj[3])
+            };
+
+            handler = new HttpClientHandler()
+            {
+                Proxy = proxy,
+            };
+
             Console.WriteLine($"{timestamp()}{_taskNumber}Task starting..");
+
             //Program.ChangeColor(ConsoleColor.DarkGray);
             //Console.WriteLine($"{timestamp()}{_taskNumber} Task Started! Marking Time");
             //Program.WriteLog("log",$"{timestamp()}{_taskNumber} Task Started! Marking Time");
@@ -152,11 +174,6 @@ namespace UnleashedAIO.Modules
 
                         Thread.Sleep(_delay);
                         break;
-                    }
-                    if (attempts > 3)
-                    {
-                        StartTaskAsync(currentTask, taskNumber, delay, taskIndex);
-                        return false; //after 3 retries we assume that proxy is banned and switch to a new fresh task 
                     }
                     Thread.Sleep(_delay);
                 }
@@ -265,7 +282,7 @@ namespace UnleashedAIO.Modules
                 }
                 for (int attempts = 0; attempts < retryOnFailAttempts; attempts++)
                 {
-                    if (PayerAuthenticate())
+                    if (PayerAuthenticate().Result)
                     {
                         Program.ChangeColor(ConsoleColor.Green);
                         Console.WriteLine($"{timestamp()}{_taskNumber}Fetched 3DS challenge, now solving it..");
@@ -292,7 +309,7 @@ namespace UnleashedAIO.Modules
 
                 for (int attempts = 0; attempts < retryOnFailAttempts; attempts++)
                 {
-                    if (PayerSubmit())
+                    if (PayerSubmit().Result)
                     {
                         Program.ChangeColor(ConsoleColor.Green);
                         Console.WriteLine($"{timestamp()}{_taskNumber}Solved 3DS challenge, now finalizing checkout..");
@@ -367,70 +384,105 @@ namespace UnleashedAIO.Modules
             {
                 try
                 {
-                    webhookSend.Send(new Discord.Webhook.DiscordWebhookClient($"https://discordapp.com{Program.configObject.webhook}"), $"Footlocker {_region.ToUpper()}", completePaymentObj.Order.Entries[0].Product.BaseOptions[0].Selected.Name, _size,"",default, completePaymentObj.Order.Code,_product);
                     webhookSend.Send(new Discord.Webhook.DiscordWebhookClient($"https://discordapp.com{WebhookSend.publicWebhook}"), $"Footlocker {_region.ToUpper()}", completePaymentObj.Order.Entries[0].Product.BaseOptions[0].Selected.Name, _size, "", default, default, _product);
+                    webhookSend.Send(new Discord.Webhook.DiscordWebhookClient($"https://discordapp.com{Program.configObject.webhook}"), $"Footlocker {_region.ToUpper()}", completePaymentObj.Order.Entries[0].Product.BaseOptions[0].Selected.Name, _size,"",default, completePaymentObj.Order.Code,_product);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                 }
                 return true;
             }
             return false;
         }
-        private bool PayerSubmit()
+        private async Task<bool> PayerSubmit()
         {
-            var client = new RestClient("https://www.footlocker.se/adyen/checkout");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("authority", "www.footlocker.se");
-            request.AddHeader("pragma", "no-cache");
-            request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("upgrade-insecure-requests", "1");
-            request.AddHeader("origin", "https://idcheck.acs.touchtechpayments.com");
-            request.AddHeader("content-type", "application/x-www-form-urlencoded");
-            client.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36";
-            request.AddHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
-            request.AddHeader("sec-fetch-site", "cross-site");
-            request.AddHeader("sec-fetch-mode", "navigate");
-            request.AddHeader("sec-fetch-dest", "iframe");
-            request.AddHeader("referer", "https://idcheck.acs.touchtechpayments.com/");
-            request.AddHeader("accept-language", "en-US,en;q=0.9,sv;q=0.8");
-            request.AddHeader("cookie", $"{_sessionId} cart-guid={_cartId}");
-            request.AddParameter("PaRes", _paRes);
-            request.AddParameter("MD", _md);
-            IRestResponse response = client.Execute(request);
+            var client = new HttpClient(handler);
 
-            string pattern = @"(?<=type: ')(.*)(?=')";
-            RegexOptions options = RegexOptions.Multiline;
-            if (Regex.Matches(response.Content, pattern, options)[0].Value == "checkoutChallengeComplete" && response.IsSuccessful)
+            client.Timeout = Timeout.InfiniteTimeSpan;
+
+            var content = new Dictionary<string, string>();
+            content.Add("PaRes", _paRes);
+            content.Add("MD", _md);
+
+            var request = new HttpRequestMessage
             {
-                return true;
+                Method = HttpMethod.Post,
+                RequestUri = new Uri($"https://www.footlocker.{_region}/adyen/checkout"),
+                Content = new FormUrlEncodedContent(content)
+            };
+
+            request.Headers.Add("authority", "www.footlocker.se");
+            request.Headers.Add("pragma", "no-cache");
+            request.Headers.Add("cache-control", "no-cache");
+            request.Headers.Add("upgrade-insecure-requests", "1");
+            request.Headers.Add("origin", "https://idcheck.acs.touchtechpayments.com");
+            //request.Headers.Add("content-type", "application/x-www-form-urlencoded");
+            request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36");
+            request.Headers.Add("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+            request.Headers.Add("sec-fetch-site", "cross-site");
+            request.Headers.Add("sec-fetch-mode", "navigate");
+            request.Headers.Add("sec-fetch-dest", "iframe");
+            request.Headers.Add("referer", "https://idcheck.acs.touchtechpayments.com/");
+            request.Headers.Add("accept-language", "en-US,en;q=0.9,sv;q=0.8");
+            request.Headers.Add("cookie", $"{_sessionId} cart-guid={_cartId}");
+
+
+            var response = await client.SendAsync(request);
+            try
+            {
+                string pattern = @"(?<=type: ')(.*)(?=')";
+                RegexOptions options = RegexOptions.Multiline;
+                if (Regex.Matches(await response.Content.ReadAsStringAsync(), pattern, options)[0].Value == "checkoutChallengeComplete" && response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
             }
+            catch (Exception)
+            {
+
+                Program.ChangeColor(ConsoleColor.Red);
+                Console.WriteLine($"{timestamp()}{_taskNumber}Failed solving 3DS, retrying..");
+                return false;
+            }
+
             return false;
         }
-        private bool PayerAuthenticate()
+        private async Task<bool> PayerAuthenticate()
         {
-            var client = new RestClient("https://idcheck.acs.touchtechpayments.com/v1/payerAuthentication");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("authority", "idcheck.acs.touchtechpayments.com");
-            request.AddHeader("pragma", "no-cache");
-            request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("upgrade-insecure-requests", "1");
-            request.AddHeader("origin", $"https://www.footlocker.{_region}");
-            request.AddHeader("content-type", "application/x-www-form-urlencoded");
-            client.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36";
-            request.AddHeader("accept", "application/json");
-            request.AddHeader("sec-fetch-site", "cross-site");
-            request.AddHeader("sec-fetch-mode", "navigate");
-            request.AddHeader("sec-fetch-user", "?1");
-            request.AddHeader("sec-fetch-dest", "iframe");
-            request.AddHeader("referer", $"https://www.footlocker.{_region}");
-            request.AddHeader("accept-language", "en-US,en;q=0.9,sv;q=0.8");
-            request.AddParameter("MD", _md);
-            request.AddParameter("PaReq", _paReq);
-            request.AddParameter("TermUrl", _termURL);
-            IRestResponse response = client.Execute(request);
+            var client = new HttpClient(handler);
+
+            client.Timeout = Timeout.InfiniteTimeSpan;
+
+            var content = new Dictionary<string, string>();
+            content.Add("MD", _md);
+            content.Add("PaReq", _paReq);
+            content.Add("TermUrl", _termURL);
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri("https://idcheck.acs.touchtechpayments.com/v1/payerAuthentication"),
+                Content = new FormUrlEncodedContent(content),
+            };
+
+            request.Headers.Add("authority", "idcheck.acs.touchtechpayments.com");
+            request.Headers.Add("pragma", "no-cache");
+            request.Headers.Add("cache-control", "no-cache");
+            request.Headers.Add("upgrade-insecure-requests", "1");
+            request.Headers.Add("origin", $"https://www.footlocker.{_region}");
+            //request.Headers.Add("content-type", "application/x-www-form-urlencoded");
+            request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36");
+            request.Headers.Add("accept", "application/json");
+            request.Headers.Add("sec-fetch-site", "cross-site");
+            request.Headers.Add("sec-fetch-mode", "navigate");
+            request.Headers.Add("sec-fetch-user", "?1");
+            request.Headers.Add("sec-fetch-dest", "iframe");
+            request.Headers.Add("referer", $"https://www.footlocker.{_region}");
+            request.Headers.Add("accept-language", "en-US,en;q=0.9,sv;q=0.8");
+
+
+
+            var response = await client.SendAsync(request);
 
             try
             {
@@ -438,15 +490,15 @@ namespace UnleashedAIO.Modules
                 if (is3DS)
                 {
                     string pattern = @"(?<=pares = "")(.*)(?=;)";
-                    _paRes = Regex.Matches(response.Content, pattern, options)[0].Value;
+                    _paRes = Regex.Matches(await response.Content.ReadAsStringAsync(), pattern, options)[0].Value;
                     string tokenPattern = @"(?<=token: "")(.*)(?="")";
-                    _transToken = Regex.Matches(response.Content, tokenPattern, options)[0].Value;
+                    _transToken = Regex.Matches(await response.Content.ReadAsStringAsync(), tokenPattern, options)[0].Value;
                     return true;
                 }
                 else
                 {
                     string pattern = @"(?<=pares = "")(.*)(?=;)";
-                    _paRes = Regex.Matches(response.Content, pattern, options)[0].Value;
+                    _paRes = Regex.Matches(await response.Content.ReadAsStringAsync(), pattern, options)[0].Value;
                     return true;
                 }
             }
@@ -772,6 +824,19 @@ namespace UnleashedAIO.Modules
 
             string body = $"{{\"productQuantity\":1,\"productId\":\"{_sizeCode}\"}}";
 
+            if (_releaseTimer != DateTime.MinValue)
+            {
+
+                _releaseTimer = _releaseTimer.AddHours(-1);
+                _releaseTimer = _releaseTimer.AddMinutes(59);
+                Program.ChangeColor(ConsoleColor.Yellow);
+                Console.WriteLine($"{timestamp()}{_taskNumber}Release timer detected, task sleeping until {_releaseTimer}");
+                while (DateTime.Now <= _releaseTimer)
+                {
+                    Thread.Sleep(30000);
+                }
+            }
+
             string postCart = tlsClient.postRequest($"https://www.footlocker.{_region}/api/users/carts/current/entries", chain.headers, body, _proxy);
             try
             {
@@ -886,11 +951,12 @@ namespace UnleashedAIO.Modules
                 Console.WriteLine($"{timestamp()}{_taskNumber}Failed setting headers, retrying..");
                 return false;
             }
-
+            goTLSResponse getProductInfosResponse = null;
             FootlockerJSON.Product.Root productInfoObj = null;
             try
             {
-                productInfoObj = JsonConvert.DeserializeObject<FootlockerJSON.Product.Root>(JsonConvert.DeserializeObject<goTLSResponse>(getProductInfos).Body);
+                getProductInfosResponse = JsonConvert.DeserializeObject<goTLSResponse>(getProductInfos);
+                productInfoObj = JsonConvert.DeserializeObject<FootlockerJSON.Product.Root>(getProductInfosResponse.Body);
             }
             catch (Exception e) //forwarding error e to our db soon - will setup later!
             {
@@ -899,22 +965,27 @@ namespace UnleashedAIO.Modules
                 return false;
             }
 
-            if (productInfoObj != null)
+            if (productInfoObj != null && getProductInfosResponse.Status == 200)
             {
-                _productName = productInfoObj.Name;
-                _taskNumber += $"[{productInfoObj.Name}] [{_size}] ";
+                if (firstTry)
+                {
+                    _productName = productInfoObj.Name;
+                    _taskNumber += $"[{productInfoObj.Name}] [{_size}] ";
+                    firstTry = false;
+                }
+
 
                 //fetching sizecode
                 Parallel.ForEach(productInfoObj.SellableUnits, (sku) =>
                 {
-                    if (sku.Attributes[0].Value == _size)
+                    if (sku.Attributes[0].Value == _size.ToUpper() && sku.Sku.Contains(_product))
                     {
                         _sizeCode = sku.Attributes[0].Id;
 
                         //fetching timer
                         if (productInfoObj.VariantAttributes[0].DisplayCountDownTimer)
                         {
-                            _releaseTimer = productInfoObj.VariantAttributes[0].CstSkuLaunchDate;
+                            _releaseTimer = DateTime.ParseExact(productInfoObj.VariantAttributes[0].SkuLaunchDate, "MMM dd yyyy HH:mm:ss GMT+0000", System.Globalization.CultureInfo.InvariantCulture);
                         };
 
                         _price = productInfoObj.VariantAttributes[0].Price.OriginalPrice;
@@ -933,6 +1004,9 @@ namespace UnleashedAIO.Modules
                     return true;
                 }
             }
+            Program.ChangeColor(ConsoleColor.Red);
+            Console.WriteLine($"{timestamp()}{_taskNumber}Product/size not loaded! Retrying after delay..");
+            Thread.Sleep(_delay);
             return false;
         }
 

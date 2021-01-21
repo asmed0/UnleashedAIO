@@ -38,16 +38,16 @@ namespace golang
 
         static class goTLS
         {
-            [DllImport("tlsSolution.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+            [DllImport("unleashed_go_bindings.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
             public static extern IntPtr getRequest(byte[] urlRaw, byte[] headersRaw, byte[] ipAddress);
 
-            [DllImport("tlsSolution.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+            [DllImport("unleashed_go_bindings.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
             public static extern IntPtr headRequest(byte[] urlRaw, byte[] headersRaw, byte[] ipAddress);
 
-            [DllImport("tlsSolution.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+            [DllImport("unleashed_go_bindings.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
             public static extern IntPtr postRequest(byte[] urlRaw, byte[] headersRaw, byte[] body, byte[] ipAddress);
 
-            [DllImport("tlsSolution.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+            [DllImport("unleashed_go_bindings.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
             public static extern IntPtr putRequest(byte[] urlRaw, byte[] headersRaw, byte[] ipAddress);
         }
 
