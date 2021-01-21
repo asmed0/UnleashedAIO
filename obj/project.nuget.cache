@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gsOkoBtUJ5mOhsd9c3gMHnvEuTlKzXMTXqqlwYOkh/CzHjVtd9WQTE751UkUMZfXsZwzlSCqv2clfQ6e+KorRQ==",
+  "dgSpecHash": "n2+FilfDBgFipQwwk3xuVxtms+Cebm7CeWT+OW2TtTii1FDdnnLHZmo2JJ28TegB20EXN8Z9xXUTguKoWjXUvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gouda\\UnleashedAIO\\UnleashedEXE\\UnleashedAIO.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\gouda\\.nuget\\packages\\discord.net.webhook\\2.2.0\\discord.net.webhook.2.2.0.nupkg.sha512",
     "C:\\Users\\gouda\\.nuget\\packages\\discord.net.websocket\\2.2.0\\discord.net.websocket.2.2.0.nupkg.sha512",
     "C:\\Users\\gouda\\.nuget\\packages\\discordrichpresence\\1.0.166\\discordrichpresence.1.0.166.nupkg.sha512",
+    "C:\\Users\\gouda\\.nuget\\packages\\gapotchenko.eazfuscator.net\\2020.4.396\\gapotchenko.eazfuscator.net.2020.4.396.nupkg.sha512",
     "C:\\Users\\gouda\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\gouda\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.0.2\\microsoft.aspnetcore.webutilities.2.0.2.nupkg.sha512",
     "C:\\Users\\gouda\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

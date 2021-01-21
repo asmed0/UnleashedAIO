@@ -46,6 +46,12 @@
               "target": "Package",
               "version": "[1.0.166, )"
             },
+            "Gapotchenko.Eazfuscator.NET": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2020.4.396, )"
+            },
             "Microsoft.AspNet.WebApi.Client": {
               "target": "Package",
               "version": "[5.2.7, )"
