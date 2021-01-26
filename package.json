@@ -2,25 +2,14 @@
   "name": "encryptionapi",
   "version": "1.0.0",
   "description": "encrypts credit data for users",
-  "main": "timemachine.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node timemachine.js",
+    "start": "node ./api/server.js",
     "test": "main"
   },
-  "bin": "node timemachine.js",
-  "engines": {
-    "node": ">=0.12"
-  },
-  "engineStrict": true,
   "author": "drizzs",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "puppeteer-extra": "^3.1.16"
-  },
-  "devDependencies": {
-    "ghost-cursor": "^1.1.0",
-    "nexe": "^4.0.0-beta.16",
-    "puppeteer-extra-plugin-stealth": "^2.6.6"
+    "express": "^4.17.1"
   }
 }
