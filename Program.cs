@@ -263,8 +263,8 @@ namespace UnleashedAIO
 
                     break;
                 case "footlocker na":
-                    FootlockerNA FootlockerNAObj = new FootlockerNA();
-                    if (FootlockerNAObj.StartTaskAsync(currentTask, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay, taskNumber))
+                    Footlocker footlockerObj = new Footlocker();
+                    if (footlockerObj.StartTaskAsync(currentTask, $"Task [{taskNumber}] [{currentTask.Store.ToUpper()}] ", delay, taskNumber))
                     {
                         checkoutCounter++;
                         Console.Title = $"[{discordUsername}'s UnleashedAIO] | [Version {Program.version}] | [Checkouts: {Program.checkoutCounter}]";
