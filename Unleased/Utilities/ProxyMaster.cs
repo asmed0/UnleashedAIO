@@ -107,6 +107,15 @@ namespace UnleashedAIO
             List<string> usedProxies = usedLists[listName];
             List<string> badList = badLists[listName];
 
+            if(proxyList.Count == 1 && taskNumber == 1)
+            {
+                return proxyList[0];
+            }
+            else if(proxyList.Count == 1 && taskNumber != 1)
+            {
+                return "NAP";
+            }
+
             if (currentProxy != null)
             {
                 if (isBad)
