@@ -28,7 +28,7 @@ namespace UnleashedAIO
         public static void setProxyList(int totalTasks,List<string> proxyList)
         {
                     
-            if (totalTasks > 4)
+            if (totalTasks > 10 && proxyList.Count > 10)
             {
                 if (totalTasks > 40)
                 {
@@ -55,9 +55,7 @@ namespace UnleashedAIO
 
             if(split == 1)
             {
-                proxyLists.Add("1", proxyList);
-                usedLists.Add("1", new List<string>());
-                badLists.Add("1", new List<string>());
+                addProxyList("1", proxyList);
             }
             else
             {
@@ -81,9 +79,7 @@ namespace UnleashedAIO
                             proxyList.RemoveAt(0);
                         }
                     }
-                    proxyLists.Add(x.ToString(), newList);
-                    usedLists.Add(x.ToString(), new List<string>());
-                    badLists.Add(x.ToString(), new List<string>());
+                    addProxyList(x.ToString(), newList);
                 }
             }
 
@@ -107,11 +103,11 @@ namespace UnleashedAIO
             List<string> usedProxies = usedLists[listName];
             List<string> badList = badLists[listName];
 
-            if(proxyList.Count == 1 && taskNumber == 1)
+            if(proxyList.Count.Equals(1) && taskNumber.Equals(1))
             {
                 return proxyList[0];
             }
-            else if(proxyList.Count == 1 && taskNumber != 1)
+            else if(proxyList.Count == 1)
             {
                 return "NAP";
             }
@@ -148,6 +144,13 @@ namespace UnleashedAIO
                 return "NAP";
             }
         }
-    }
 
+        private static void addProxyList(string name, List<string> list)
+        {
+            proxyLists.Add(name, list);
+            usedLists.Add(name, new List<string>());
+            badLists.Add(name, new List<string>());
+        }
+
+    }
 }
